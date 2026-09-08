@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-biru: #0088ce;
+  --color-hijau: #5fb5b7;
+  --color-hitam: #2c2c2c;
+  --font-sans: "Geist", sans-serif;
+}
+
+/* Border gradient saat hover ATAU selected */
+.wallet-card {
+  position: relative;
+  border: 1px solid rgb(0 0 0 / 0.2); /* border asli, TETAP 1px, gak pernah berubah */
+}
+
+.wallet-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px; /* nutupin pas di garis border asli */
+  border-radius: inherit;
+  padding: 2px; /* ini yang nentuin "ketebalan" gradient ring-nya */
+  background: linear-gradient(90deg, #0088ce, #5fb5b7);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.wallet-card:hover::before,
+.wallet-card.selected::before {
+  opacity: 1;
+}
+
+.gradient-badge {
+  background: linear-gradient(90deg, #0088ce, #5fb5b7);
+}
+
+.accordion-item .wrapper {
+  position: relative;
+  border-radius: 1rem;
+  border: 1px solid rgb(0 0 0 / 0.2);
+}
+
+.accordion-item .wrapper::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(90deg, #0088ce, #5fb5b7);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.accordion-item .wrapper.is-open::before {
+  opacity: 1;
+}
+.accordion-item .wrapper.is-open .header {
+  background-color: #f3f4f6;
+}
+.accordion-item .icon {
+  transition: transform 0.3s;
+}
+
+.accordion-item .wrapper.is-open .icon {
+  transform: rotate(45deg);
+}
+
+.accordion-item .content {
+  display: none;
+}
+
+.accordion-item .wrapper.is-open .content {
+  display: block;
+}
