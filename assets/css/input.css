@@ -11,33 +11,82 @@
 /* Border gradient saat hover ATAU selected */
 .wallet-card {
   position: relative;
-  border: 1px solid rgb(0 0 0 / 0.2); /* border asli, TETAP 1px, gak pernah berubah */
+  border: 1px solid rgb(0 0 0 / 0.2);
 }
 
 .wallet-card::before {
   content: "";
   position: absolute;
-  inset: -1px; /* nutupin pas di garis border asli */
+  inset: -1px;
   border-radius: inherit;
-  padding: 2px; /* ini yang nentuin "ketebalan" gradient ring-nya */
+  padding: 2px;
   background: linear-gradient(90deg, #0088ce, #5fb5b7);
+
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
+
   opacity: 0;
   transition: opacity 0.2s ease;
   pointer-events: none;
 }
 
+/* Hover */
 .wallet-card:hover::before,
+
+/* Saat dipilih */
 .wallet-card.selected::before {
   opacity: 1;
 }
 
-.gradient-badge {
+/* Text default */
+.wallet-text {
+  color: #6c6c6c;
+  transition: 0.2s ease;
+}
+
+/* Text gradient saat hover */
+.wallet-card:hover .wallet-text,
+
+/* Text gradient saat selected */
+.wallet-card.selected .wallet-text {
   background: linear-gradient(90deg, #0088ce, #5fb5b7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Badge */
+.gradient-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0088ce, #5fb5b7);
+
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+
+  opacity: 0;
+  transform: scale(0.7);
+  transition: 0.2s ease;
+}
+
+/* Badge muncul ketika selected */
+.wallet-card.selected .gradient-badge {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .accordion-item .wrapper {
@@ -83,4 +132,22 @@
 
 .accordion-item .wrapper.is-open .content {
   display: block;
+}
+
+.input-gradient-wrapper {
+  position: relative;
+  border: 1px solid rgb(0 0 0 / 0.2);
+  border-radius: 0.75rem;
+  background: white;
+  transition: 0.25s ease;
+}
+
+.input-gradient-wrapper:focus-within {
+  border-color: transparent;
+
+  background:
+    linear-gradient(white, white) padding-box,
+    linear-gradient(90deg, #0088ce, #5fb5b7) border-box;
+
+  box-shadow: 0 0 0 2px rgba(0, 136, 206, 0.15);
 }
