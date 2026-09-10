@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="/assets/css/output.css" />
   </head>
   <body>
-    <header class="bg-linear-to-r from-[#0088CE] to-[#5FB5B7] px-40 text-white">
+    <header
+      class="hidden bg-linear-to-r from-[#0088CE] to-[#5FB5B7] px-40 text-white"
+    >
       <nav class="flex items-center py-3 justify-between">
         <img
           class="w-36 h-auto"
@@ -44,7 +46,7 @@
 
     <main class="text-hitam">
       <!-- SECTION TOP UP -->
-      <section class="px-40 py-10">
+      <section class="px-4 mb-40 lg:px-40 py-10">
         <div>
           <h2 class="text-2xl font-semibold mb-1">Pilih Layanan</h2>
           <span class="text-[#6c6c6c]"
@@ -62,7 +64,9 @@
                 >Pilih e-wallet yang ingin kamu isi ulang</span
               >
             </div>
-            <div class="p-6 grid grid-cols-4 gap-3 border-b border-black/20">
+            <div
+              class="p-6 grid grid-cols-2 lg:grid-cols-4 gap-3 border-b border-black/20"
+            >
               <!-- GOPAY -->
               <div
                 class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
@@ -72,7 +76,7 @@
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="assets/images/e-wallet/GoPay Logo - Colored - zonalogo.com.svg"
+                    src="assets/images/e-wallet/Gopay.svg"
                     alt=""
                   />
                 </div>
@@ -82,7 +86,7 @@
 
               <!-- DANA -->
               <a
-                href="/top-up-dana.html"
+                href="/pages/e-wallet/dana/step-2-pilih-nominal-dana.html"
                 class="wallet-card flex-col gap-3 relative w-full h-[120px] p-8 flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
@@ -90,7 +94,7 @@
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="assets/images/e-wallet/Logo_dana_blue.svg"
+                    src="assets/images/e-wallet/Dana.svg"
                     alt=""
                   />
                 </div>
@@ -107,7 +111,7 @@
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="assets/images/e-wallet/OVO Logo - Colored - zonalogo.com.svg"
+                    src="assets/images/e-wallet/OVO.svg"
                     alt=""
                   />
                 </div>
@@ -124,7 +128,7 @@
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="assets/images/e-wallet/ShopeePay Logo - Colored - zonalogo.com.svg"
+                    src="assets/images/e-wallet/ShopeePay.svg"
                     alt=""
                   />
                 </div>
@@ -141,7 +145,9 @@
                 >Token listrik, paket data, dan pulsa</span
               >
             </div>
-            <div class="p-6 grid grid-cols-4 items-stretch gap-3">
+            <div
+              class="p-6 grid grid-cols-2 lg:grid-cols-4 items-stretch gap-3"
+            >
               <!-- TOKEN LISTRIK -->
               <div
                 class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
@@ -151,12 +157,14 @@
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="assets/images/PLN Logo - Colored - zonalogo.com.svg"
+                    src="assets/images/PLN.svg"
                     alt=""
                   />
                 </div>
 
-                <span class="font-medium text-[#6c6c6c]">Token Listrik</span>
+                <span class="font-medium text-[#6c6c6c] text-center"
+                  >Token Listrik</span
+                >
               </div>
 
               <!-- BPJS -->
@@ -168,12 +176,14 @@
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="assets/images/BPJS Kesehatan Logo - Colored - zonalogo.com.svg"
+                    src="assets/images/BPJS.svg"
                     alt=""
                   />
                 </div>
 
-                <span class="font-medium text-[#6c6c6c]">BPJS Kesehatan</span>
+                <span class="font-medium text-[#6c6c6c] text-center"
+                  >BPJS Kesehatan</span
+                >
               </div>
 
               <!-- PAKET DATA -->
@@ -258,7 +268,7 @@
       </section>
 
       <!-- SECTION WHY USE US -->
-      <section class="px-40 py-10">
+      <section class="hidden px-40 py-10">
         <div>
           <h2 class="text-2xl font-semibold mb-1">
             Kenapa Harus Top Up & Bayar disini?
@@ -271,7 +281,7 @@
 
         <div class="mt-6 flex items-center gap-6">
           <div
-            class="bg-gray-100 border border-black/10 max-w-xs p-6 rounded-2xl"
+            class="bg-gray-100 border border-black/10 w-full p-6 rounded-2xl"
           >
             <div class="flex items-center gap-4 mb-6">
               <div
@@ -303,7 +313,7 @@
             </p>
           </div>
           <div
-            class="bg-gray-100 border border-black/10 max-w-xs p-6 rounded-2xl"
+            class="bg-gray-100 border border-black/10 w-full p-6 rounded-2xl"
           >
             <div class="flex items-center gap-4 mb-6">
               <div
@@ -335,7 +345,7 @@
             </p>
           </div>
           <div
-            class="bg-gray-100 border border-black/10 max-w-xs p-6 rounded-2xl"
+            class="bg-gray-100 border border-black/10 w-full p-6 rounded-2xl"
           >
             <div class="flex items-center gap-4 mb-6">
               <div
@@ -373,7 +383,7 @@
       </section>
 
       <!-- SECTION STEP TOP UP -->
-      <section class="px-40 py-10">
+      <section class="hidden px-40 py-10">
         <div>
           <h2 class="text-2xl font-semibold mb-1">Cara Top Up & Bayar</h2>
           <span class="text-[#6c6c6c]"
@@ -387,7 +397,7 @@
             <div class="relative">
               <!-- garis vertikal -->
               <div
-                class="absolute left-[7px] top-2 bottom-2 w-[2px] bg-blue-200"
+                class="absolute left-[7px] top-2 bottom-12 w-[2px] bg-blue-200"
               ></div>
 
               <!-- Step 1 -->
@@ -460,7 +470,7 @@
       </section>
 
       <!-- SECTION FAQS -->
-      <section class="px-40 py-10">
+      <section class="hidden px-40 py-10">
         <div>
           <h2 class="text-2xl font-semibold mb-1">Ada Pertanyaan?</h2>
           <span class="text-[#6c6c6c]"
@@ -545,7 +555,7 @@
       </section>
     </main>
 
-    <footer class="px-40 pt-10 bg-hitam text-white">
+    <footer class="hidden px-40 pt-10 bg-hitam text-white">
       <div class="flex items-center justify-between">
         <div>
           <img

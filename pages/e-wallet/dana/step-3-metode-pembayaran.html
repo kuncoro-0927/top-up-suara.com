@@ -4,14 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Detail Pembayaran</title>
-    <link rel="stylesheet" href="assets/css/output.css" />
+    <link rel="stylesheet" href="/assets/css/output.css" />
   </head>
   <body>
     <header>
       <nav
-        class="flex items-center py-4 justify-between border-b-black/20 border px-40"
+        class="flex items-center py-4 justify-between border-black/20 border-b px-40"
       >
-        <a href="/top-up-dana.html" class="flex items-center gap-3 font-medium">
+        <a
+          href="step-2-pilih-nominal-dana.html"
+          class="flex items-center gap-3 font-medium"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="18"
@@ -67,7 +70,6 @@
             </div>
 
             <div class="p-6 grid grid-cols-4 gap-3 border-b border-black/20">
-              <!-- QRIS -->
               <div
                 class="wallet-card flex-col gap-3 relative w-full p-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
@@ -76,7 +78,7 @@
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="assets/images/QRIS.svg"
+                    src="/assets/images/QRIS.svg"
                     alt=""
                   />
                 </div>
@@ -119,7 +121,7 @@
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="assets/images/e-wallet/GoPay Logo - Colored - zonalogo.com.svg"
+                    src="/assets/images/e-wallet/Gopay.svg"
                     alt=""
                   />
                 </div>
@@ -150,7 +152,7 @@
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="assets/images/e-wallet/Logo_dana_blue.svg"
+                    src="/assets/images/e-wallet/Dana.svg"
                     alt=""
                   />
                 </div>
@@ -181,7 +183,7 @@
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="assets/images/e-wallet/OVO Logo - Colored - zonalogo.com.svg"
+                    src="/assets/images/e-wallet/OVO.svg"
                     alt=""
                   />
                 </div>
@@ -212,7 +214,7 @@
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="assets/images/e-wallet/ShopeePay Logo - Colored - zonalogo.com.svg"
+                    src="/assets/images/e-wallet/ShopeePay.svg"
                     alt=""
                   />
                 </div>
@@ -256,7 +258,7 @@
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="assets/images/bank-transfer/BCA.svg"
+                    src="/assets/images/bank-transfer/BCA.svg"
                     alt=""
                   />
                 </div>
@@ -287,7 +289,7 @@
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="assets/images/bank-transfer/BNI.svg"
+                    src="/assets/images/bank-transfer/BNI.svg"
                     alt=""
                   />
                 </div>
@@ -318,7 +320,7 @@
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="assets/images/bank-transfer/BRI.svg"
+                    src="/assets/images/bank-transfer/BRI.svg"
                     alt=""
                   />
                 </div>
@@ -349,7 +351,7 @@
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="assets/images/bank-transfer/Mandiri.svg"
+                    src="/assets/images/bank-transfer/Mandiri.svg"
                     alt=""
                   />
                 </div>
@@ -415,13 +417,15 @@
         <div
           class="sticky top-10 self-start flex flex-col gap-2 max-w-[350px] w-full"
         >
-          <div class="border border-black/20 p-6 rounded-2xl">
+          <div
+            class="border border-black/20 p-6 rounded-2xl h-full flex flex-col"
+          >
             <h2 class="text-lg font-semibold">Detail Pembelian</h2>
             <div class="border border-black/10 mt-4 mb-6"></div>
 
             <img
               class="w-28 h-auto mb-6"
-              src="assets/images/e-wallet/Logo_dana_blue.svg"
+              src="/assets/images/e-wallet/Dana.svg"
               alt=""
             />
             <div class="flex justify-between mt-3 text-sm">
@@ -435,11 +439,11 @@
 
             <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">Nomor Tujuan</span>
-              <span id="detail-nomor" class="font-medium">-</span>
+              <span id="detail-nomor" class="font-medium">01234567890</span>
             </div>
             <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">Nominal</span>
-              <span id="detail-nominal" class="font-medium">-</span>
+              <span id="detail-nominal" class="font-medium">Rp. 100.000</span>
             </div>
 
             <div class="flex justify-between mt-3 text-sm">
@@ -448,22 +452,29 @@
             </div>
             <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">Biaya Admin</span>
-              <span class="font-medium">-</span>
+              <span id="detail-biaya-admin" class="font-medium">-</span>
             </div>
 
-            <div class="border border-black/10 my-4"></div>
+            <div class="mt-auto">
+              <div class="border border-black/10 my-4"></div>
 
-            <div class="flex justify-between my-3">
-              <span class="font-medium">Total Pembayaran</span>
-              <span class="font-semibold text-lg">Rp. 750.000</span>
+              <div class="flex justify-between my-3">
+                <span class="font-medium">Total Pembayaran</span>
+                <span id="detail-total" class="font-semibold text-lg"
+                  >Rp. 100.000</span
+                >
+              </div>
+              <a
+                href="step-4-pembayaran-qris.html"
+                id="btn-lanjut"
+                data-active="false"
+                aria-disabled="true"
+                tabindex="-1"
+                class="w-full flex justify-center items-center px-6 py-3 rounded-xl font-medium bg-gray-200 text-gray-400 cursor-not-allowed hover:-translate-y-0.5 hover:shadow-md duration-200 data-[active=true]:bg-linear-to-r data-[active=true]:from-biru data-[active=true]:to-hijau data-[active=true]:text-white data-[active=true]:cursor-pointer data-[active=false]:pointer-events-none"
+              >
+                Lanjut Pembayaran
+              </a>
             </div>
-            <button
-              id="btn-lanjut"
-              disabled
-              class="w-full px-6 py-3 rounded-xl font-medium bg-gray-200 text-gray-400 cursor-not-allowed"
-            >
-              Lanjut Pembayaran
-            </button>
           </div>
         </div>
       </section>
@@ -473,7 +484,7 @@
         <div>
           <img
             class="w-44 h-auto"
-            src="assets/images/logo_suara.com putih.png"
+            src="/assets/images/logo_suara.com putih.png"
             alt="Logo Suara"
           />
           <span class=""
@@ -483,11 +494,7 @@
         </div>
         <div class="flex flex-col gap-2">
           <span class="font-medium text-base">Powered By</span
-          ><img
-            class="w-24 h-auto"
-            src="assets/images/Xendit Logo - Colored - zonalogo.com.svg"
-            alt=""
-          />
+          ><img class="w-24 h-auto" src="/assets/images/Xendit.svg" alt="" />
         </div>
       </div>
       <div class="border border-white/30 my-8"></div>
@@ -646,19 +653,54 @@
         >
       </div>
     </footer>
+
     <script>
       const walletCards = document.querySelectorAll(".wallet-card");
+      const btnLanjut = document.getElementById("btn-lanjut");
+      const detailBiayaAdmin = document.getElementById("detail-biaya-admin");
+      const detailTotal = document.getElementById("detail-total");
+
+      const NOMINAL = 100000;
+      const BIAYA_ADMIN = 1000;
+      let selectedMetode = null;
+
+      function formatRupiah(angka) {
+        return "Rp " + Number(angka).toLocaleString("id-ID");
+      }
+
+      function updateButtonState() {
+        const metodeValid = selectedMetode !== null;
+        btnLanjut.dataset.active = metodeValid;
+
+        if (metodeValid) {
+          btnLanjut.removeAttribute("aria-disabled");
+          btnLanjut.removeAttribute("tabindex");
+        } else {
+          btnLanjut.setAttribute("aria-disabled", "true");
+          btnLanjut.setAttribute("tabindex", "-1");
+        }
+      }
 
       walletCards.forEach((card) => {
         card.addEventListener("click", () => {
-          // Hapus selected dari semua card
-          walletCards.forEach((item) => {
-            item.classList.remove("selected");
-          });
-
-          // Tambahkan selected ke card yang diklik
+          walletCards.forEach((item) => item.classList.remove("selected"));
           card.classList.add("selected");
+
+          selectedMetode = card
+            .querySelector(".wallet-text, span")
+            ?.textContent.trim();
+
+          detailBiayaAdmin.textContent = formatRupiah(BIAYA_ADMIN);
+          detailTotal.textContent = formatRupiah(NOMINAL + BIAYA_ADMIN);
+
+          updateButtonState();
         });
+      });
+
+      btnLanjut.addEventListener("click", (e) => {
+        if (btnLanjut.dataset.active !== "true") {
+          e.preventDefault();
+        }
       });
     </script>
   </body>

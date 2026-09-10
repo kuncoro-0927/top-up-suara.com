@@ -1,0 +1,1274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Top Up Murah</title>
+    <link rel="stylesheet" href="/assets/css/output.css" />
+  </head>
+  <body class="text-hitam">
+    <header class="">
+      <nav
+        class="flex items-center py-4 justify-between border-b-black/20 border px-40"
+      >
+        <a href="/index.html" class="flex items-center gap-3 font-medium">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            fill="currentColor"
+            class="bi bi-arrow-left"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
+            />
+          </svg>
+          <span>Kembali</span>
+        </a>
+      </nav>
+    </header>
+    <main>
+      <!-- SECTION INPUT NOMOR -->
+      <section class="px-40 py-10 flex items-start gap-10">
+        <!-- BAGIAN KIRI -->
+        <div class="flex flex-col gap-1 max-w-2xl w-full">
+          <h2 class="text-lg font-semibold">Nomor Tujuan</h2>
+          <span class="text-[#6c6c6c] mb-2"
+            >Masukkan nomor tujuan yang ingin diisi.</span
+          >
+          <div class="input-gradient-wrapper">
+            <input
+              id="nomor-tujuan"
+              type="text"
+              inputmode="numeric"
+              placeholder="Masukkan Nomor Tujuan"
+              class="w-full px-4 text-sm py-2.5 outline-none"
+              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+            />
+          </div>
+          <div class="border border-black/20 mt-6 rounded-2xl">
+            <div>
+              <div
+                class="px-6 py-3 rounded-t-2xl bg-gray-100 flex items-center justify-between"
+              >
+                <span class="font-semibold">Nominal Top Up</span
+                ><span class="text-[#6c6c6c] text-sm"
+                  >Pilih nominal top up yang ingin kamu isi</span
+                >
+              </div>
+              <div class="p-6 grid grid-cols-4 gap-3">
+                <div
+                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                  data-amount="15000"
+                >
+                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                    Rp. 15.000
+                  </span>
+
+                  <span class="gradient-badge">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-check"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                  data-amount="20000"
+                >
+                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                    Rp. 20.000
+                  </span>
+
+                  <span class="gradient-badge">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-check"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                  data-amount="25000"
+                >
+                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                    Rp. 25.000
+                  </span>
+
+                  <span class="gradient-badge">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-check"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                  data-amount="30000"
+                >
+                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                    Rp. 30.000
+                  </span>
+
+                  <span class="gradient-badge">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-check"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                  data-amount="40000"
+                >
+                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                    Rp. 40.000
+                  </span>
+
+                  <span class="gradient-badge">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-check"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                  data-amount="50000"
+                >
+                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                    Rp. 50.000
+                  </span>
+
+                  <span class="gradient-badge">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-check"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                  data-amount="60000"
+                >
+                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                    Rp. 60.000
+                  </span>
+
+                  <span class="gradient-badge">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-check"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+
+                <div
+                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                  data-amount="70000"
+                >
+                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                    Rp. 70.000
+                  </span>
+
+                  <span class="gradient-badge">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-check"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                  data-amount="75000"
+                >
+                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                    Rp. 75.000
+                  </span>
+
+                  <span class="gradient-badge">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-check"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                  data-amount="80000"
+                >
+                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                    Rp. 80.000
+                  </span>
+
+                  <span class="gradient-badge">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-check"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                  data-amount="90000"
+                >
+                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                    Rp. 90.000
+                  </span>
+
+                  <span class="gradient-badge">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-check"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                  data-amount="100000"
+                >
+                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                    Rp. 100.000
+                  </span>
+
+                  <span class="gradient-badge">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-check"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                  data-amount="150000"
+                >
+                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                    Rp. 150.000
+                  </span>
+
+                  <span class="gradient-badge">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-check"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                  data-amount="200000"
+                >
+                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                    Rp. 200.000
+                  </span>
+
+                  <span class="gradient-badge">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-check"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+
+                <div
+                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                  data-amount="300000"
+                >
+                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                    Rp. 300.000
+                  </span>
+
+                  <span class="gradient-badge">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-check"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BAGIAN KANAN -->
+        <div
+          class="sticky top-20 self-start flex flex-col gap-2 max-w-[350px] w-full"
+        >
+          <div class="border border-black/20 p-6 rounded-2xl">
+            <h2 class="text-lg font-semibold">Detail Pembelian</h2>
+            <div class="border border-black/10 mt-4 mb-6"></div>
+
+            <img
+              class="w-28 h-10 mb-6"
+              src="assets/images/e-wallet/ShopeePay Logo - Colored - zonalogo.com.svg"
+              alt=""
+            />
+            <div class="flex justify-between mt-3 text-sm">
+              <span class="text-sm text-[#6c6c6c]">Tanggal</span>
+              <span class="font-medium">09/07/2026</span>
+            </div>
+            <div class="flex justify-between text-sm mt-3">
+              <span class="text-sm text-[#6c6c6c]">Layanan</span>
+              <span class="font-medium">E-Wallet - Shopeepay</span>
+            </div>
+
+            <div class="flex justify-between mt-3 text-sm">
+              <span class="text-sm text-[#6c6c6c]">Nomor Tujuan</span>
+              <span id="detail-nomor" class="font-medium">-</span>
+            </div>
+            <div class="flex justify-between mt-3 text-sm">
+              <span class="text-sm text-[#6c6c6c]">Nominal</span>
+              <span id="detail-nominal" class="font-medium">-</span>
+            </div>
+
+            <div class="border border-black/10 my-4"></div>
+
+            <button
+              id="btn-lanjut"
+              disabled
+              class="w-full px-6 py-3 rounded-xl font-medium bg-gray-200 text-gray-400 cursor-not-allowed"
+            >
+              Lanjut Pembayaran
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION TUTORIAL TOP UP -->
+      <section class="px-40 py-10">
+        <div>
+          <h2 class="text-2xl font-semibold mb-1">Cara Top Up Shopeepay</h2>
+          <span class="text-[#6c6c6c]"
+            >Pilih layanan yang ingin kamu top up atau bayar tagihannya.</span
+          >
+        </div>
+
+        <div class="mt-6 grid grid-cols-2 gap-3">
+          <div
+            class="border border-black/20 rounded-2xl flex items-center gap-3 p-4 w-full bg-gray-100"
+          >
+            <div class="flex items-start gap-4">
+              <div
+                class="bg-linear-to-r text-white font-medium text-sm from-biru to-hijau h-9 w-9 rounded-full flex items-center justify-center shrink-0"
+              >
+                1
+              </div>
+              <div class="flex flex-col">
+                <span class="font-medium text-sm text-[#6c6c6c]"
+                  >Langkah 1</span
+                >
+                <span class="font-semibold text-base"
+                  >Masukkan Nomor Shopeepay</span
+                >
+                <span class="text-[#6c6c6c] text-sm"
+                  >Masukkan nomor yang terhubung dengan akun Shopeepay
+                  penerima.</span
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="border border-black/20 rounded-2xl flex items-center gap-3 p-4 w-full bg-gray-100"
+          >
+            <div class="flex items-start gap-4">
+              <div
+                class="bg-linear-to-r text-white font-medium text-sm from-biru to-hijau h-9 w-9 rounded-full flex items-center justify-center shrink-0"
+              >
+                2
+              </div>
+              <div class="flex flex-col">
+                <span class="font-medium text-sm text-[#6c6c6c]"
+                  >Langkah 2</span
+                >
+                <span class="font-semibold text-base">Pilih Nominal Saldo</span>
+                <span class="text-[#6c6c6c] text-sm"
+                  >Tentukan jumlah saldo Shopeepay yang ingin Anda beli.</span
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="border border-black/20 rounded-2xl flex items-center gap-3 p-4 w-full bg-gray-100"
+          >
+            <div class="flex items-start gap-4">
+              <div
+                class="bg-linear-to-r text-white font-medium text-sm from-biru to-hijau h-9 w-9 rounded-full flex items-center justify-center shrink-0"
+              >
+                3
+              </div>
+              <div class="flex flex-col">
+                <span class="font-medium text-sm text-[#6c6c6c]"
+                  >Langkah 3</span
+                >
+                <span class="font-semibold text-base"
+                  >Tentukan Metode Pembayaran</span
+                >
+                <span class="text-[#6c6c6c] text-sm"
+                  >Pilih metode pembayaran yang sesuai dengan kebutuhan
+                  Anda.</span
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="border border-black/20 rounded-2xl flex items-center gap-3 p-4 w-full bg-gray-100"
+          >
+            <div class="flex items-start gap-4">
+              <div
+                class="bg-linear-to-r text-white font-medium text-sm from-biru to-hijau h-9 w-9 rounded-full flex items-center justify-center shrink-0"
+              >
+                4
+              </div>
+              <div class="flex flex-col">
+                <span class="font-medium text-sm text-[#6c6c6c]"
+                  >Langkah 4</span
+                >
+                <span class="font-semibold text-base"
+                  >Selesaikan Pembayaran</span
+                >
+                <span class="text-[#6c6c6c] text-sm"
+                  >Ikuti petunjuk yang tersedia untuk menyelesaikan proses
+                  pembayaran.</span
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="border border-black/20 rounded-2xl flex items-center gap-3 p-4 w-full bg-gray-100"
+          >
+            <div class="flex items-start gap-4">
+              <div
+                class="bg-linear-to-r text-white font-medium text-sm from-biru to-hijau h-9 w-9 rounded-full flex items-center justify-center shrink-0"
+              >
+                5
+              </div>
+              <div class="flex flex-col">
+                <span class="font-medium text-sm text-[#6c6c6c]"
+                  >Langkah 5</span
+                >
+                <span class="font-semibold text-base"
+                  >Saldo Diproses Otomatis</span
+                >
+                <span class="text-[#6c6c6c] text-sm"
+                  >Setelah pembayaran berhasil dikonfirmasi, saldo akan diproses
+                  dan dikirim secara otomatis.</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION TIPS -->
+      <section class="px-40 py-10">
+        <div>
+          <h2 class="text-2xl font-semibold mb-1">
+            Tips Isi Saldo dengan Aman
+          </h2>
+          <span class="text-[#6c6c6c]"
+            >Ikuti beberapa tips berikut agar proses pengisian saldo tetap aman
+            dan nyaman.</span
+          >
+        </div>
+
+        <div class="mt-6 grid grid-cols-2 gap-3">
+          <div
+            class="border border-black/20 rounded-2xl flex items-center gap-3 p-4 w-full bg-gray-100"
+          >
+            <div class="flex flex-col">
+              <span
+                class="font-semibold text-base bg-linear-to-r from-biru to-hijau bg-clip-text text-transparent"
+                >Tips 1</span
+              >
+              <span class="font-medium text-base mt-2"
+                >Pastikan Nomor Tujuan Benar</span
+              >
+              <span class="text-[#6c6c6c] text-sm"
+                >Periksa kembali nomor Shopeepay penerima agar transaksi tidak
+                salah tujuan.</span
+              >
+            </div>
+          </div>
+
+          <div
+            class="border border-black/20 rounded-2xl flex items-center gap-3 p-4 w-full bg-gray-100"
+          >
+            <div class="flex flex-col">
+              <span
+                class="font-semibold text-base bg-linear-to-r from-biru to-hijau bg-clip-text text-transparent"
+                >Tips 2</span
+              >
+              <span class="font-medium text-base mt-2"
+                >Rahasiakan Kode OTP</span
+              >
+              <span class="text-[#6c6c6c] text-sm"
+                >Jangan pernah memberikan kode OTP kepada siapa pun demi menjaga
+                keamanan akun.</span
+              >
+            </div>
+          </div>
+
+          <div
+            class="border border-black/20 rounded-2xl flex items-center gap-3 p-4 w-full bg-gray-100"
+          >
+            <div class="flex flex-col">
+              <span
+                class="font-semibold text-base bg-linear-to-r from-biru to-hijau bg-clip-text text-transparent"
+                >Tips 3</span
+              >
+              <span class="font-medium text-base mt-2"
+                >Cek Detail Transaksi</span
+              >
+              <span class="text-[#6c6c6c] text-sm"
+                >Pastikan nominal saldo dan metode pembayaran sudah sesuai
+                sebelum melakukan konfirmasi.</span
+              >
+            </div>
+          </div>
+
+          <div
+            class="border border-black/20 rounded-2xl flex items-center gap-3 p-4 w-full bg-gray-100"
+          >
+            <div class="flex flex-col">
+              <span
+                class="font-semibold text-base bg-linear-to-r from-biru to-hijau bg-clip-text text-transparent"
+                >Tips 4</span
+              >
+              <span class="font-medium text-base mt-2"
+                >Simpan Bukti Transaksi</span
+              >
+              <span class="text-[#6c6c6c] text-sm"
+                >Simpan bukti pembayaran sebagai referensi apabila perlu
+                melakukan pengecekan atau terjadi kendala.</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION TOP UP LAINNYA -->
+      <section class="px-40 py-10">
+        <div>
+          <h2 class="text-2xl font-semibold mb-1">
+            Top Up & Bayar Layanan Lainnya
+          </h2>
+          <span class="text-[#6c6c6c]"
+            >Nikmati kemudahan transaksi untuk berbagai kebutuhan Anda.</span
+          >
+        </div>
+
+        <div class="border border-black/20 mt-6 rounded-2xl">
+          <div>
+            <div
+              class="px-6 py-3 rounded-t-2xl bg-gray-100 flex items-center justify-between"
+            >
+              <span class="font-semibold">E-Wallet</span
+              ><span class="text-[#6c6c6c] text-sm"
+                >Pilih e-wallet yang ingin kamu isi ulang</span
+              >
+            </div>
+            <div class="p-6 grid grid-cols-4 gap-3 border-b border-black/20">
+              <!-- GOPAY -->
+              <a
+                href="/topup-gopay.html"
+                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+              >
+                <div
+                  class="h-10 w-full flex items-center justify-center shrink-0"
+                >
+                  <img
+                    class="w-full h-full object-contain"
+                    src="assets/images/e-wallet/GoPay Logo - Colored - zonalogo.com.svg"
+                    alt=""
+                  />
+                </div>
+
+                <span class="font-medium text-[#6c6c6c]">Gopay</span>
+              </a>
+
+              <!-- DANA -->
+              <a
+                href="/topup-dana.html"
+                class="wallet-card flex-col gap-3 relative w-full h-[120px] p-8 flex justify-center items-center rounded-2xl cursor-pointer"
+              >
+                <div
+                  class="h-10 w-full flex items-center justify-center shrink-0"
+                >
+                  <img
+                    class="w-full h-full object-contain"
+                    src="assets/images/e-wallet/Logo_dana_blue.svg"
+                    alt=""
+                  />
+                </div>
+
+                <span class="font-medium text-[#6c6c6c]">DANA</span>
+              </a>
+
+              <!-- OVO -->
+              <a
+                href="/topup-ovo.html"
+                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+              >
+                <div
+                  class="h-10 w-full flex items-center justify-center shrink-0"
+                >
+                  <img
+                    class="w-full h-full object-contain"
+                    src="assets/images/e-wallet/OVO Logo - Colored - zonalogo.com.svg"
+                    alt=""
+                  />
+                </div>
+
+                <span class="font-medium text-[#6c6c6c]">OVO</span>
+              </a>
+            </div>
+
+            <div
+              class="px-6 py-3 bg-gray-100 flex items-center justify-between"
+            >
+              <span class="font-semibold">Lainnya</span
+              ><span class="text-[#6c6c6c] text-sm"
+                >Token listrik, paket data, dan pulsa</span
+              >
+            </div>
+            <div class="p-6 grid grid-cols-4 items-stretch gap-3">
+              <!-- TOKEN LISTRIK -->
+              <div
+                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+              >
+                <div
+                  class="h-10 w-full flex items-center justify-center shrink-0"
+                >
+                  <img
+                    class="w-full h-full object-contain"
+                    src="assets/images/PLN Logo - Colored - zonalogo.com.svg"
+                    alt=""
+                  />
+                </div>
+
+                <span class="font-medium text-[#6c6c6c]">Token Listrik</span>
+              </div>
+
+              <!-- BPJS -->
+              <div
+                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+              >
+                <div
+                  class="h-10 w-full flex items-center justify-center shrink-0"
+                >
+                  <img
+                    class="w-full h-full object-contain"
+                    src="assets/images/BPJS Kesehatan Logo - Colored - zonalogo.com.svg"
+                    alt=""
+                  />
+                </div>
+
+                <span class="font-medium text-[#6c6c6c]">BPJS Kesehatan</span>
+              </div>
+
+              <!-- PAKET DATA -->
+              <div
+                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+              >
+                <div
+                  class="h-10 w-full flex items-center justify-center shrink-0"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16"
+                    class="w-full h-full object-contain"
+                  >
+                    <defs>
+                      <linearGradient
+                        id="phoneGradient"
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="100%"
+                      >
+                        <stop offset="0%" stop-color="#5FB5B7" />
+                        <stop offset="100%" stop-color="#0088CE" />
+                      </linearGradient>
+                    </defs>
+                    <path
+                      fill="url(#phoneGradient)"
+                      d="M15.384 6.115a.485.485 0 0 0-.047-.736A12.44 12.44 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.52.52 0 0 0 .668.05A11.45 11.45 0 0 1 8 4c2.507 0 4.827.802 6.716 2.164.205.148.49.13.668-.049"
+                    />
+                    <path
+                      fill="url(#phoneGradient)"
+                      d="M13.229 8.271a.482.482 0 0 0-.063-.745A9.46 9.46 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.576 1.336c.206.132.48.108.653-.065m-2.183 2.183c.226-.226.185-.605-.1-.75A6.5 6.5 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.407.19.611.09A5.5 5.5 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.61-.091zM9.06 12.44c.196-.196.198-.52-.04-.66A2 2 0 0 0 8 11.5a2 2 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .707 0l.707-.707z"
+                    />
+                  </svg>
+                </div>
+
+                <span class="font-medium text-[#6c6c6c]">Paket Data</span>
+              </div>
+
+              <!-- PULSA -->
+
+              <div
+                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+              >
+                <div
+                  class="h-10 w-full flex items-center justify-center shrink-0"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16"
+                    class="shrink-0 w-full h-full object-contain"
+                  >
+                    <defs>
+                      <linearGradient
+                        id="phoneGradient"
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="100%"
+                      >
+                        <stop offset="0%" stop-color="#5FB5B7" />
+                        <stop offset="100%" stop-color="#0088CE" />
+                      </linearGradient>
+                    </defs>
+                    <path
+                      fill="url(#phoneGradient)"
+                      d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"
+                    />
+                    <path
+                      fill="url(#phoneGradient)"
+                      d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
+                    />
+                  </svg>
+                </div>
+
+                <span class="font-medium text-[#6c6c6c]">Pulsa</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION FAQS -->
+      <section class="px-40 py-10">
+        <div>
+          <h2 class="text-2xl font-semibold mb-1">
+            Pertanyaan Seputar ShopeePay
+          </h2>
+          <span class="text-[#6c6c6c]"
+            >Temukan jawaban atas pertanyaan yang sering diajukan.</span
+          >
+        </div>
+
+        <div class="grid grid-cols-1 gap-3 mt-6">
+          <!-- FAQS 1 -->
+          <div class="accordion-item">
+            <div class="wrapper p-1">
+              <div
+                class="header flex items-center justify-between px-6 py-3 rounded-2xl cursor-pointer hover:bg-gray-100 duration-200"
+                onclick="toggleAccordion(this)"
+              >
+                <span class="font-medium">
+                  Berapa lama saldo ShopeePay masuk setelah melakukan top up?
+                </span>
+                <span class="icon text-xl font-medium">+</span>
+              </div>
+
+              <div
+                class="content px-6 py-3 text-sm text-[#6c6c6c] rounded-b-2xl"
+              >
+                <p>
+                  Saldo umumnya akan masuk secara otomatis setelah pembayaran
+                  berhasil dikonfirmasi.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQS 2 -->
+          <div class="accordion-item">
+            <div class="wrapper p-1">
+              <div
+                class="header flex items-center justify-between px-6 py-3 rounded-2xl cursor-pointer hover:bg-gray-100 duration-200"
+                onclick="toggleAccordion(this)"
+              >
+                <span class="font-medium">
+                  Bagaimana jika nomor tujuan yang dimasukkan tidak sesuai?
+                </span>
+                <span class="icon text-xl font-medium">+</span>
+              </div>
+
+              <div
+                class="content px-6 py-3 text-sm text-[#6c6c6c] rounded-b-2xl"
+              >
+                <p>
+                  Segera hubungi customer support untuk mendapatkan bantuan dan
+                  pastikan kembali nomor tujuan sebelum melakukan transaksi
+                  berikutnya.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQS 3 -->
+          <div class="accordion-item">
+            <div class="wrapper p-1">
+              <div
+                class="header flex items-center justify-between px-6 py-3 rounded-2xl cursor-pointer hover:bg-gray-100 duration-200"
+                onclick="toggleAccordion(this)"
+              >
+                <span class="font-medium">
+                  Apakah top up ShopeePay dikenakan biaya tambahan?
+                </span>
+                <span class="icon text-xl font-medium">+</span>
+              </div>
+
+              <div
+                class="content px-6 py-3 text-sm text-[#6c6c6c] rounded-b-2xl"
+              >
+                <p>
+                  Setiap transaksi dapat dikenakan biaya administrasi sesuai
+                  dengan ketentuan yang berlaku tanpa adanya biaya tersembunyi.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQS 4 -->
+          <div class="accordion-item">
+            <div class="wrapper p-1">
+              <div
+                class="header flex items-center justify-between px-6 py-3 rounded-2xl cursor-pointer hover:bg-gray-100 duration-200"
+                onclick="toggleAccordion(this)"
+              >
+                <span class="font-medium">
+                  Apakah saya harus login terlebih dahulu untuk melakukan top up
+                  ShopeePay?
+                </span>
+                <span class="icon text-xl font-medium">+</span>
+              </div>
+
+              <div
+                class="content px-6 py-3 text-sm text-[#6c6c6c] rounded-b-2xl"
+              >
+                <p>
+                  Tidak perlu. Anda dapat melakukan transaksi secara langsung
+                  tanpa harus membuat akun atau melakukan registrasi terlebih
+                  dahulu.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQS 5 -->
+          <div class="accordion-item">
+            <div class="wrapper p-1">
+              <div
+                class="header flex items-center justify-between px-6 py-3 rounded-2xl cursor-pointer hover:bg-gray-100 duration-200"
+                onclick="toggleAccordion(this)"
+              >
+                <span class="font-medium">
+                  Apa yang perlu dilakukan jika saldo ShopeePay belum diterima?
+                </span>
+                <span class="icon text-xl font-medium">+</span>
+              </div>
+
+              <div
+                class="content px-6 py-3 text-sm text-[#6c6c6c] rounded-b-2xl"
+              >
+                <p>
+                  Pastikan status pembayaran telah berhasil dan simpan bukti
+                  transaksi untuk membantu proses pengecekan lebih lanjut.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="px-40 pt-10 bg-hitam text-white">
+      <div class="flex items-center justify-between">
+        <div>
+          <img
+            class="w-44 h-auto"
+            src="assets/images/logo_suara.com putih.png"
+            alt="Logo Suara"
+          />
+          <span class=""
+            >Semua urusan top up dan bayar tagihan jadi lebih mudah di
+            sini.</span
+          >
+        </div>
+        <div class="flex flex-col gap-2">
+          <span class="font-medium text-base">Powered By</span
+          ><img
+            class="w-24 h-auto"
+            src="assets/images/Xendit Logo - Colored - zonalogo.com.svg"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="border border-white/30 my-8"></div>
+      <div class="flex items-start justify-between gap-10">
+        <ul class="flex flex-col gap-3 text-gray-300 text-sm max-w-[350px]">
+          <li class="font-medium text-white text-base">Kontak</li>
+          <li class="flex items-start gap-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-geo-alt-fill shrink-0 mt-1"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"
+              />
+            </svg>
+
+            Gedung P46 Lantai 1, Jalan Palmerah Utara No.46, RT.2/RW.6, Jakarta
+            Barat 11480
+          </li>
+
+          <li>
+            <a
+              href=""
+              class="flex items-start gap-3 hover:text-white duration-200"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-telephone-fill shrink-0 mt-1"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"
+                />
+              </svg>
+              081234567890</a
+            >
+          </li>
+        </ul>
+
+        <ul class="flex flex-col gap-3 text-gray-300 text-sm">
+          <li class="font-medium text-white text-base">Bantuan</li>
+          <li>
+            <a href="#" class="hover:text-white duration-200">FAQ</a>
+          </li>
+          <li>
+            <a href="#" class="hover:text-white duration-200"
+              >Syarat & Ketentuan</a
+            >
+          </li>
+          <li>
+            <a href="#" class="hover:text-white duration-200"
+              >Kebijakan Privasi</a
+            >
+          </li>
+        </ul>
+
+        <ul class="flex flex-col gap-3 text-gray-300 text-sm">
+          <li class="font-medium text-white text-base">Layanan</li>
+          <li>
+            <a href="#" class="hover:text-white duration-200">Top Up Gopay</a>
+          </li>
+          <li>
+            <a href="#" class="hover:text-white duration-200">Top Up Dana</a>
+          </li>
+          <li>
+            <a href="#" class="hover:text-white duration-200">Top Up OVO</a>
+          </li>
+          <li>
+            <a href="#" class="hover:text-white duration-200"
+              >Top Up Shopee Pay</a
+            >
+          </li>
+          <li>
+            <a href="#" class="hover:text-white duration-200">Token Listrik</a>
+          </li>
+          <li>
+            <a href="#" class="hover:text-white duration-200">Paket Data</a>
+          </li>
+          <li>
+            <a href="#" class="hover:text-white duration-200">Pulsa</a>
+          </li>
+        </ul>
+
+        <ul class="flex flex-col gap-3 text-gray-300 text-sm">
+          <li class="font-medium text-white text-base">Ikuti Kami</li>
+          <li class="flex items-center gap-2">
+            <a
+              href="#"
+              class="flex items-center justify-center p-3 rounded-lg bg-gray-600/20 hover:text-white hover:bg-gray-500/30 duration-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-instagram"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"
+                />
+              </svg>
+            </a>
+
+            <a
+              href="#"
+              class="flex items-center justify-center p-3 rounded-lg bg-gray-600/20 hover:text-white hover:bg-gray-500/30 duration-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-tiktok"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"
+                />
+              </svg>
+            </a>
+
+            <a
+              href="#"
+              class="flex items-center justify-center p-3 rounded-lg bg-gray-600/20 hover:text-white hover:bg-gray-500/30 duration-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-twitter-x"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"
+                />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="border border-white/30 mt-8"></div>
+      <div class="text-center justify-center items-center py-4">
+        <span class="text-sm text-gray-300 text-center"
+          >© 2026 Top Up Suara.com. All rights reserved.</span
+        >
+      </div>
+    </footer>
+    <script>
+      const walletCards = document.querySelectorAll(".wallet-card");
+
+      walletCards.forEach((card) => {
+        card.addEventListener("click", () => {
+          // Hapus selected dari semua card
+          walletCards.forEach((item) => {
+            item.classList.remove("selected");
+          });
+
+          // Tambahkan selected ke card yang diklik
+          card.classList.add("selected");
+        });
+      });
+    </script>
+
+    <script>
+      function toggleAccordion(header) {
+        header.closest(".wrapper").classList.toggle("is-open");
+      }
+    </script>
+
+    <script>
+      const walletCards2 = document.querySelectorAll(".wallet-card");
+      const inputNomor = document.getElementById("nomor-tujuan");
+      const detailNomor = document.getElementById("detail-nomor");
+      const detailNominal = document.getElementById("detail-nominal");
+      const btnLanjut = document.getElementById("btn-lanjut");
+
+      let selectedAmount = null;
+
+      function formatRupiah(angka) {
+        return "Rp " + Number(angka).toLocaleString("id-ID");
+      }
+
+      function updateButtonState() {
+        const nomorValid = inputNomor.value.trim().length > 0;
+        const nominalValid = selectedAmount !== null;
+
+        if (nomorValid && nominalValid) {
+          btnLanjut.disabled = false;
+          btnLanjut.classList.remove(
+            "bg-gray-200",
+            "text-gray-400",
+            "cursor-not-allowed",
+          );
+          btnLanjut.classList.add(
+            "bg-linear-to-r",
+            "from-biru",
+            "to-hijau",
+            "text-white",
+            "cursor-pointer",
+          );
+        } else {
+          btnLanjut.disabled = true;
+          btnLanjut.classList.remove(
+            "bg-linear-to-r",
+            "from-biru",
+            "to-hijau",
+            "text-white",
+            "cursor-pointer",
+          );
+          btnLanjut.classList.add(
+            "bg-gray-200",
+            "text-gray-400",
+            "cursor-not-allowed",
+          );
+        }
+      }
+
+      walletCards2.forEach((card) => {
+        card.addEventListener("click", () => {
+          walletCards2.forEach((item) => item.classList.remove("selected"));
+          card.classList.add("selected");
+
+          selectedAmount = card.dataset.amount;
+          detailNominal.textContent = formatRupiah(selectedAmount);
+
+          updateButtonState();
+        });
+      });
+
+      inputNomor.addEventListener("input", () => {
+        detailNomor.textContent = inputNomor.value.trim() || "-";
+        updateButtonState();
+      });
+    </script>
+  </body>
+</html>

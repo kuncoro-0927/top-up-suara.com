@@ -8,6 +8,27 @@
   --font-sans: "Geist", sans-serif;
 }
 
+/* Button Gradient */
+
+.btn-gradient-border {
+  position: relative;
+}
+
+.btn-gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(90deg, #0088ce, #5fb5b7);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
 /* Border gradient saat hover ATAU selected */
 .wallet-card {
   position: relative;
