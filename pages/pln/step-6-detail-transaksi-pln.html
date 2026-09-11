@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pembayaran</title>
+    <title>Detail Transaksi</title>
     <link rel="stylesheet" href="/assets/css/output.css" />
   </head>
   <body>
@@ -11,10 +11,7 @@
       <nav
         class="flex items-center py-4 justify-between border-black/20 border-b px-40"
       >
-        <a
-          href="step-4-pembayaran-qris.html"
-          class="flex items-center gap-3 font-medium"
-        >
+        <a href="/index.html" class="flex items-center gap-3 font-medium">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="18"
@@ -51,130 +48,164 @@
       </nav>
     </header>
     <main>
-      <section class="px-40 py-10 flex items-stretch gap-6">
-        <!-- BAGIAN KIRI -->
-        <div
-          class="border max-w-2xl w-full border-black/20 rounded-2xl flex flex-col"
-        >
-          <!-- QRIS -->
-          <div
-            class="px-6 py-3 h-12 shrink-0 rounded-t-2xl bg-gray-100 flex items-center justify-between"
-          >
-            <img class="w-20" src="/assets/images/QRIS.svg" alt="" />
-            <span class="text-[#6c6c6c] text-sm">Pembayaran via QRIS</span>
-          </div>
+      <section class="px-40 py-10">
+        <div class="flex flex-col gap-2 w-full">
+          <div class="border border-black/20 p-6 rounded-2xl">
+            <h2 class="text-xl font-semibold">Detail Transaksi</h2>
+            <div class="border border-black/10 my-4"></div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="h-12 w-fit shrink-0">
+                <img
+                  class="w-full h-full shrink-0 object-contain"
+                  src="/assets/images/PLN.svg"
+                  alt=""
+                />
+              </div>
 
-          <!-- PEMBAYARAN -->
-          <div
-            class="border m-6 border-black/20 flex-col p-4 gap-3 flex items-center justify-center rounded-2xl cursor-pointer flex-1"
-          >
-            <span class="font-semibold text-xl text-green-600"
-              >Pembayaran berhasil!</span
-            >
-
-            <div
-              class="h-20 w-20 bg-green-200 rounded-full flex items-center justify-center"
-            >
+              <!-- TRANSAKSI BERHASIL -->
               <div
-                class="h-16 w-16 bg-green-500 rounded-full flex items-center justify-center"
+                class="bg-green-200 px-4 py-3 gap-3 rounded-xl flex items-center"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="28"
-                  height="28"
-                  fill="#fff"
-                  class="bi bi-check-circle"
+                  width="16"
+                  height="16"
+                  fill="oklch(72.3% 0.219 149.579)"
+                  class="bi bi-check-circle-fill"
                   viewBox="0 0 16 16"
                 >
                   <path
-                    d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
-                  />
-                  <path
-                    d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"
+                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
                   />
                 </svg>
+
+                <span class="text-sm text-green-600">Transaksi berhasil</span>
               </div>
-            </div>
-            <span
-              class="font-medium text-sm text-[#6c6c6c] max-w-xs text-center mt-6"
-              >Pembayaran berhasil diproses.
-              <span class="font-semibold text-hitam"
-                >Saldo sudah ditambahkan ke akunmu.</span
+
+              <!-- TRANSAKSI PENDING -->
+              <!-- <div
+                class="bg-yellow-200 px-4 py-3 gap-3 rounded-xl flex items-center"
               >
-              Terima kasih telah bertransaksi.</span
-            >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="oklch(68.1% 0.162 75.834)"
+                  class="bi bi-exclamation-circle-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4m.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2"
+                  />
+                </svg>
 
-            <a
-              href="/index.html"
-              class="px-6 py-3 rounded-xl font-medium bg-linear-to-r from-biru to-hijau w-fit text-white mt-3 cursor-pointer hover:-translate-y-0.5 duration-200 hover:shadow-md"
-            >
-              Kembali ke beranda
-            </a>
-          </div>
-        </div>
+                <span class="text-sm text-yellow-600">Menunggu Pembayaran</span>
+              </div> -->
+              <!-- TRANSAKSI GAGAL -->
+              <!-- <div
+                class="bg-red-200 px-4 py-3 gap-3 rounded-xl flex items-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="oklch(57.7% 0.245 27.325)"
+                  class="bi bi-x-circle-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"
+                  />
+                </svg>
 
-        <!-- BAGIAN KANAN -->
-        <div class="flex flex-col gap-2 max-w-[350px] w-full">
-          <div
-            class="border border-black/20 p-6 rounded-2xl h-full flex flex-col"
-          >
-            <div class="flex items-center justify-between"></div>
-            <h2 class="text-lg font-semibold">Ringkasan Transaksi</h2>
-            <div class="border border-black/10 mt-4 mb-6"></div>
+                <span class="text-sm text-red-600">Transaksi gagal</span>
+              </div> -->
+              <!-- TRANSAKSI KADALUWARSA -->
+              <!-- <div
+                class="bg-gray-200 px-4 py-3 gap-3 rounded-xl flex items-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="oklch(44.6% 0.03 256.802)"
+                  class="bi bi-clock-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"
+                  />
+                </svg>
 
-            <img
-              class="w-28 h-auto mb-6"
-              src="/assets/images/e-wallet/Dana.svg"
-              alt=""
-            />
+                <span class="text-sm text-gray-600">Transaksi kadaluwarsa</span>
+              </div> -->
+            </div>
             <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">ID Transaksi</span>
-              <span class="font-medium">TOPUP1234567890</span>
+              <span class="font-semibold text-base">TOPUP1234567890</span>
             </div>
             <div class="flex justify-between mt-3 text-sm">
-              <span class="text-sm text-[#6c6c6c]">Tanggal</span>
+              <span class="text-sm text-[#6c6c6c]">Tanggal Transaksi</span>
               <span class="font-medium">09/07/2026</span>
             </div>
+            <div class="flex justify-between mt-3 text-sm">
+              <span class="text-sm text-[#6c6c6c]">Waktu Transaksi</span>
+              <span class="font-medium">13:53:42</span>
+            </div>
+
             <div class="flex justify-between text-sm mt-3">
               <span class="text-sm text-[#6c6c6c]">Layanan</span>
-              <span class="font-medium">E-Wallet - DANA</span>
+              <span class="font-medium">PLN - Token Listrik</span>
+            </div>
+            <div class="flex justify-between text-sm mt-3">
+              <span class="text-sm text-[#6c6c6c]">Nama Pemilik</span>
+              <span class="font-medium">Lionel Maulana</span>
             </div>
 
             <div class="flex justify-between mt-3 text-sm">
-              <span class="text-sm text-[#6c6c6c]">Nomor Tujuan</span>
-              <span class="font-medium">08123456789</span>
+              <span class="text-sm text-[#6c6c6c]">ID Pelanggan</span>
+              <span id="detail-nomor" class="font-medium">08123456789</span>
             </div>
             <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">Nominal</span>
-              <span class="font-medium">Rp. 100.000</span>
+              <span id="detail-nominal" class="font-medium">Rp. 100.000 </span>
             </div>
-
             <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">Biaya Pemrosesan</span>
-              <span class="font-medium">-</span>
+              <span id="detail-nominal" class="font-medium">-</span>
             </div>
             <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">Biaya Admin</span>
-              <span class="font-medium">Rp. 1.000</span>
+              <span id="detail-nominal" class="font-medium">Rp. 1.000</span>
             </div>
 
-            <div class="mt-auto">
-              <div class="border border-black/10 my-4"></div>
+            <div class="flex justify-between mt-3 text-sm">
+              <span class="text-sm text-[#6c6c6c]">Metode Pembayaran</span>
 
-              <div class="flex justify-between my-3">
-                <span class="font-medium">Total Pembayaran</span>
-                <span class="font-semibold text-lg">Rp. 101.000</span>
-              </div>
-              <a
-                href="step-6-detail-transaksi-dana.html"
-                class="btn-gradient-border flex justify-center items-center w-full px-6 py-3 rounded-xl font-medium cursor-pointer hover:-translate-y-0.5 hover:shadow-md duration-200"
+              <span id="detail-nominal" class="font-medium">QRIS</span>
+            </div>
+            <div class="border border-black/10 my-4"></div>
+
+            <div class="flex justify-between my-3">
+              <span class="font-semibold text-lg">Total Pembayaran</span>
+              <span class="font-semibold text-lg">Rp. 101.000</span>
+            </div>
+            <div class="flex flex-col gap-3 mt-6">
+              <button
+                class="btn-gradient-border w-full px-6 py-3 rounded-xl font-medium cursor-pointer hover:-translate-y-0.5 hover:shadow-md duration-200"
               >
                 <span
                   class="bg-linear-to-r from-biru to-hijau bg-clip-text text-transparent"
                 >
-                  Lihat detail transaksi
+                  Cetak Struk Transaksi
                 </span>
-              </a>
+              </button>
+
+              <button
+                class="w-full px-6 py-3 rounded-xl font-medium cursor-pointer bg-linear-to-r from-biru to-hijau text-white hover:-translate-y-0.5 hover:shadow-md duration-200"
+              >
+                Kembali ke beranda
+              </button>
             </div>
           </div>
         </div>

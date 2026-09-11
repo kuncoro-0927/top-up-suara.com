@@ -122,11 +122,13 @@
             <h2 class="text-lg font-semibold">Ringkasan Transaksi</h2>
             <div class="border border-black/10 mt-4 mb-6"></div>
 
-            <img
-              class="w-28 h-auto mb-6"
-              src="/assets/images/e-wallet/Dana.svg"
-              alt=""
-            />
+            <div class="h-10 w-full shrink-0 mb-3">
+              <img
+                class="h-full w-fit shrink-0 object-contain"
+                src="/assets/images/PLN.svg"
+                alt="Logo PLN"
+              />
+            </div>
             <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">ID Transaksi</span>
               <span class="font-medium">TOPUP1234567890</span>
@@ -137,16 +139,20 @@
             </div>
             <div class="flex justify-between text-sm mt-3">
               <span class="text-sm text-[#6c6c6c]">Layanan</span>
-              <span class="font-medium">E-Wallet - DANA</span>
+              <span class="font-medium">BPJS - 1 Bulan</span>
+            </div>
+            <div class="flex justify-between mt-3 text-sm">
+              <span class="text-sm text-[#6c6c6c]">Nomor VA</span>
+              <span id="detail-nomor" class="font-medium">1234567890123456</span>
+            </div>
+            <div class="flex justify-between text-sm mt-3">
+              <span class="text-sm text-[#6c6c6c]">Nama Peserta</span>
+              <span class="font-medium">Lionel Maulana</span>
             </div>
 
             <div class="flex justify-between mt-3 text-sm">
-              <span class="text-sm text-[#6c6c6c]">Nomor Tujuan</span>
-              <span class="font-medium">08123456789</span>
-            </div>
-            <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">Nominal</span>
-              <span class="font-medium">Rp. 100.000</span>
+              <span id="detail-nominal" class="font-medium">Rp. 100.000 </span>
             </div>
 
             <div class="flex justify-between mt-3 text-sm">
@@ -166,7 +172,7 @@
                 <span class="font-semibold text-lg">Rp. 101.000</span>
               </div>
               <a
-                href="step-6-detail-transaksi-dana.html"
+                href="step-6-detail-transaksi-bpjs.html"
                 class="btn-gradient-border flex justify-center items-center w-full px-6 py-3 rounded-xl font-medium cursor-pointer hover:-translate-y-0.5 hover:shadow-md duration-200"
               >
                 <span

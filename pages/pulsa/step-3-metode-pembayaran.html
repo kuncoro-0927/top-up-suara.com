@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Detail Pembayaran</title>
+    <title>Pilih Metode Pembayaran - Pulsa</title>
     <link rel="stylesheet" href="/assets/css/output.css" />
   </head>
   <body>
@@ -12,7 +12,7 @@
         class="flex items-center py-4 justify-between border-black/20 border-b px-40"
       >
         <a
-          href="step-2-pilih-nominal-dana.html"
+          href="step-2-pilih-nominal-pulsa.html"
           class="flex items-center gap-3 font-medium"
         >
           <svg
@@ -423,20 +423,58 @@
             <h2 class="text-lg font-semibold">Ringkasan Transaksi</h2>
             <div class="border border-black/10 mt-4 mb-6"></div>
 
-            <img
-              class="w-28 h-auto mb-6"
-              src="/assets/images/e-wallet/Dana.svg"
-              alt=""
-            />
+            <div
+              class="flex h-10 w-full shrink-0 items-center justify-between mb-3"
+            >
+              <div class="flex items-center gap-2">
+                <!-- icon pulsa -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 16 16"
+                  class="h-10 w-10 shrink-0"
+                >
+                  <defs>
+                    <linearGradient
+                      id="phoneGradient"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="100%"
+                    >
+                      <stop offset="0%" stop-color="#5FB5B7" />
+                      <stop offset="100%" stop-color="#0088CE" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    fill="url(#phoneGradient)"
+                    d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"
+                  />
+                  <path
+                    fill="url(#phoneGradient)"
+                    d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
+                  />
+                </svg>
+                <span class="text-sm text-[#6c6c6c]">Pulsa</span>
+              </div>
+              <img
+                class="h-full w-fit shrink-0 object-contain"
+                src="/assets/images/Logo-XL.svg"
+                alt="Logo XL"
+              />
+            </div>
             <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">Tanggal</span>
               <span class="font-medium">09/07/2026</span>
             </div>
             <div class="flex justify-between text-sm mt-3">
               <span class="text-sm text-[#6c6c6c]">Layanan</span>
-              <span class="font-medium">E-Wallet - DANA</span>
+              <span class="font-medium">Pulsa</span>
             </div>
 
+            <div class="flex justify-between text-sm mt-3">
+              <span class="text-sm text-[#6c6c6c]">Provider</span>
+              <span class="font-medium">XL</span>
+            </div>
             <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">Nomor Tujuan</span>
               <span id="detail-nomor" class="font-medium">01234567890</span>
