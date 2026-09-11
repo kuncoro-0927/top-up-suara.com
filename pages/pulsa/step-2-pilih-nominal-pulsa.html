@@ -519,12 +519,13 @@
 
             <div class="mt-auto">
               <div class="border border-black/10 my-4"></div>
-
               <a
-                href="/pages/pulsa/step-3-metode-pembayaran.html"
+                href="step-3-metode-pembayaran.html"
                 id="btn-lanjut"
-                disabled
-                class="w-full flex justify-center items-center px-6 py-3 rounded-xl font-medium bg-gray-200 text-gray-400 cursor-not-allowed hover:-translate-y-0.5 duration-200 hover:shadow-md"
+                data-active="false"
+                aria-disabled="true"
+                tabindex="-1"
+                class="w-full flex justify-center items-center px-6 py-3 rounded-xl font-medium bg-gray-200 text-gray-400 cursor-not-allowed hover:-translate-y-0.5 hover:shadow-md duration-200 data-[active=true]:bg-linear-to-r data-[active=true]:from-biru data-[active=true]:to-hijau data-[active=true]:text-white data-[active=true]:cursor-pointer data-[active=false]:pointer-events-none"
               >
                 Pilih Metode Pembayaran
               </a>
@@ -1305,42 +1306,21 @@
           detailNominal.textContent = "-";
         }
       }
-
       function updateButtonState() {
         const nomorValid = inputNomor.value.trim().length > 0;
         const nominalValid = selectedAmount !== null;
+        const isValid = nomorValid && nominalValid;
 
-        if (nomorValid && nominalValid) {
-          btnLanjut.disabled = false;
-          btnLanjut.classList.remove(
-            "bg-gray-200",
-            "text-gray-400",
-            "cursor-not-allowed",
-          );
-          btnLanjut.classList.add(
-            "bg-linear-to-r",
-            "from-biru",
-            "to-hijau",
-            "text-white",
-            "cursor-pointer",
-          );
+        btnLanjut.dataset.active = isValid;
+
+        if (isValid) {
+          btnLanjut.removeAttribute("aria-disabled");
+          btnLanjut.removeAttribute("tabindex");
         } else {
-          btnLanjut.disabled = true;
-          btnLanjut.classList.remove(
-            "bg-linear-to-r",
-            "from-biru",
-            "to-hijau",
-            "text-white",
-            "cursor-pointer",
-          );
-          btnLanjut.classList.add(
-            "bg-gray-200",
-            "text-gray-400",
-            "cursor-not-allowed",
-          );
+          btnLanjut.setAttribute("aria-disabled", "true");
+          btnLanjut.setAttribute("tabindex", "-1");
         }
       }
-
       walletCards2.forEach((card) => {
         card.addEventListener("click", () => {
           walletCards2.forEach((item) => item.classList.remove("selected"));
@@ -1359,6 +1339,11 @@
         updateButtonState();
       });
 
+      btnLanjut.addEventListener("click", (e) => {
+        if (btnLanjut.dataset.active !== "true") {
+          e.preventDefault();
+        }
+      });
       // jalankan sekali saat halaman dimuat
       toggleNominalSection();
       updateButtonState();

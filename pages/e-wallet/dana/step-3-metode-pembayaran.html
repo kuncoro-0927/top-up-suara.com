@@ -7,14 +7,11 @@
     <link rel="stylesheet" href="/assets/css/output.css" />
   </head>
   <body>
-    <header>
+    <header class="">
       <nav
-        class="flex items-center py-4 justify-between border-black/20 border-b px-40"
+        class="flex items-center py-4 justify-between border-black/20 border-b px-6 lg:px-40"
       >
-        <a
-          href="step-2-pilih-nominal-dana.html"
-          class="flex items-center gap-3 font-medium"
-        >
+        <a href="/index.html" class="flex items-center gap-3 font-medium">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="18"
@@ -30,28 +27,10 @@
           </svg>
           <span>Kembali</span>
         </a>
-        <div class="flex items-center gap-3">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-question-circle"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
-            />
-            <path
-              d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94"
-            />
-          </svg>
-          Bantuan
-        </div>
       </nav>
     </header>
     <main>
-      <section class="px-40 py-10 flex items-start gap-10">
+      <section class="px-6 lg:px-40 py-10 flex items-start gap-10">
         <!-- BAGIAN KIRI -->
         <div class="flex flex-col gap-1 max-w-2xl w-full">
           <h2 class="text-lg font-semibold">Pilih Metode Pembayaran</h2>
@@ -69,7 +48,9 @@
               >
             </div>
 
-            <div class="p-6 grid grid-cols-4 gap-3 border-b border-black/20">
+            <div
+              class="p-6 grid grid-cols-2 lg:grid-cols-4 gap-3 border-b border-black/20"
+            >
               <div
                 class="wallet-card flex-col gap-3 relative w-full p-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
@@ -111,7 +92,9 @@
               >
             </div>
 
-            <div class="p-6 grid grid-cols-4 gap-3 border-b border-black/20">
+            <div
+              class="p-6 grid grid-cols-2 lg:grid-cols-4 gap-3 border-b border-black/20"
+            >
               <!-- GOPAY -->
               <div
                 class="wallet-card flex-col gap-1 relative w-full px-4 py-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
@@ -248,7 +231,9 @@
                 >Pembayaran melalui transfer bank</span
               >
             </div>
-            <div class="p-6 grid grid-cols-4 items-stretch gap-3">
+            <div
+              class="p-6 grid grid-cols-2 lg:grid-cols-4 items-stretch gap-3"
+            >
               <!-- BCA -->
               <div
                 class="wallet-card flex-col gap-1 relative w-full px-4 py-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
@@ -415,7 +400,7 @@
 
         <!-- BAGIAN KANAN -->
         <div
-          class="sticky top-10 self-start flex flex-col gap-2 max-w-[350px] w-full"
+          class="hidden sticky top-10 self-start lg:flex flex-col gap-2 max-w-[350px] w-full"
         >
           <div
             class="border border-black/20 p-6 rounded-2xl h-full flex flex-col"
@@ -423,11 +408,13 @@
             <h2 class="text-lg font-semibold">Ringkasan Transaksi</h2>
             <div class="border border-black/10 mt-4 mb-6"></div>
 
-            <img
-              class="w-28 h-auto mb-6"
-              src="/assets/images/e-wallet/Dana.svg"
-              alt=""
-            />
+            <div class="h-10 w-full shrink-0 mb-3">
+              <img
+                class="h-full w-fit shrink-0 object-contain"
+                src="/assets/images/e-wallet/Dana.svg"
+                alt="Logo Dana"
+              />
+            </div>
             <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">Tanggal</span>
               <span class="font-medium">09/07/2026</span>
@@ -477,10 +464,104 @@
             </div>
           </div>
         </div>
+
+        <!-- BUTTON FIXED BAWAH MOBILE -->
+        <div
+          id="mobile-summary-bar"
+          class="lg:hidden fixed bottom-0 inset-x-0 z-50 bg-white border-t border-black/10"
+        >
+          <!-- Dropup rincian lengkap -->
+          <div
+            id="mobile-summary-detail"
+            class="hidden px-6 pt-4 pb-3 border-b border-black/10"
+          >
+            <div class="h-8 w-full shrink-0 mb-6">
+              <img
+                class="h-full w-fit shrink-0 object-contain"
+                src="/assets/images/e-wallet/Dana.svg"
+                alt="Logo Dana"
+              />
+            </div>
+            <div class="flex justify-between mt-3 text-sm">
+              <span class="text-sm text-[#6c6c6c]">Tanggal</span>
+              <span class="font-medium">09/07/2026</span>
+            </div>
+            <div class="flex justify-between text-sm mt-3">
+              <span class="text-sm text-[#6c6c6c]">Layanan</span>
+              <span class="font-medium">E-Wallet - DANA</span>
+            </div>
+
+            <div class="flex justify-between mt-3 text-sm">
+              <span class="text-sm text-[#6c6c6c]">Nomor Tujuan</span>
+              <span id="detail-nomor" class="font-medium">01234567890</span>
+            </div>
+            <div class="flex justify-between mt-3 text-sm">
+              <span class="text-sm text-[#6c6c6c]">Nominal</span>
+              <span id="detail-nominal" class="font-medium">Rp. 100.000</span>
+            </div>
+
+            <div class="flex justify-between mt-3 text-sm">
+              <span class="text-sm text-[#6c6c6c]">Biaya Pemrosesan</span>
+              <span class="font-medium">-</span>
+            </div>
+            <div class="flex justify-between mt-3 text-sm">
+              <span class="text-sm text-[#6c6c6c]">Biaya Admin</span>
+              <span id="detail-biaya-admin" class="font-medium">-</span>
+            </div>
+
+            <div class="flex justify-between my-3">
+              <span class="font-medium">Total Pembayaran</span>
+              <span id="detail-total" class="font-semibold text-lg"
+                >Rp. 100.000</span
+              >
+            </div>
+          </div>
+
+          <div class="px-6 py-3 flex items-center gap-3">
+            <button
+              id="btn-toggle-detail"
+              type="button"
+              aria-expanded="false"
+              aria-controls="mobile-summary-detail"
+              class="flex flex-col items-start flex-1 min-w-0 text-left"
+            >
+              <span class="flex items-center gap-1 text-xs text-[#6c6c6c]">
+                Lihat rincian
+                <svg
+                  id="detail-chevron"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="10"
+                  height="10"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                  class="transition-transform duration-200"
+                >
+                  <path d="M8 5l5 5H3z" />
+                </svg>
+              </span>
+              <span id="detail-nominal-mobile" class="text-base font-semibold">
+                Pilih Metode
+              </span>
+            </button>
+
+            <a
+              href="step-4-pembayaran-qris.html"
+              id="btn-lanjut-mobile"
+              data-active="false"
+              aria-disabled="true"
+              tabindex="-1"
+              class="shrink-0 flex justify-center items-center px-5 py-3 rounded-xl font-medium text-sm bg-gray-200 text-gray-400 cursor-not-allowed hover:-translate-y-0.5 hover:shadow-md duration-200 data-[active=true]:bg-linear-to-r data-[active=true]:from-biru data-[active=true]:to-hijau data-[active=true]:text-white data-[active=true]:cursor-pointer data-[active=false]:pointer-events-none"
+            >
+              Lanjut Pembayaran
+            </a>
+          </div>
+        </div>
       </section>
     </main>
-    <footer class="px-40 pt-10 bg-hitam text-white">
-      <div class="flex items-center justify-between">
+    <footer class="px-6 pb-20 lg:pb-0 lg:px-40 pt-10 bg-hitam text-white">
+      <div
+        class="flex flex-col lg:flex-row items-start gap-10 lg:items-center justify-between"
+      >
         <div>
           <img
             class="w-44 h-auto"
@@ -498,7 +579,7 @@
         </div>
       </div>
       <div class="border border-white/30 my-8"></div>
-      <div class="flex items-start justify-between gap-10">
+      <div class="grid grid-cols-2 items-start justify-between gap-10">
         <ul class="flex flex-col gap-3 text-gray-300 text-sm max-w-[350px]">
           <li class="font-medium text-white text-base">Kontak</li>
           <li class="flex items-start gap-3">
@@ -659,6 +740,17 @@
       const btnLanjut = document.getElementById("btn-lanjut");
       const detailBiayaAdmin = document.getElementById("detail-biaya-admin");
       const detailTotal = document.getElementById("detail-total");
+      // Elemen bar mobile
+      const detailNomorMobile = document.getElementById("detail-nomor-mobile");
+      const detailNominalMobile = document.getElementById(
+        "detail-nominal-mobile",
+      );
+      const btnLanjutMobile = document.getElementById("btn-lanjut-mobile");
+      const btnToggleDetail = document.getElementById("btn-toggle-detail");
+      const mobileSummaryDetail = document.getElementById(
+        "mobile-summary-detail",
+      );
+      const detailChevron = document.getElementById("detail-chevron");
 
       const NOMINAL = 100000;
       const BIAYA_ADMIN = 1000;
@@ -671,14 +763,23 @@
       function updateButtonState() {
         const metodeValid = selectedMetode !== null;
         btnLanjut.dataset.active = metodeValid;
-
-        if (metodeValid) {
-          btnLanjut.removeAttribute("aria-disabled");
-          btnLanjut.removeAttribute("tabindex");
-        } else {
-          btnLanjut.setAttribute("aria-disabled", "true");
-          btnLanjut.setAttribute("tabindex", "-1");
-        }
+        btnLanjutMobile.dataset.active = metodeValid;
+        [btnLanjut, btnLanjutMobile].forEach((btn) => {
+          if (metodeValid) {
+            btn.removeAttribute("aria-disabled");
+            btn.removeAttribute("tabindex");
+          } else {
+            btn.setAttribute("aria-disabled", "true");
+            btn.setAttribute("tabindex", "-1");
+          }
+        });
+        // if (metodeValid) {
+        //   btnLanjut.removeAttribute("aria-disabled");
+        //   btnLanjut.removeAttribute("tabindex");
+        // } else {
+        //   btnLanjut.setAttribute("aria-disabled", "true");
+        //   btnLanjut.setAttribute("tabindex", "-1");
+        // }
       }
 
       walletCards.forEach((card) => {
@@ -692,7 +793,7 @@
 
           detailBiayaAdmin.textContent = formatRupiah(BIAYA_ADMIN);
           detailTotal.textContent = formatRupiah(NOMINAL + BIAYA_ADMIN);
-
+          detailNominalMobile.textContent = formatRupiah(NOMINAL + BIAYA_ADMIN);
           updateButtonState();
         });
       });
@@ -701,6 +802,14 @@
         if (btnLanjut.dataset.active !== "true") {
           e.preventDefault();
         }
+      });
+
+      btnToggleDetail.addEventListener("click", () => {
+        const isOpen = !mobileSummaryDetail.classList.contains("hidden");
+
+        mobileSummaryDetail.classList.toggle("hidden");
+        btnToggleDetail.setAttribute("aria-expanded", String(!isOpen));
+        detailChevron.classList.toggle("rotate-180", !isOpen);
       });
     </script>
   </body>
