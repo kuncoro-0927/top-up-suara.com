@@ -506,7 +506,7 @@
             </div>
             <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">Biaya Admin</span>
-              <span id="detail-biaya-admin" class="font-medium">-</span>
+              <span id="detail-biaya-admin-mobile" class="font-medium">-</span>
             </div>
 
             <div class="flex justify-between my-3">
@@ -751,6 +751,9 @@
       const detailNominalMobile = document.getElementById(
         "detail-nominal-mobile",
       );
+      const detailBiayaAdminMobile = document.getElementById(
+        "detail-biaya-admin-mobile",
+      );
       const btnLanjutMobile = document.getElementById("btn-lanjut-mobile");
       const btnToggleDetail = document.getElementById("btn-toggle-detail");
       const mobileSummaryDetail = document.getElementById(
@@ -800,6 +803,7 @@
           detailBiayaAdmin.textContent = formatRupiah(BIAYA_ADMIN);
           detailTotal.textContent = formatRupiah(NOMINAL + BIAYA_ADMIN);
           detailNominalMobile.textContent = formatRupiah(NOMINAL + BIAYA_ADMIN);
+          detailBiayaAdminMobile.textContent = formatRupiah(BIAYA_ADMIN);
           updateButtonState();
         });
       });
