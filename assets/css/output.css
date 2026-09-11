@@ -437,6 +437,9 @@
   .w-\[350px\] {
     width: 350px;
   }
+  .w-\[full\] {
+    width: full;
+  }
   .w-auto {
     width: auto;
   }
@@ -451,6 +454,9 @@
   }
   .max-w-\[350px\] {
     max-width: 350px;
+  }
+  .max-w-\[450px\] {
+    max-width: 450px;
   }
   .max-w-lg {
     max-width: var(--container-lg);
@@ -505,6 +511,9 @@
   }
   .flex-col {
     flex-direction: column;
+  }
+  .flex-wrap {
+    flex-wrap: wrap;
   }
   .items-center {
     align-items: center;
