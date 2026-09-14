@@ -1272,12 +1272,8 @@
         namaProviderRowMobile.classList.remove("hidden");
         detailNamaMobile.textContent = namaProvider || "-";
       } else if (layanan) {
-        logoWrapperMobile.classList.add(
-          "flex",
-          "items-center",
-          "justify-start",
-        );
-        logoWrapperMobile.classList.remove("justify-between");
+        logoWrapper.classList.remove("justify-between");
+        logoWrapper.classList.add("justify-start");
 
         logoWrapper.innerHTML = `
           <img
@@ -1289,14 +1285,15 @@
         `;
 
         logoWrapperMobile.innerHTML = `
-        
-  <img
-    id="service-logo-mobile"
-    class="h-full w-fit shrink-0 object-contain mr-auto"
-    src="${layanan.logo}"
-    alt="${layanan.nama}"
-  />
-`;
+    <div class="flex h-8 w-full shrink-0 items-center justify-start">
+      <img
+        id="service-logo-mobile"
+        class="h-full w-fit shrink-0 object-contain"
+        src="${layanan.logo}"
+        alt="${layanan.nama}"
+      />
+    </div>
+  `;
       }
 
       btnLanjut.addEventListener("click", (e) => {
