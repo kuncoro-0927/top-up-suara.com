@@ -458,6 +458,9 @@
   .max-w-2xl {
     max-width: var(--container-2xl);
   }
+  .max-w-\[100px\] {
+    max-width: 100px;
+  }
   .max-w-\[350px\] {
     max-width: 350px;
   }
@@ -480,6 +483,9 @@
     flex: 1;
   }
   .flex-shrink {
+    flex-shrink: 1;
+  }
+  .shrink {
     flex-shrink: 1;
   }
   .shrink-0 {
