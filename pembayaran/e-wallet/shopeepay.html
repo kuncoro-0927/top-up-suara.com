@@ -411,166 +411,165 @@
 
     <script src="/data/layanan-config.js"></script>
     <script>
-      const params = new URLSearchParams(window.location.search);
-      const service = params.get("service");
-      const nomor = params.get("nomor");
-      const amount = params.get("amount"); // nominal
-      const admin = params.get("admin"); // biaya admin
-      const total = params.get("total"); // nominal + admin
-      const method = params.get("method");
-      const jenis = params.get("jenis"); // khusus PLN: "token" / "tagihan"
-      const nama = params.get("nama"); // khusus PLN: nama pemilik
-      const jumlahBulan = params.get("jumlah_bulan"); // khusus PLN: nama pemilik
-      const namaProvider = params.get("namaProvider"); // khusus PAKET DATA: jumlah-bulan
-      const jumlahKuota = params.get("jumlahKuota"); // khusus PAKET DATA: jumlah-bulan
+            const params = new URLSearchParams(window.location.search);
+            const service = params.get("service");
+            const nomor = params.get("nomor");
+            const amount = params.get("amount"); // nominal
+            const admin = params.get("admin"); // biaya admin
+            const total = params.get("total"); // nominal + admin
+            const method = params.get("method");
+            const jenis = params.get("jenis"); // khusus PLN: "token" / "tagihan"
+            const nama = params.get("nama"); // khusus PLN: nama pemilik
+            const jumlahBulan = params.get("jumlah_bulan"); // khusus PLN: nama pemilik
+            const namaProvider = params.get("namaProvider"); // khusus PAKET DATA: jumlah-bulan
+            const jumlahKuota = params.get("jumlahKuota"); // khusus PAKET DATA: jumlah-bulan
 
-      const layanan = LAYANAN_CONFIG[service];
-      const logoWrapper = document.getElementById("service-logo-wrapper"); // pindah ke sini
+            const layanan = LAYANAN_CONFIG[service];
+            const logoWrapper = document.getElementById("service-logo-wrapper"); // pindah ke sini
 
-      if (layanan) {
-        document.getElementById("service-logo").src = layanan.logo;
-        document.getElementById("service-logo").alt = layanan.nama;
-        document.getElementById("service-nama").textContent = layanan.nama;
-      }
+            if (layanan) {
+              document.getElementById("service-logo").src = layanan.logo;
+              document.getElementById("service-logo").alt = layanan.nama;
+              document.getElementById("service-nama").textContent = layanan.nama;
+            }
 
-      document.getElementById("detail-nomor").textContent = nomor;
-      document.getElementById("detail-nominal").textContent =
-        "Rp " + Number(amount).toLocaleString("id-ID");
-      document.getElementById("detail-biaya-admin").textContent =
-        "Rp " + Number(admin).toLocaleString("id-ID");
-      document.getElementById("detail-total").textContent =
-        "Rp " + Number(total).toLocaleString("id-ID");
+            document.getElementById("detail-nomor").textContent = nomor;
+            document.getElementById("detail-nominal").textContent =
+              "Rp " + Number(amount).toLocaleString("id-ID");
+            document.getElementById("detail-biaya-admin").textContent =
+              "Rp " + Number(admin).toLocaleString("id-ID");
+            document.getElementById("detail-total").textContent =
+              "Rp " + Number(total).toLocaleString("id-ID");
 
-      if (service === "pln") {
-        document.getElementById("label-nomor").textContent = "ID Pelanggan";
+            if (service === "pln") {
+              document.getElementById("label-nomor").textContent = "ID Pelanggan";
 
-        const jenisRow = document.getElementById("jenis-listrik-row");
-        const detailJenis = document.getElementById("detail-jenis-listrik");
-        jenisRow.classList.remove("hidden");
-        detailJenis.textContent =
-          jenis === "tagihan" ? "Tagihan Listrik" : "Token Listrik";
+              const jenisRow = document.getElementById("jenis-listrik-row");
+              const detailJenis = document.getElementById("detail-jenis-listrik");
+              jenisRow.classList.remove("hidden");
+              detailJenis.textContent =
+                jenis === "tagihan" ? "Tagihan Listrik" : "Token Listrik";
 
-        const namaRow = document.getElementById("nama-pemilik-row");
-        const detailNama = document.getElementById("detail-nama-pemilik");
-        namaRow.classList.remove("hidden");
-        detailNama.textContent = nama || "-";
-      }
+              const namaRow = document.getElementById("nama-pemilik-row");
+              const detailNama = document.getElementById("detail-nama-pemilik");
+              namaRow.classList.remove("hidden");
+              detailNama.textContent = nama || "-";
+            }
 
-      if (service === "bpjs") {
-        document.getElementById("label-nomor").textContent = "Nomor VA";
+            if (service === "bpjs") {
+              document.getElementById("label-nomor").textContent = "Nomor VA";
 
-        const namaRow = document.getElementById("nama-peserta-row");
-        const detailNama = document.getElementById("detail-nama-peserta");
-        namaRow.classList.remove("hidden");
-        detailNama.textContent = nama || "-";
+              const namaRow = document.getElementById("nama-peserta-row");
+              const detailNama = document.getElementById("detail-nama-peserta");
+              namaRow.classList.remove("hidden");
+              detailNama.textContent = nama || "-";
 
-        const bulanRow = document.getElementById("jumlah-bulan-row");
-        const detailJumlahBulan = document.getElementById(
-          "detail-jumlah-bulan",
-        );
-        bulanRow.classList.remove("hidden");
-        detailJumlahBulan.textContent = jumlahBulan || "-";
-      }
+              const bulanRow = document.getElementById("jumlah-bulan-row");
+              const detailJumlahBulan = document.getElementById(
+                "detail-jumlah-bulan",
+              );
+              bulanRow.classList.remove("hidden");
+              detailJumlahBulan.textContent = jumlahBulan || "-";
+            }
 
-      const PAKET_DATA_ICON = `
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="w-10 h-10 shrink-0">
-    <defs>
-      <linearGradient id="phoneGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#5FB5B7" />
-        <stop offset="100%" stop-color="#0088CE" />
-      </linearGradient>
-    </defs>
-    <path fill="url(#phoneGradient)" d="M15.384 6.115a.485.485 0 0 0-.047-.736A12.44 12.44 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.52.52 0 0 0 .668.05A11.45 11.45 0 0 1 8 4c2.507 0 4.827.802 6.716 2.164.205.148.49.13.668-.049" />
-    <path fill="url(#phoneGradient)" d="M13.229 8.271a.482.482 0 0 0-.063-.745A9.46 9.46 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.576 1.336c.206.132.48.108.653-.065m-2.183 2.183c.226-.226.185-.605-.1-.75A6.5 6.5 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.407.19.611.09A5.5 5.5 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.61-.091zM9.06 12.44c.196-.196.198-.52-.04-.66A2 2 0 0 0 8 11.5a2 2 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .707 0l.707-.707z" />
-  </svg>
-`;
+            const PAKET_DATA_ICON = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="w-10 h-10 shrink-0">
+          <defs>
+            <linearGradient id="phoneGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#5FB5B7" />
+              <stop offset="100%" stop-color="#0088CE" />
+            </linearGradient>
+          </defs>
+          <path fill="url(#phoneGradient)" d="M15.384 6.115a.485.485 0 0 0-.047-.736A12.44 12.44 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.52.52 0 0 0 .668.05A11.45 11.45 0 0 1 8 4c2.507 0 4.827.802 6.716 2.164.205.148.49.13.668-.049" />
+          <path fill="url(#phoneGradient)" d="M13.229 8.271a.482.482 0 0 0-.063-.745A9.46 9.46 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.576 1.336c.206.132.48.108.653-.065m-2.183 2.183c.226-.226.185-.605-.1-.75A6.5 6.5 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.407.19.611.09A5.5 5.5 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.61-.091zM9.06 12.44c.196-.196.198-.52-.04-.66A2 2 0 0 0 8 11.5a2 2 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .707 0l.707-.707z" />
+        </svg>
+      `;
 
-      const PAKET_PULSA_ICON = `
-    <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 16 16"
-                  class="h-10 w-10 shrink-0"
-                >
-                  <defs>
-                    <linearGradient
-                      id="phoneGradient"
-                      x1="0%"
-                      y1="0%"
-                      x2="100%"
-                      y2="100%"
-                    >
-                      <stop offset="0%" stop-color="#5FB5B7" />
-                      <stop offset="100%" stop-color="#0088CE" />
-                    </linearGradient>
-                  </defs>
-                  <path
-                    fill="url(#phoneGradient)"
-                    d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"
-                  />
-                  <path
-                    fill="url(#phoneGradient)"
-                    d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
-                  />
-                </svg>
-`;
+            const PAKET_PULSA_ICON = `
+          <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 16 16"
+                        class="h-10 w-10 shrink-0"
+                      >
+                        <defs>
+                          <linearGradient
+                            id="phoneGradient"
+                            x1="0%"
+                            y1="0%"
+                            x2="100%"
+                            y2="100%"
+                          >
+                            <stop offset="0%" stop-color="#5FB5B7" />
+                            <stop offset="100%" stop-color="#0088CE" />
+                          </linearGradient>
+                        </defs>
+                        <path
+                          fill="url(#phoneGradient)"
+                          d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"
+                        />
+                        <path
+                          fill="url(#phoneGradient)"
+                          d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
+                        />
+                      </svg>
+      `;
 
-      if (service === "paket_data") {
-        logoWrapper.innerHTML = `
-    <div class="flex h-10 w-full  shrink-0 items-center justify-between">
-      <div class="flex items-center gap-2">
-        ${PAKET_DATA_ICON}
-        <span class="text-sm text-[#6c6c6c]">Paket Data</span>
-      </div>
-      <img class="h-full w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
-    </div>
-  `;
-        document.getElementById("label-nomor").textContent = "Nomor Tujuan";
-        document.getElementById("nama-provider-row").classList.remove("hidden");
-        document.getElementById("detail-nama-provider").textContent =
-          namaProvider || "-";
-        document.getElementById("jumlah-kuota-row").classList.remove("hidden");
-        document.getElementById("detail-jumlah-kuota").textContent =
-          jumlahKuota || "-";
-      } else if (service === "pulsa") {
-        logoWrapper.innerHTML = `
-    <div class="flex h-10 w-full shrink-0 items-center justify-between">
-      <div class="flex items-center gap-2">
-        ${PAKET_PULSA_ICON}
-        <span class="text-sm text-[#6c6c6c]">Pulsa</span>
-      </div>
-      <img class="h-full w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
-    </div>
-  `;
-        document.getElementById("label-nomor").textContent = "Nomor Tujuan";
-        document.getElementById("nama-provider-row").classList.remove("hidden");
-        document.getElementById("detail-nama-provider").textContent =
-          namaProvider || "-";
-      } else if (layanan) {
-        logoWrapper.innerHTML = `
-    <img id="service-logo" class="h-full w-fit shrink-0 object-contain" src="${layanan.logo}" alt="${layanan.nama}" />
-  `;
-      }
+            if (service === "paket_data") {
+              logoWrapper.innerHTML = `
+          <div class="flex h-10 w-full  shrink-0 items-center justify-between">
+            <div class="flex items-center gap-2">
+              ${PAKET_DATA_ICON}
+              <span class="text-sm text-[#6c6c6c]">Paket Data</span>
+            </div>
+            <img class="h-full w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
+          </div>
+        `;
+              document.getElementById("label-nomor").textContent = "Nomor Tujuan";
+              document.getElementById("nama-provider-row").classList.remove("hidden");
+              document.getElementById("detail-nama-provider").textContent =
+                namaProvider || "-";
+              document.getElementById("jumlah-kuota-row").classList.remove("hidden");
+              document.getElementById("detail-jumlah-kuota").textContent =
+                jumlahKuota || "-";
+            } else if (service === "pulsa") {
+              logoWrapper.innerHTML = `
+          <div class="flex h-10 w-full shrink-0 items-center justify-between">
+            <div class="flex items-center gap-2">
+              ${PAKET_PULSA_ICON}
+              <span class="text-sm text-[#6c6c6c]">Pulsa</span>
+            </div>
+            <img class="h-full w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
+          </div>
+        `;
+              document.getElementById("label-nomor").textContent = "Nomor Tujuan";
+              document.getElementById("nama-provider-row").classList.remove("hidden");
+              document.getElementById("detail-nama-provider").textContent =
+                namaProvider || "-";
+            } else if (layanan) {
+            <img id="service-logo" class="h-full w-fit shrink-0 object-contain mr-auto" src="${layanan.logo}" alt="${layanan.nama}" />
+        `;
+            }
 
-      const btnRefreshStatus = document.getElementById("btn-refresh-status");
+            const btnRefreshStatus = document.getElementById("btn-refresh-status");
 
-      if (btnRefreshStatus) {
-        const query = new URLSearchParams({
-          service: service,
-          nomor: nomor,
-          amount: amount,
-          admin: admin,
-          total: total,
-          method: method,
-        });
-        // ikut sertakan info tambahan khusus PLN kalau ada
-        if (jenis) query.set("jenis", jenis);
-        if (nama) query.set("nama", nama);
-        if (jumlahBulan) query.set("jumlah_bulan", jumlahBulan);
-        if (namaProvider) query.set("namaProvider", namaProvider);
-        if (jumlahKuota) query.set("jumlahKuota", jumlahKuota);
+            if (btnRefreshStatus) {
+              const query = new URLSearchParams({
+                service: service,
+                nomor: nomor,
+                amount: amount,
+                admin: admin,
+                total: total,
+                method: method,
+              });
+              // ikut sertakan info tambahan khusus PLN kalau ada
+              if (jenis) query.set("jenis", jenis);
+              if (nama) query.set("nama", nama);
+              if (jumlahBulan) query.set("jumlah_bulan", jumlahBulan);
+              if (namaProvider) query.set("namaProvider", namaProvider);
+              if (jumlahKuota) query.set("jumlahKuota", jumlahKuota);
 
-        btnRefreshStatus.href = `/status-pembayaran/pembayaran-sukses.html?${query.toString()}`;
-      }
+              btnRefreshStatus.href = `/status-pembayaran/pembayaran-sukses.html?${query.toString()}`;
+            }
     </script>
   </body>
 </html>

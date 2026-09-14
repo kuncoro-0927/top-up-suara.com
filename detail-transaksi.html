@@ -461,124 +461,123 @@
     <script src="/data/layanan-config.js"></script>
 
     <script>
-      const params = new URLSearchParams(window.location.search);
-      const id = params.get("id");
-      const tanggal = params.get("tanggal");
-      const service = params.get("service");
-      const nomor = params.get("nomor");
-      const amount = params.get("amount"); // nominal
-      const admin = params.get("admin"); // biaya admin
-      const total = params.get("total"); // nominal + admin
-      const method = params.get("method");
-      const jenis = params.get("jenis"); // khusus PLN: "token" / "tagihan"
-      const nama = params.get("nama"); // khusus PLN: nama pemilik
-      const jumlahBulan = params.get("jumlah_bulan"); // khusus PLN: nama pemilik
-      const namaProvider = params.get("namaProvider"); // khusus PAKET DATA: jumlah-bulan
-      const jumlahKuota = params.get("jumlahKuota"); // khusus PAKET DATA: jumlah-bulan
-      const detailToken = params.get("detailToken"); // khusus PLN
+          const params = new URLSearchParams(window.location.search);
+          const id = params.get("id");
+          const tanggal = params.get("tanggal");
+          const service = params.get("service");
+          const nomor = params.get("nomor");
+          const amount = params.get("amount"); // nominal
+          const admin = params.get("admin"); // biaya admin
+          const total = params.get("total"); // nominal + admin
+          const method = params.get("method");
+          const jenis = params.get("jenis"); // khusus PLN: "token" / "tagihan"
+          const nama = params.get("nama"); // khusus PLN: nama pemilik
+          const jumlahBulan = params.get("jumlah_bulan"); // khusus PLN: nama pemilik
+          const namaProvider = params.get("namaProvider"); // khusus PAKET DATA: jumlah-bulan
+          const jumlahKuota = params.get("jumlahKuota"); // khusus PAKET DATA: jumlah-bulan
+          const detailToken = params.get("detailToken"); // khusus PLN
 
-      // label yang ditampilkan ke user, sesuaikan dengan key data-metode di step 3
-      const METODE_LABEL = {
-        qris: "QRIS",
-        gopay: "Gopay",
-        dana: "DANA",
-        ovo: "OVO",
-        shopeepay: "Shopeepay",
-        bca: "BCA (QR)",
-        bni: "BNI (QR)",
-        bri: "BRI (QR)",
-        mandiri: "Mandiri (QR)",
-      };
+          // label yang ditampilkan ke user, sesuaikan dengan key data-metode di step 3
+          const METODE_LABEL = {
+            qris: "QRIS",
+            gopay: "Gopay",
+            dana: "DANA",
+            ovo: "OVO",
+            shopeepay: "Shopeepay",
+            bca: "BCA (QR)",
+            bni: "BNI (QR)",
+            bri: "BRI (QR)",
+            mandiri: "Mandiri (QR)",
+          };
 
-      document.getElementById("detail-metode").textContent =
-        METODE_LABEL[method] || method; // fallback ke raw value kalau belum ada di mapping
+          document.getElementById("detail-metode").textContent =
+            METODE_LABEL[method] || method; // fallback ke raw value kalau belum ada di mapping
 
-      const layanan = LAYANAN_CONFIG[service];
-      const logoWrapper = document.getElementById("service-logo-wrapper"); // pindah ke sini
+          const layanan = LAYANAN_CONFIG[service];
+          const logoWrapper = document.getElementById("service-logo-wrapper"); // pindah ke sini
 
-      if (layanan) {
-        document.getElementById("service-logo").src = layanan.logo;
-        document.getElementById("service-logo").alt = layanan.nama;
-        document.getElementById("service-nama").textContent = layanan.nama;
-      }
+          if (layanan) {
+            document.getElementById("service-logo").src = layanan.logo;
+            document.getElementById("service-logo").alt = layanan.nama;
+            document.getElementById("service-nama").textContent = layanan.nama;
+          }
 
-      document.getElementById("detail-id").textContent = id;
-      document.getElementById("detail-tanggal").textContent = tanggal;
+          document.getElementById("detail-id").textContent = id;
+          document.getElementById("detail-tanggal").textContent = tanggal;
 
-      document.getElementById("detail-nomor").textContent = nomor;
-      document.getElementById("detail-nominal").textContent =
-        "Rp " + Number(amount).toLocaleString("id-ID");
-      document.getElementById("detail-biaya-admin").textContent =
-        "Rp " + Number(admin).toLocaleString("id-ID");
-      document.getElementById("detail-total").textContent =
-        "Rp " + Number(total).toLocaleString("id-ID");
+          document.getElementById("detail-nomor").textContent = nomor;
+          document.getElementById("detail-nominal").textContent =
+            "Rp " + Number(amount).toLocaleString("id-ID");
+          document.getElementById("detail-biaya-admin").textContent =
+            "Rp " + Number(admin).toLocaleString("id-ID");
+          document.getElementById("detail-total").textContent =
+            "Rp " + Number(total).toLocaleString("id-ID");
 
-      if (service === "pln") {
-        document.getElementById("label-nomor").textContent = "ID Pelanggan";
+          if (service === "pln") {
+            document.getElementById("label-nomor").textContent = "ID Pelanggan";
 
-        const jenisRow = document.getElementById("jenis-listrik-row");
-        const detailJenis = document.getElementById("detail-jenis-listrik");
-        jenisRow.classList.remove("hidden");
-        detailJenis.textContent =
-          jenis === "tagihan" ? "Tagihan Listrik" : "Token Listrik";
+            const jenisRow = document.getElementById("jenis-listrik-row");
+            const detailJenis = document.getElementById("detail-jenis-listrik");
+            jenisRow.classList.remove("hidden");
+            detailJenis.textContent =
+              jenis === "tagihan" ? "Tagihan Listrik" : "Token Listrik";
 
-        const namaRow = document.getElementById("nama-pemilik-row");
-        const detailNama = document.getElementById("detail-nama-pemilik");
-        namaRow.classList.remove("hidden");
-        detailNama.textContent = nama || "-";
+            const namaRow = document.getElementById("nama-pemilik-row");
+            const detailNama = document.getElementById("detail-nama-pemilik");
+            namaRow.classList.remove("hidden");
+            detailNama.textContent = nama || "-";
 
-        const tokenRow = document.getElementById("token-listrik-row");
-        const detailToken = document.getElementById("detail-token-listrik");
-        tokenRow.classList.remove("hidden");
-        detailToken.textContent = "0823 4546 4646 2333 0900";
-      }
+            const tokenRow = document.getElementById("token-listrik-row");
+            const detailToken = document.getElementById("detail-token-listrik");
+            tokenRow.classList.remove("hidden");
+            detailToken.textContent = "0823 4546 4646 2333 0900";
+          }
 
-      if (service === "bpjs") {
-        document.getElementById("label-nomor").textContent = "Nomor VA";
+          if (service === "bpjs") {
+            document.getElementById("label-nomor").textContent = "Nomor VA";
 
-        const namaRow = document.getElementById("nama-peserta-row");
-        const detailNama = document.getElementById("detail-nama-peserta");
-        namaRow.classList.remove("hidden");
-        detailNama.textContent = nama || "-";
+            const namaRow = document.getElementById("nama-peserta-row");
+            const detailNama = document.getElementById("detail-nama-peserta");
+            namaRow.classList.remove("hidden");
+            detailNama.textContent = nama || "-";
 
-        const bulanRow = document.getElementById("jumlah-bulan-row");
-        const detailJumlahBulan = document.getElementById(
-          "detail-jumlah-bulan",
-        );
-        bulanRow.classList.remove("hidden");
-        detailJumlahBulan.textContent = jumlahBulan || "-";
-      }
+            const bulanRow = document.getElementById("jumlah-bulan-row");
+            const detailJumlahBulan = document.getElementById(
+              "detail-jumlah-bulan",
+            );
+            bulanRow.classList.remove("hidden");
+            detailJumlahBulan.textContent = jumlahBulan || "-";
+          }
 
-      if (service === "paket_data") {
-        logoWrapper.innerHTML = `
-    <div class="flex h-10 w-full  shrink-0 items-center justify-between">
-      
-      <img class="h-full w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
-    </div>
-  `;
-        document.getElementById("label-nomor").textContent = "Nomor Tujuan";
-        document.getElementById("nama-provider-row").classList.remove("hidden");
-        document.getElementById("detail-nama-provider").textContent =
-          namaProvider || "-";
-        document.getElementById("jumlah-kuota-row").classList.remove("hidden");
-        document.getElementById("detail-jumlah-kuota").textContent =
-          jumlahKuota || "-";
-      } else if (service === "pulsa") {
-        logoWrapper.innerHTML = `
-    <div class="flex h-10 w-full shrink-0 items-center justify-between">
-      
-      <img class="h-full w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
-    </div>
-  `;
-        document.getElementById("label-nomor").textContent = "Nomor Tujuan";
-        document.getElementById("nama-provider-row").classList.remove("hidden");
-        document.getElementById("detail-nama-provider").textContent =
-          namaProvider || "-";
-      } else if (layanan) {
-        logoWrapper.innerHTML = `
-    <img id="service-logo" class="h-full w-fit shrink-0 object-contain" src="${layanan.logo}" alt="${layanan.nama}" />
-  `;
-      }
+          if (service === "paket_data") {
+            logoWrapper.innerHTML = `
+        <div class="flex h-10 w-full  shrink-0 items-center justify-between">
+
+          <img class="h-full w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
+        </div>
+      `;
+            document.getElementById("label-nomor").textContent = "Nomor Tujuan";
+            document.getElementById("nama-provider-row").classList.remove("hidden");
+            document.getElementById("detail-nama-provider").textContent =
+              namaProvider || "-";
+            document.getElementById("jumlah-kuota-row").classList.remove("hidden");
+            document.getElementById("detail-jumlah-kuota").textContent =
+              jumlahKuota || "-";
+          } else if (service === "pulsa") {
+            logoWrapper.innerHTML = `
+        <div class="flex h-10 w-full shrink-0 items-center justify-between">
+
+          <img class="h-full w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
+        </div>
+      `;
+            document.getElementById("label-nomor").textContent = "Nomor Tujuan";
+            document.getElementById("nama-provider-row").classList.remove("hidden");
+            document.getElementById("detail-nama-provider").textContent =
+              namaProvider || "-";
+          } else if (layanan) {
+          <img id="service-logo" class="h-full w-fit shrink-0 object-contain mr-auto" src="${layanan.logo}" alt="${layanan.nama}" />
+      `;
+          }
     </script>
   </body>
 </html>

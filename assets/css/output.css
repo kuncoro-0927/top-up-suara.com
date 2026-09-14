@@ -323,6 +323,9 @@
   .mt-auto {
     margin-top: auto;
   }
+  .mr-auto {
+    margin-right: auto;
+  }
   .mb-1 {
     margin-bottom: var(--spacing);
   }
