@@ -518,12 +518,12 @@
           jumlahKuota || "-";
       } else if (service === "pulsa") {
         logoWrapper.innerHTML = `
-          <div class="flex h-10 w-full shrink-0 items-center justify-between">
-            <div class="flex items-center gap-2">
+          <div class="flex h-10  w-full shrink-0 items-center justify-between">
+            <div class="flex border items-center gap-2">
               ${PAKET_PULSA_ICON}
               <span class="text-sm text-[#6c6c6c] whitespace-nowrap">Pulsa</span>
             </div>
-            <img class="h-full w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
+            <img class="h-full border w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
           </div>
         `;
         document.getElementById("label-nomor").textContent = "Nomor Tujuan";
