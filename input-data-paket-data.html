@@ -7,11 +7,15 @@
     <link rel="stylesheet" href="/assets/css/output.css" />
   </head>
   <body class="text-hitam">
-    <header class="">
+    <header>
       <nav
-        class="flex items-center py-4 justify-between border-black/20 border-b px-40"
+        class="flex items-center py-4 justify-between border-black/20 border-b px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60"
       >
-        <a href="/index.html" class="flex items-center gap-3 font-medium">
+        <button
+          onclick="window.history.back()"
+          type="button"
+          class="flex items-center gap-3 font-medium cursor-pointer duration-200"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="18"
@@ -26,14 +30,34 @@
             />
           </svg>
           <span>Kembali</span>
-        </a>
+        </button>
+        <div class="flex font-medium items-center gap-3 cursor-pointer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-question-circle"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
+            />
+            <path
+              d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94"
+            />
+          </svg>
+          Bantuan
+        </div>
       </nav>
     </header>
     <main>
       <!-- SECTION INPUT NOMOR -->
-      <section class="px-40 py-10 flex items-stretch gap-10">
+      <section
+        class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 py-10 flex items-stretch gap-10"
+      >
         <!-- BAGIAN KIRI -->
-        <div class="flex flex-col max-w-2xl w-full">
+        <div class="flex flex-col w-full">
           <div class="mb-6 flex flex-col gap-1">
             <h2 class="text-lg font-semibold">Nomor Tujuan</h2>
             <span class="text-[#6c6c6c] mb-2"
@@ -507,7 +531,7 @@
 
         <!-- BAGIAN KANAN -->
         <div
-          class="sticky top-10 self-start flex flex-col gap-2 max-w-[350px] w-full"
+          class="hidden sticky top-10 self-start lg:flex flex-col gap-2 max-w-[350px] w-full"
         >
           <div
             class="border border-black/20 p-6 rounded-2xl h-full flex flex-col"
@@ -555,13 +579,10 @@
                 alt="Logo XL"
               />
             </div>
-            <div class="flex justify-between mt-3 text-sm">
-              <span class="text-sm text-[#6c6c6c]">Tanggal</span>
-              <span class="font-medium">09/07/2026</span>
-            </div>
+
             <div class="flex justify-between text-sm mt-3">
               <span class="text-sm text-[#6c6c6c]">Layanan</span>
-              <span class="font-medium">Pulsa</span>
+              <span id="service-nama" class="font-medium"></span>
             </div>
 
             <div
@@ -581,11 +602,19 @@
               <span id="detail-nominal" class="font-medium">-</span>
             </div>
 
+            <div
+              id="jumlah-kuota"
+              class="flex justify-between text-sm mt-3 hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Kuota</span>
+              <span id="detail-kuota" class="font-medium"></span>
+            </div>
+
             <div class="mt-auto">
               <div class="border border-black/10 my-4"></div>
 
               <a
-                href="step-3-metode-pembayaran.html"
+                href="metode-pembayaran.html"
                 id="btn-lanjut"
                 data-active="false"
                 aria-disabled="true"
@@ -597,10 +626,130 @@
             </div>
           </div>
         </div>
+
+        <!-- BUTTON FIXED BAWAH MOBILE -->
+        <div
+          id="mobile-summary-bar"
+          class="lg:hidden fixed bottom-0 inset-x-0 z-50 bg-white border-t border-black/10"
+        >
+          <!-- Dropup rincian lengkap -->
+          <div
+            id="mobile-summary-detail"
+            class="hidden px-6 sm:px-20 md:px-32 pt-4 pb-3 border-b border-black/10"
+          >
+            <div
+              class="flex h-10 w-full shrink-0 items-center justify-between mb-3"
+            >
+              <div class="flex items-center gap-2">
+                <!-- icon paket data -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 16 16"
+                  class="w-10 h-10 shrink-0"
+                >
+                  <defs>
+                    <linearGradient
+                      id="phoneGradient-mobile"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="100%"
+                    >
+                      <stop offset="0%" stop-color="#5FB5B7" />
+                      <stop offset="100%" stop-color="#0088CE" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    fill="url(#phoneGradient-mobile)"
+                    d="M15.384 6.115a.485.485 0 0 0-.047-.736A12.44 12.44 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.52.52 0 0 0 .668.05A11.45 11.45 0 0 1 8 4c2.507 0 4.827.802 6.716 2.164.205.148.49.13.668-.049"
+                  />
+                  <path
+                    fill="url(#phoneGradient-mobile)"
+                    d="M13.229 8.271a.482.482 0 0 0-.063-.745A9.46 9.46 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.576 1.336c.206.132.48.108.653-.065m-2.183 2.183c.226-.226.185-.605-.1-.75A6.5 6.5 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.407.19.611.09A5.5 5.5 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.61-.091zM9.06 12.44c.196-.196.198-.52-.04-.66A2 2 0 0 0 8 11.5a2 2 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .707 0l.707-.707z"
+                  />
+                </svg>
+                <span class="text-sm text-[#6c6c6c]">Paket Data</span>
+              </div>
+              <img
+                id="logo-provider-mobile"
+                class="h-full w-fit shrink-0 object-contain hidden"
+                src="/assets/images/Logo-XL.svg"
+                alt="Logo XL"
+              />
+            </div>
+
+            <div class="flex justify-between text-sm mt-3">
+              <span class="text-sm text-[#6c6c6c]">Layanan</span>
+              <span id="service-nama-mobile" class="font-medium"></span>
+            </div>
+
+            <div
+              id="nama-provider-mobile"
+              class="flex justify-between text-sm mt-3 hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Provider</span>
+              <span class="font-medium">XL</span>
+            </div>
+
+            <div class="flex justify-between mt-3 text-sm">
+              <span class="text-sm text-[#6c6c6c]">Nomor Tujuan</span>
+              <span id="detail-nomor-mobile" class="font-medium">-</span>
+            </div>
+
+            <div
+              id="jumlah-kuota-mobile"
+              class="flex justify-between text-sm mt-3 hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Kuota</span>
+              <span id="detail-kuota-mobile" class="font-medium"></span>
+            </div>
+          </div>
+
+          <div
+            class="px-6 sm:px-20 md:px-32 xl:px-40 2xl:px-60 py-3 flex items-center gap-3"
+          >
+            <button
+              id="btn-toggle-detail"
+              type="button"
+              aria-expanded="false"
+              aria-controls="mobile-summary-detail"
+              class="flex flex-col items-start flex-1 min-w-0 text-left"
+            >
+              <span class="flex items-center gap-1 text-xs text-[#6c6c6c]">
+                Lihat rincian
+                <svg
+                  id="detail-chevron"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="10"
+                  height="10"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                  class="transition-transform duration-200"
+                >
+                  <path d="M8 5l5 5H3z" />
+                </svg>
+              </span>
+              <span id="detail-nominal-mobile" class="text-base font-semibold">
+                Pilih Nominal
+              </span>
+            </button>
+
+            <a
+              href="metode-pembayaran.html"
+              id="btn-lanjut-mobile"
+              data-active="false"
+              aria-disabled="true"
+              tabindex="-1"
+              class="shrink-0 flex justify-center items-center px-5 py-3 rounded-xl font-medium text-sm bg-gray-200 text-gray-400 cursor-not-allowed hover:-translate-y-0.5 hover:shadow-md duration-200 data-[active=true]:bg-linear-to-r data-[active=true]:from-biru data-[active=true]:to-hijau data-[active=true]:text-white data-[active=true]:cursor-pointer data-[active=false]:pointer-events-none"
+            >
+              Pilih Metode Pembayaran
+            </a>
+          </div>
+        </div>
       </section>
 
       <!-- SECTION TUTORIAL TOP UP -->
-      <section class="px-40 py-10">
+      <section class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 py-10">
         <div>
           <h2 class="text-2xl font-semibold mb-1">Cara Top Up DANA</h2>
           <span class="text-[#6c6c6c]"
@@ -608,7 +757,7 @@
           >
         </div>
 
-        <div class="mt-6 grid grid-cols-2 gap-3">
+        <div class="mt-6 grid lg:grid-cols-2 gap-3">
           <div
             class="border border-black/20 rounded-2xl flex items-center gap-3 p-4 w-full bg-gray-100"
           >
@@ -723,7 +872,7 @@
       </section>
 
       <!-- SECTION TIPS -->
-      <section class="px-40 py-10">
+      <section class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 py-10">
         <div>
           <h2 class="text-2xl font-semibold mb-1">
             Tips Isi Saldo dengan Aman
@@ -734,7 +883,7 @@
           >
         </div>
 
-        <div class="mt-6 grid grid-cols-2 gap-3">
+        <div class="mt-6 grid md:grid-cols-2 gap-3">
           <div
             class="border border-black/20 rounded-2xl flex items-center gap-3 p-4 w-full bg-gray-100"
           >
@@ -810,7 +959,7 @@
       </section>
 
       <!-- SECTION TOP UP LAINNYA -->
-      <section class="px-40 py-10">
+      <section class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 py-10">
         <div>
           <h2 class="text-2xl font-semibold mb-1">
             Top Up & Bayar Layanan Lainnya
@@ -823,25 +972,27 @@
         <div class="border border-black/20 mt-6 rounded-2xl">
           <div>
             <div
-              class="px-6 py-3 rounded-t-2xl bg-gray-100 flex items-center justify-between"
+              class="px-6 py-3 rounded-t-2xl bg-gray-100 flex flex-col md:flex-row items-start md:items-center justify-between"
             >
               <span class="font-semibold">E-Wallet</span
               ><span class="text-[#6c6c6c] text-sm"
                 >Pilih e-wallet yang ingin kamu isi ulang</span
               >
             </div>
-            <div class="p-6 grid grid-cols-4 gap-3 border-b border-black/20">
+            <div
+              class="p-4 lg:p-6 grid grid-cols-2 lg:grid-cols-4 gap-3 border-b border-black/20"
+            >
               <!-- GOPAY -->
               <a
-                href="/pages/e-wallet/gopay/topup-gopay.html"
-                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+                href="input-data-e-wallet.html?service=gopay"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="/assets/images/e-wallet/Gopay.svg"
+                    src="assets/images/e-wallet/Gopay.svg"
                     alt=""
                   />
                 </div>
@@ -849,17 +1000,35 @@
                 <span class="font-medium text-[#6c6c6c]">Gopay</span>
               </a>
 
-              <!-- OVO -->
+              <!-- DANA -->
               <a
-                href="/pages/e-wallet/ovo/topup-ovo.html"
-                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+                href="input-data-e-wallet.html?service=dana"
+                class="wallet-card flex-col gap-3 relative w-full h-[120px] px-3 py-6 flex justify-center items-center rounded-2xl cursor-pointer hover:-translate-y-0.5 hover:shadow-md duration-200"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="/assets/images/e-wallet/OVO.svg"
+                    src="assets/images/e-wallet/Dana.svg"
+                    alt=""
+                  />
+                </div>
+
+                <span class="font-medium text-[#6c6c6c]">DANA</span>
+              </a>
+
+              <!-- OVO -->
+              <a
+                href="input-data-e-wallet.html?service=ovo"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+              >
+                <div
+                  class="h-10 w-full flex items-center justify-center shrink-0"
+                >
+                  <img
+                    class="w-full h-full object-contain"
+                    src="assets/images/e-wallet/OVO.svg"
                     alt=""
                   />
                 </div>
@@ -869,15 +1038,15 @@
 
               <!-- SHOPEEPAY -->
               <a
-                href="/pages/e-wallet/shopeepay/topup-shopeepay.html"
-                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+                href="input-data-e-wallet.html?service=shopeepay"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="/assets/images/e-wallet/ShopeePay.svg"
+                    src="assets/images/e-wallet/ShopeePay.svg"
                     alt=""
                   />
                 </div>
@@ -887,51 +1056,60 @@
             </div>
 
             <div
-              class="px-6 py-3 bg-gray-100 flex items-center justify-between"
+              class="px-6 py-3 bg-gray-100 flex flex-col md:flex-row items-start md:items-center justify-between"
             >
               <span class="font-semibold">Lainnya</span
               ><span class="text-[#6c6c6c] text-sm"
                 >Token listrik, paket data, dan pulsa</span
               >
             </div>
-            <div class="p-6 grid grid-cols-4 items-stretch gap-3">
+            <div
+              class="p-4 lg:p-6 grid grid-cols-2 lg:grid-cols-4 items-stretch gap-3"
+            >
               <!-- TOKEN LISTRIK -->
-              <div
-                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+              <a
+                href="input-data-pln.html?service=pln"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="/assets/images/PLN.svg"
+                    src="assets/images/PLN.svg"
                     alt=""
                   />
                 </div>
 
-                <span class="font-medium text-[#6c6c6c]">Token Listrik</span>
-              </div>
+                <span class="font-medium text-[#6c6c6c] text-center"
+                  >Token Listrik</span
+                >
+              </a>
 
               <!-- BPJS -->
-              <div
-                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+              <a
+                href="input-data-bpjs.html?service=bpjs"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="/assets/images/BPJS.svg"
+                    src="assets/images/BPJS.svg"
                     alt=""
                   />
                 </div>
 
-                <span class="font-medium text-[#6c6c6c]">BPJS Kesehatan</span>
-              </div>
+                <span class="font-medium text-[#6c6c6c] text-center"
+                  >BPJS Kesehatan</span
+                >
+              </a>
 
               <!-- PAKET DATA -->
-              <div
-                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+              <a
+                href="input-data-paket-data.html?service=paket_data"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -964,13 +1142,16 @@
                   </svg>
                 </div>
 
-                <span class="font-medium text-[#6c6c6c]">Paket Data</span>
-              </div>
+                <span class="font-medium text-[#6c6c6c] text-center"
+                  >Paket Data</span
+                >
+              </a>
 
               <!-- PULSA -->
 
-              <div
-                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+              <a
+                href="input-data-pulsa.html?service=pulsa"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -1004,14 +1185,14 @@
                 </div>
 
                 <span class="font-medium text-[#6c6c6c]">Pulsa</span>
-              </div>
+              </a>
             </div>
           </div>
         </div>
       </section>
 
       <!-- SECTION FAQS -->
-      <section class="px-40 py-10">
+      <section class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 py-10">
         <div>
           <h2 class="text-2xl font-semibold mb-1">Pertanyaan Seputar Dana</h2>
           <span class="text-[#6c6c6c]"
@@ -1145,12 +1326,17 @@
         </div>
       </section>
     </main>
-    <footer class="px-40 pt-10 bg-hitam text-white">
-      <div class="flex items-center justify-between">
+
+    <footer
+      class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 pt-10 bg-hitam text-white"
+    >
+      <div
+        class="flex flex-col md:flex-row items-start gap-10 md:items-center justify-between"
+      >
         <div>
           <img
             class="w-44 h-auto"
-            src="/assets/images/logo_suara.com putih.png"
+            src="assets/images/logo_suara.com putih.png"
             alt="Logo Suara"
           />
           <span class=""
@@ -1160,11 +1346,13 @@
         </div>
         <div class="flex flex-col gap-2">
           <span class="font-medium text-base">Powered By</span
-          ><img class="w-24 h-auto" src="/assets/images/Xendit.svg" alt="" />
+          ><img class="w-24 h-auto" src="assets/images/Xendit.svg" alt="" />
         </div>
       </div>
       <div class="border border-white/30 my-8"></div>
-      <div class="flex items-start justify-between gap-10">
+      <div
+        class="grid grid-cols-2 lg:grid-cols-4 items-start justify-between gap-10"
+      >
         <ul class="flex flex-col gap-3 text-gray-300 text-sm max-w-[350px]">
           <li class="font-medium text-white text-base">Kontak</li>
           <li class="flex items-start gap-3">
@@ -1341,24 +1529,74 @@
       }
     </script>
 
+    <script src="/data/layanan-config.js"></script>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const service = params.get("service");
+      const layanan = LAYANAN_CONFIG[service]; // ambil dari file layanan-config.js yang udah di-load
+      if (layanan) {
+        document.getElementById("service-nama").textContent = layanan.nama;
+      }
+    </script>
     <script>
       const walletCards2 = document.querySelectorAll(".wallet-card");
       const inputNomor = document.getElementById("nomor-tujuan");
       const detailNomor = document.getElementById("detail-nomor");
       const detailNominal = document.getElementById("detail-nominal");
+
       const btnLanjut = document.getElementById("btn-lanjut");
       const nominalWarning = document.getElementById("nominal-warning");
       const nominalGrid = document.getElementById("nominal-grid");
       const logoProvider = document.getElementById("logo-provider");
       const namaProvider = document.getElementById("nama-provider");
+      const jumlahKuota = document.getElementById("jumlah-kuota");
+
+      const namaProviderMobile = document.getElementById(
+        "nama-provider-mobile",
+      );
+      const logoProviderMobile = document.getElementById(
+        "logo-provider-mobile",
+      );
+      const jumlahKuotaMobile = document.getElementById("jumlah-kuota-mobile");
+
+      const detailNomorMobile = document.getElementById("detail-nomor-mobile");
+      const detailNominalMobile = document.getElementById(
+        "detail-nominal-mobile",
+      );
+      const btnLanjutMobile = document.getElementById("btn-lanjut-mobile");
+      const btnToggleDetail = document.getElementById("btn-toggle-detail");
+      const mobileSummaryDetail = document.getElementById(
+        "mobile-summary-detail",
+      );
+      const detailChevron = document.getElementById("detail-chevron");
+
       let selectedAmount = null;
+      let selectedGb = null; // tambahan
+
+      const SERVICE_KEY = "paket_data"; // tambahan
 
       function formatNominal(card) {
         const rupiah =
           "Rp. " + Number(card.dataset.amount).toLocaleString("id-ID");
-        const kuota = card.dataset.gb;
 
-        return kuota ? `${rupiah} - ${kuota}` : rupiah;
+        return rupiah; // kuota dihapus dari sini
+      }
+
+      function updateLanjutHref(btn) {
+        if (selectedAmount === null) return;
+
+        const nomor = inputNomor.value.trim();
+        const namaProvider = "XL"; // dummy, sesuaikan kalau nanti ada API cek nama
+
+        const query = new URLSearchParams({
+          service: SERVICE_KEY,
+          nomor: nomor,
+          amount: selectedAmount,
+          jumlahKuota: selectedGb,
+          namaProvider: namaProvider,
+        });
+
+        btn.href = `metode-pembayaran.html?${query.toString()}`;
       }
 
       function toggleNominalSection() {
@@ -1367,12 +1605,15 @@
         nominalWarning.classList.toggle("hidden", isValidNomor);
         nominalGrid.classList.toggle("hidden", !isValidNomor);
         logoProvider.classList.toggle("hidden", !isValidNomor);
+        logoProviderMobile.classList.toggle("hidden", !isValidNomor);
         namaProvider.classList.toggle("hidden", !isValidNomor);
+        namaProviderMobile.classList.toggle("hidden", !isValidNomor);
 
         if (!isValidNomor && selectedAmount !== null) {
           walletCards2.forEach((item) => item.classList.remove("selected"));
           selectedAmount = null;
           detailNominal.textContent = "-";
+          detailMobile.textContent = "Pilih Nominal";
         }
       }
 
@@ -1381,38 +1622,65 @@
         const nominalValid = selectedAmount !== null;
         const isValid = nomorValid && nominalValid;
 
-        btnLanjut.dataset.active = isValid;
-
-        if (isValid) {
-          btnLanjut.removeAttribute("aria-disabled");
-          btnLanjut.removeAttribute("tabindex");
-        } else {
-          btnLanjut.setAttribute("aria-disabled", "true");
-          btnLanjut.setAttribute("tabindex", "-1");
-        }
+        [btnLanjut, btnLanjutMobile].forEach((btn) => {
+          btn.dataset.active = isValid;
+          if (isValid) {
+            btn.removeAttribute("aria-disabled");
+            btn.removeAttribute("tabindex");
+            updateLanjutHref(btn);
+          } else {
+            btn.setAttribute("aria-disabled", "true");
+            btn.setAttribute("tabindex", "-1");
+          }
+        });
       }
+
       walletCards2.forEach((card) => {
         card.addEventListener("click", () => {
           walletCards2.forEach((item) => item.classList.remove("selected"));
           card.classList.add("selected");
-
+          selectedGb = card.dataset.gb;
           selectedAmount = card.dataset.amount;
           detailNominal.textContent = formatNominal(card); // <-- ganti dari formatRupiah(selectedAmount)
+          detailNominalMobile.textContent = formatNominal(card);
+          document.getElementById("detail-kuota").textContent = selectedGb;
+          document.getElementById("detail-kuota-mobile").textContent =
+            selectedGb;
+          jumlahKuota.classList.remove("hidden"); // baru muncul di sini
+          jumlahKuotaMobile.classList.remove("hidden"); // baru muncul di sini
 
           updateButtonState();
+          updateLanjutHref();
         });
       });
 
       inputNomor.addEventListener("input", () => {
-        detailNomor.textContent = inputNomor.value.trim() || "-";
+        const nomor = inputNomor.value.trim() || "-";
+        detailNomor.textContent = nomor;
+        detailNomorMobile.textContent = nomor;
         toggleNominalSection();
+
         updateButtonState();
+        updateLanjutHref();
       });
 
-      btnLanjut.addEventListener("click", (e) => {
-        if (btnLanjut.dataset.active !== "true") {
-          e.preventDefault();
-        }
+      btnToggleDetail.addEventListener("click", () => {
+        const isOpen = !mobileSummaryDetail.classList.contains("hidden");
+        mobileSummaryDetail.classList.toggle("hidden");
+        btnToggleDetail.setAttribute("aria-expanded", String(!isOpen));
+        detailChevron.classList.toggle("rotate-180", !isOpen);
+      });
+
+      function toggleAccordion(header) {
+        header.closest(".wrapper").classList.toggle("is-open");
+      }
+
+      [btnLanjut, btnLanjutMobile].forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          if (btn.dataset.active !== "true") {
+            e.preventDefault();
+          }
+        });
       });
       // jalankan sekali saat halaman dimuat
       toggleNominalSection();

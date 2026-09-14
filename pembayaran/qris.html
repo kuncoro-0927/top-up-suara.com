@@ -4,16 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pembayaran</title>
-    <link rel="stylesheet" href="/assets/css/output.css" />
+    <link rel="stylesheet" href="../../../assets/css/output.css" />
   </head>
   <body>
     <header>
       <nav
-        class="flex items-center py-4 justify-between border-black/20 border-b px-40"
+        class="flex items-center py-4 justify-between border-black/20 border-b px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60"
       >
-        <a
-          href="step-3-metode-pembayaran.html"
-          class="flex items-center gap-3 font-medium"
+        <button
+          onclick="window.history.back()"
+          type="button"
+          class="flex items-center gap-3 font-medium cursor-pointer duration-200"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -29,8 +30,8 @@
             />
           </svg>
           <span>Kembali</span>
-        </a>
-        <div class="flex font-medium items-center gap-3">
+        </button>
+        <div class="flex font-medium items-center gap-3 cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -51,7 +52,9 @@
       </nav>
     </header>
     <main>
-      <section class="px-40 py-10 flex items-stretch gap-6">
+      <section
+        class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 py-10 flex flex-col lg:flex-row items-stretch gap-6"
+      >
         <!-- BAGIAN KIRI -->
         <div
           class="border max-w-2xl w-full border-black/20 rounded-2xl flex flex-col"
@@ -60,7 +63,7 @@
           <div
             class="px-6 py-3 h-12 shrink-0 rounded-t-2xl bg-gray-100 flex items-center justify-between"
           >
-            <img class="w-20" src="/assets/images/QRIS.svg" alt="" />
+            <img class="w-20" src="../../../assets/images/QRIS.svg" alt="" />
             <span class="text-[#6c6c6c] text-sm">Pembayaran via QRIS</span>
           </div>
 
@@ -75,7 +78,7 @@
             <div class="h-52 w-full flex items-center justify-center">
               <img
                 class="w-full h-full object-contain"
-                src="/assets/images/QRIS-Contoh.jpeg"
+                src="../../../assets/images/QRIS-Contoh.jpeg"
                 alt=""
               />
             </div>
@@ -89,6 +92,7 @@
 
             <div class="flex flex-col gap-3 items-center">
               <a
+                id="btn-refresh-status"
                 href="step-5-pembayaran-sukses.html"
                 class="font-semibold cursor-pointer text-sm bg-linear-to-r from-biru to-hijau bg-clip-text text-transparent hover:-translate-y-0.5 duration-200"
                 >Refresh status pembayaran</a
@@ -98,48 +102,96 @@
         </div>
 
         <!-- BAGIAN KANAN -->
-        <div class="flex flex-col gap-2 max-w-[350px] w-full">
+        <div class="flex flex-col gap-2 lg:max-w-[350px] w-full">
           <div
             class="border border-black/20 p-6 rounded-2xl h-full flex flex-col"
           >
             <div class="flex items-center justify-between"></div>
             <h2 class="text-lg font-semibold">Ringkasan Transaksi</h2>
             <div class="border border-black/10 mt-4 mb-6"></div>
-            <div class="h-10 w-full shrink-0 mb-3">
+
+            <div id="service-logo-wrapper" class="h-10 w-full shrink-0 mb-3">
               <img
+                id="service-logo"
                 class="h-full w-fit shrink-0 object-contain"
-                src="/assets/images/BPJS.svg"
-                alt="Logo BPJS"
+                src=""
+                alt=""
               />
             </div>
-            <div class="flex justify-between mt-3 text-sm">
-              <span class="text-sm text-[#6c6c6c]">Tanggal</span>
-              <span class="font-medium">09/07/2026</span>
-            </div>
+
             <div class="flex justify-between text-sm mt-3">
               <span class="text-sm text-[#6c6c6c]">Layanan</span>
-              <span class="font-medium">BPJS - 1 Bulan</span>
+              <span id="service-nama" class="font-medium"></span>
             </div>
-            <div class="flex justify-between mt-3 text-sm">
-              <span class="text-sm text-[#6c6c6c]">Nomor VA</span>
-              <span id="detail-nomor" class="font-medium">1234567890123456</span>
+
+            <!-- khusus PAKET DATA: Nama Provider -->
+            <div
+              id="nama-provider-row"
+              class="flex justify-between mt-3 text-sm hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Nama Provider</span>
+              <span id="detail-nama-provider" class="font-medium"></span>
             </div>
-            <div class="flex justify-between text-sm mt-3">
+            <!-- khusus PAKET DATA: Jumlah Kuota -->
+            <div
+              id="jumlah-kuota-row"
+              class="flex justify-between mt-3 text-sm hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Jumlah Kuota</span>
+              <span id="detail-jumlah-kuota" class="font-medium"></span>
+            </div>
+            <!-- khusus BPJS: Nama Peserta -->
+            <div
+              id="nama-peserta-row"
+              class="flex justify-between mt-3 text-sm hidden"
+            >
               <span class="text-sm text-[#6c6c6c]">Nama Peserta</span>
-              <span class="font-medium">Lionel Maulana</span>
+              <span id="detail-nama-peserta" class="font-medium"></span>
+            </div>
+            <!-- khusus BPJS: Jumlah Bulan -->
+            <div
+              id="jumlah-bulan-row"
+              class="flex justify-between mt-3 text-sm hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Jumlah Bulan</span>
+              <span id="detail-jumlah-bulan" class="font-medium"></span>
+            </div>
+
+            <!-- khusus PLN: Jenis Listrik -->
+            <div
+              id="jenis-listrik-row"
+              class="flex justify-between text-sm mt-3 hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Jenis Listrik</span>
+              <span id="detail-jenis-listrik" class="font-medium"></span>
+            </div>
+            <!-- khusus PLN: Nama Pemilik -->
+            <div
+              id="nama-pemilik-row"
+              class="flex justify-between mt-3 text-sm hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Nama Pemilik</span>
+              <span id="detail-nama-pemilik" class="font-medium"></span>
             </div>
 
             <div class="flex justify-between mt-3 text-sm">
-              <span class="text-sm text-[#6c6c6c]">Nominal</span>
-              <span id="detail-nominal" class="font-medium">Rp. 100.000 </span>
+              <span id="label-nomor" class="text-sm text-[#6c6c6c]"
+                >Nomor Tujuan</span
+              >
+              <span id="detail-nomor" class="font-medium">01234567890</span>
             </div>
             <div class="flex justify-between mt-3 text-sm">
+              <span class="text-sm text-[#6c6c6c]">Nominal</span>
+              <span id="detail-nominal" class="font-medium"></span>
+            </div>
+
+            <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">Biaya Pemrosesan</span>
-              <span class="font-medium">-</span>
+              <span class="font-medium">Rp. 0</span>
             </div>
             <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">Biaya Admin</span>
-              <span class="font-medium">Rp. 1.000</span>
+              <span id="detail-biaya-admin" class="font-medium"></span>
             </div>
 
             <div class="mt-auto">
@@ -147,7 +199,7 @@
 
               <div class="flex justify-between my-3">
                 <span class="font-medium">Total Pembayaran</span>
-                <span class="font-semibold text-lg">Rp. 101.000</span>
+                <span id="detail-total" class="font-semibold text-lg"></span>
               </div>
               <button
                 class="w-full px-6 py-3 rounded-xl font-medium bg-linear-to-r from-biru to-hijau text-white hover:-translate-y-0.5 hover:shadow-md duration-200 cursor-pointer"
@@ -159,12 +211,16 @@
         </div>
       </section>
     </main>
-    <footer class="px-40 pt-10 bg-hitam text-white">
-      <div class="flex items-center justify-between">
+    <footer
+      class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 pt-10 bg-hitam text-white"
+    >
+      <div
+        class="flex flex-col md:flex-row items-start gap-10 md:items-center justify-between"
+      >
         <div>
           <img
             class="w-44 h-auto"
-            src="/assets/images/logo_suara.com putih.png"
+            src="../assets/images/logo_suara.com putih.png"
             alt="Logo Suara"
           />
           <span class=""
@@ -174,11 +230,13 @@
         </div>
         <div class="flex flex-col gap-2">
           <span class="font-medium text-base">Powered By</span
-          ><img class="w-24 h-auto" src="/assets/images/Xendit.svg" alt="" />
+          ><img class="w-24 h-auto" src="../assets/images/Xendit.svg" alt="" />
         </div>
       </div>
       <div class="border border-white/30 my-8"></div>
-      <div class="flex items-start justify-between gap-10">
+      <div
+        class="grid grid-cols-2 lg:grid-cols-4 items-start justify-between gap-10"
+      >
         <ul class="flex flex-col gap-3 text-gray-300 text-sm max-w-[350px]">
           <li class="font-medium text-white text-base">Kontak</li>
           <li class="flex items-start gap-3">
@@ -333,5 +391,203 @@
         >
       </div>
     </footer>
+
+    <script src="/data/layanan-config.js"></script>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const service = params.get("service");
+      const nomor = params.get("nomor");
+      const amount = params.get("amount"); // nominal
+      const admin = params.get("admin"); // biaya admin
+      const total = params.get("total"); // nominal + admin
+      const method = params.get("method");
+      const jenis = params.get("jenis"); // khusus PLN: "token" / "tagihan"
+      const nama = params.get("nama"); // khusus PLN: nama pemilik
+      const jumlahBulan = params.get("jumlah_bulan"); // khusus PLN: nama pemilik
+      const namaProvider = params.get("namaProvider"); // khusus PAKET DATA: jumlah-bulan
+      const jumlahKuota = params.get("jumlahKuota"); // khusus PAKET DATA: jumlah-bulan
+
+      const layanan = LAYANAN_CONFIG[service];
+      const logoWrapper = document.getElementById("service-logo-wrapper"); // pindah ke sini
+
+      if (layanan) {
+        document.getElementById("service-logo").src = layanan.logo;
+        document.getElementById("service-logo").alt = layanan.nama;
+        document.getElementById("service-nama").textContent = layanan.nama;
+      }
+
+      document.getElementById("detail-nomor").textContent = nomor;
+      document.getElementById("detail-nominal").textContent =
+        "Rp " + Number(amount).toLocaleString("id-ID");
+      document.getElementById("detail-biaya-admin").textContent =
+        "Rp " + Number(admin).toLocaleString("id-ID");
+      document.getElementById("detail-total").textContent =
+        "Rp " + Number(total).toLocaleString("id-ID");
+
+      if (service === "pln") {
+        document.getElementById("label-nomor").textContent = "ID Pelanggan";
+
+        const jenisRow = document.getElementById("jenis-listrik-row");
+        const detailJenis = document.getElementById("detail-jenis-listrik");
+        jenisRow.classList.remove("hidden");
+        detailJenis.textContent =
+          jenis === "tagihan" ? "Tagihan Listrik" : "Token Listrik";
+
+        const namaRow = document.getElementById("nama-pemilik-row");
+        const detailNama = document.getElementById("detail-nama-pemilik");
+        namaRow.classList.remove("hidden");
+        detailNama.textContent = nama || "-";
+      }
+
+      if (service === "bpjs") {
+        document.getElementById("label-nomor").textContent = "Nomor VA";
+
+        const namaRow = document.getElementById("nama-peserta-row");
+        const detailNama = document.getElementById("detail-nama-peserta");
+        namaRow.classList.remove("hidden");
+        detailNama.textContent = nama || "-";
+
+        const bulanRow = document.getElementById("jumlah-bulan-row");
+        const detailJumlahBulan = document.getElementById(
+          "detail-jumlah-bulan",
+        );
+        bulanRow.classList.remove("hidden");
+        detailJumlahBulan.textContent = jumlahBulan || "-";
+      }
+
+      const PAKET_DATA_ICON = `
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="w-10 h-10 shrink-0">
+    <defs>
+      <linearGradient id="phoneGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#5FB5B7" />
+        <stop offset="100%" stop-color="#0088CE" />
+      </linearGradient>
+    </defs>
+    <path fill="url(#phoneGradient)" d="M15.384 6.115a.485.485 0 0 0-.047-.736A12.44 12.44 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.52.52 0 0 0 .668.05A11.45 11.45 0 0 1 8 4c2.507 0 4.827.802 6.716 2.164.205.148.49.13.668-.049" />
+    <path fill="url(#phoneGradient)" d="M13.229 8.271a.482.482 0 0 0-.063-.745A9.46 9.46 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.576 1.336c.206.132.48.108.653-.065m-2.183 2.183c.226-.226.185-.605-.1-.75A6.5 6.5 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.407.19.611.09A5.5 5.5 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.61-.091zM9.06 12.44c.196-.196.198-.52-.04-.66A2 2 0 0 0 8 11.5a2 2 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .707 0l.707-.707z" />
+  </svg>
+`;
+
+      if (service === "paket_data") {
+        logoWrapper.innerHTML = `
+    <div class="flex h-10 w-full shrink-0 items-center justify-between">
+      <div class="flex items-center gap-2">
+        ${PAKET_DATA_ICON}
+        <span class="text-sm text-[#6c6c6c]">Paket Data</span>
+      </div>
+      <img
+        class="h-full w-fit shrink-0 object-contain"
+        src="/assets/images/Logo-XL.svg"
+        alt="Logo XL"
+      />
+    </div>
+  `;
+
+        document.getElementById("label-nomor").textContent = "Nomor Tujuan";
+
+        const namaProviderRow = document.getElementById("nama-provider-row");
+        const detailNama = document.getElementById("detail-nama-provider");
+        namaProviderRow.classList.remove("hidden");
+        detailNama.textContent = namaProvider || "-";
+
+        const kuotaRow = document.getElementById("jumlah-kuota-row");
+        const detailJumlahKuota = document.getElementById(
+          "detail-jumlah-kuota",
+        );
+        kuotaRow.classList.remove("hidden");
+        detailJumlahKuota.textContent = jumlahKuota || "-";
+      } else if (layanan) {
+        logoWrapper.innerHTML = `
+    <img
+      id="service-logo"
+      class="h-full w-fit shrink-0 object-contain"
+      src="${layanan.logo}"
+      alt="${layanan.nama}"
+    />
+  `;
+      }
+
+      const PAKET_PULSA_ICON = `
+    <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 16 16"
+                  class="h-10 w-10 shrink-0"
+                >
+                  <defs>
+                    <linearGradient
+                      id="phoneGradient"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="100%"
+                    >
+                      <stop offset="0%" stop-color="#5FB5B7" />
+                      <stop offset="100%" stop-color="#0088CE" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    fill="url(#phoneGradient)"
+                    d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"
+                  />
+                  <path
+                    fill="url(#phoneGradient)"
+                    d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
+                  />
+                </svg>
+`;
+
+      if (service === "pulsa") {
+        logoWrapper.innerHTML = `
+    <div class="flex h-10 w-full shrink-0 items-center justify-between">
+      <div class="flex items-center gap-2">
+        ${PAKET_PULSA_ICON}
+        <span class="text-sm text-[#6c6c6c]">Paket Data</span>
+      </div>
+      <img
+        class="h-full w-fit shrink-0 object-contain"
+        src="/assets/images/Logo-XL.svg"
+        alt="Logo XL"
+      />
+    </div>
+  `;
+
+        document.getElementById("label-nomor").textContent = "Nomor Tujuan";
+
+        const namaProviderRow = document.getElementById("nama-provider-row");
+        const detailNama = document.getElementById("detail-nama-provider");
+        namaProviderRow.classList.remove("hidden");
+        detailNama.textContent = namaProvider || "-";
+      } else if (layanan) {
+        logoWrapper.innerHTML = `
+    <img
+      id="service-logo"
+      class="h-full w-fit shrink-0 object-contain"
+      src="${layanan.logo}"
+      alt="${layanan.nama}"
+    />
+  `;
+      }
+
+      const btnRefreshStatus = document.getElementById("btn-refresh-status");
+
+      if (btnRefreshStatus) {
+        const query = new URLSearchParams({
+          service: service,
+          nomor: nomor,
+          amount: amount,
+          admin: admin,
+          total: total,
+          method: method,
+        });
+        // ikut sertakan info tambahan khusus PLN kalau ada
+        if (jenis) query.set("jenis", jenis);
+        if (nama) query.set("nama", nama);
+        if (jumlahBulan) query.set("jumlah_bulan", jumlahBulan);
+        if (namaProvider) query.set("namaProvider", namaProvider);
+        if (jumlahKuota) query.set("jumlahKuota", jumlahKuota);
+
+        btnRefreshStatus.href = `/status-pembayaran/pembayaran-sukses.html?${query.toString()}`;
+      }
+    </script>
   </body>
 </html>

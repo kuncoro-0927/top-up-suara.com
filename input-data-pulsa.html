@@ -3,15 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Top Up Murah</title>
-    <link rel="stylesheet" href="../../../assets/css/output.css" />
+    <title>Top Up Pulsa</title>
+    <link rel="stylesheet" href="/assets/css/output.css" />
   </head>
   <body class="text-hitam">
-    <header class="">
+    <header>
       <nav
-        class="flex items-center py-4 justify-between border-black/20 border-b px-6 lg:px-40"
+        class="flex items-center py-4 justify-between border-black/20 border-b px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60"
       >
-        <a href="../../../index.html" class="flex items-center gap-3 font-medium">
+        <button
+          onclick="window.history.back()"
+          type="button"
+          class="flex items-center gap-3 font-medium cursor-pointer duration-200"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="18"
@@ -26,413 +30,436 @@
             />
           </svg>
           <span>Kembali</span>
-        </a>
+        </button>
+        <div class="flex font-medium items-center gap-3 cursor-pointer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-question-circle"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
+            />
+            <path
+              d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94"
+            />
+          </svg>
+          Bantuan
+        </div>
       </nav>
     </header>
     <main>
       <!-- SECTION INPUT NOMOR -->
       <section
-        class="px-6 lg:px-40 py-10 flex flex-col lg:flex-row items-start gap-10"
+        class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 py-10 flex items-stretch gap-10"
       >
         <!-- BAGIAN KIRI -->
-        <div class="flex flex-col gap-1 max-w-2xl w-full">
-          <h2 class="text-lg font-semibold">Nomor Tujuan</h2>
-          <span class="text-[#6c6c6c] mb-2"
-            >Masukkan nomor tujuan yang ingin diisi.</span
-          >
-          <div class="input-gradient-wrapper">
-            <input
-              id="nomor-tujuan"
-              type="text"
-              inputmode="numeric"
-              placeholder="Masukkan Nomor Tujuan"
-              class="w-full px-4 text-sm py-2.5 outline-none"
-              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-            />
+        <div class="flex flex-col w-full">
+          <div class="mb-6 flex flex-col gap-1">
+            <h2 class="text-lg font-semibold">Nomor Tujuan</h2>
+            <span class="text-[#6c6c6c] mb-2"
+              >Masukkan nomor tujuan yang ingin diisi.</span
+            >
+            <div class="input-gradient-wrapper">
+              <input
+                id="nomor-tujuan"
+                type="text"
+                inputmode="numeric"
+                placeholder="Masukkan Nomor Tujuan"
+                class="w-full px-4 text-sm py-2.5 outline-none"
+                oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+              />
+            </div>
           </div>
-          <div class="border border-black/20 mt-6 rounded-2xl">
-            <div>
-              <div
-                class="px-4 lg:px-6 py-3 rounded-t-2xl bg-gray-100 flex flex-col lg:flex-row items-start lg:items-center justify-between"
+          <div class="border border-black/20 rounded-2xl flex-1 flex flex-col">
+            <div
+              class="px-6 py-3 rounded-t-2xl bg-gray-100 flex items-center justify-between"
+            >
+              <span class="font-semibold">Nominal Top Up</span
+              ><span class="text-[#6c6c6c] text-sm"
+                >Pilih nominal top up yang ingin kamu isi</span
               >
-                <span class="font-semibold">Nominal Top Up</span
-                ><span class="text-[#6c6c6c] text-sm"
-                  >Pilih nominal top up yang ingin kamu isi</span
-                >
+            </div>
+
+            <div
+              id="nominal-warning"
+              class="flex-1 p-6 flex items-center justify-center text-base text-[#6c6c6c] text-center"
+            >
+              Silahkan masukkan nomor terlebih dahulu
+            </div>
+            <div id="nominal-grid" class="p-6 grid grid-cols-4 gap-3 hidden">
+              <div
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-amount="10000"
+              >
+                <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                  Rp. 10.000
+                </span>
+
+                <span class="gradient-badge">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-check"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                    />
+                  </svg>
+                </span>
               </div>
               <div
-                class="p-4 lg:p-6 grid grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-3 text-center"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-amount="15000"
               >
-                <div
-                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
-                  data-amount="10000"
-                >
-                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
-                    Rp. 10.000
-                  </span>
+                <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                  Rp. 15.000
+                </span>
 
-                  <span class="gradient-badge">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-check"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
-                  data-amount="15000"
-                >
-                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
-                    Rp. 15.000
-                  </span>
+                <span class="gradient-badge">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-check"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-amount="20000"
+              >
+                <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                  Rp. 20.000
+                </span>
 
-                  <span class="gradient-badge">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-check"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
-                  data-amount="20000"
-                >
-                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
-                    Rp. 20.000
-                  </span>
+                <span class="gradient-badge">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-check"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-amount="25000"
+              >
+                <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                  Rp. 25.000
+                </span>
 
-                  <span class="gradient-badge">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-check"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
-                  data-amount="25000"
-                >
-                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
-                    Rp. 25.000
-                  </span>
+                <span class="gradient-badge">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-check"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-amount="30000"
+              >
+                <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                  Rp. 30.000
+                </span>
 
-                  <span class="gradient-badge">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-check"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
-                  data-amount="30000"
-                >
-                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
-                    Rp. 30.000
-                  </span>
+                <span class="gradient-badge">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-check"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-amount="40000"
+              >
+                <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                  Rp. 40.000
+                </span>
 
-                  <span class="gradient-badge">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-check"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
-                  data-amount="40000"
-                >
-                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
-                    Rp. 40.000
-                  </span>
+                <span class="gradient-badge">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-check"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-amount="50000"
+              >
+                <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                  Rp. 50.000
+                </span>
 
-                  <span class="gradient-badge">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-check"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
-                  data-amount="50000"
-                >
-                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
-                    Rp. 50.000
-                  </span>
+                <span class="gradient-badge">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-check"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-amount="60000"
+              >
+                <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                  Rp. 60.000
+                </span>
 
-                  <span class="gradient-badge">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-check"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
-                  data-amount="60000"
-                >
-                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
-                    Rp. 60.000
-                  </span>
+                <span class="gradient-badge">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-check"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                    />
+                  </svg>
+                </span>
+              </div>
 
-                  <span class="gradient-badge">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-check"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
-                      />
-                    </svg>
-                  </span>
-                </div>
+              <div
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-amount="70000"
+              >
+                <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                  Rp. 70.000
+                </span>
 
-                <div
-                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
-                  data-amount="70000"
-                >
-                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
-                    Rp. 70.000
-                  </span>
+                <span class="gradient-badge">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-check"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-amount="75000"
+              >
+                <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                  Rp. 75.000
+                </span>
 
-                  <span class="gradient-badge">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-check"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
-                  data-amount="75000"
-                >
-                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
-                    Rp. 75.000
-                  </span>
+                <span class="gradient-badge">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-check"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-amount="80000"
+              >
+                <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                  Rp. 80.000
+                </span>
 
-                  <span class="gradient-badge">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-check"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
-                  data-amount="80000"
-                >
-                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
-                    Rp. 80.000
-                  </span>
+                <span class="gradient-badge">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-check"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-amount="90000"
+              >
+                <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                  Rp. 90.000
+                </span>
 
-                  <span class="gradient-badge">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-check"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
-                  data-amount="90000"
-                >
-                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
-                    Rp. 90.000
-                  </span>
+                <span class="gradient-badge">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-check"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-amount="100000"
+              >
+                <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                  Rp. 100.000
+                </span>
 
-                  <span class="gradient-badge">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-check"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
-                  data-amount="100000"
-                >
-                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
-                    Rp. 100.000
-                  </span>
+                <span class="gradient-badge">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-check"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-amount="150000"
+              >
+                <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                  Rp. 150.000
+                </span>
 
-                  <span class="gradient-badge">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-check"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
-                  data-amount="150000"
-                >
-                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
-                    Rp. 150.000
-                  </span>
+                <span class="gradient-badge">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-check"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-amount="200000"
+              >
+                <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                  Rp. 200.000
+                </span>
 
-                  <span class="gradient-badge">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-check"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
-                  data-amount="200000"
-                >
-                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
-                    Rp. 200.000
-                  </span>
+                <span class="gradient-badge">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-check"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                    />
+                  </svg>
+                </span>
+              </div>
 
-                  <span class="gradient-badge">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-check"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
-                      />
-                    </svg>
-                  </span>
-                </div>
+              <div
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-amount="300000"
+              >
+                <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
+                  Rp. 300.000
+                </span>
 
-                <div
-                  class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
-                  data-amount="300000"
-                >
-                  <span class="wallet-text font-medium text-[#6c6c6c] text-sm">
-                    Rp. 300.000
-                  </span>
-
-                  <span class="gradient-badge">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-check"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
-                      />
-                    </svg>
-                  </span>
-                </div>
+                <span class="gradient-badge">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-check"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"
+                    />
+                  </svg>
+                </span>
               </div>
             </div>
           </div>
@@ -440,25 +467,66 @@
 
         <!-- BAGIAN KANAN -->
         <div
-          class="hidden sticky top-10 self-start lg:flex flex-col gap-2 w-full lg:max-w-[350px] w-full"
+          class="hidden sticky top-10 self-start lg:flex flex-col gap-2 max-w-[350px] w-full"
         >
           <div
             class="border border-black/20 p-6 rounded-2xl h-full flex flex-col"
           >
             <h2 class="text-lg font-semibold">Ringkasan Transaksi</h2>
             <div class="border border-black/10 mt-4 mb-6"></div>
-            <img
-              class="w-28 h-auto mb-6"
-              src="../../../assets/images/e-wallet/Dana.svg"
-              alt=""
-            />
-            <div class="flex justify-between mt-3 text-sm">
-              <span class="text-sm text-[#6c6c6c]">Tanggal</span>
-              <span class="font-medium">09/07/2026</span>
+
+            <div
+              class="flex h-10 w-full shrink-0 items-center justify-between mb-3"
+            >
+              <div class="flex items-center gap-2">
+                <!-- icon pulsa -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 16 16"
+                  class="h-10 w-10 shrink-0"
+                >
+                  <defs>
+                    <linearGradient
+                      id="phoneGradient"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="100%"
+                    >
+                      <stop offset="0%" stop-color="#5FB5B7" />
+                      <stop offset="100%" stop-color="#0088CE" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    fill="url(#phoneGradient)"
+                    d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"
+                  />
+                  <path
+                    fill="url(#phoneGradient)"
+                    d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
+                  />
+                </svg>
+                <span class="text-sm text-[#6c6c6c]">Pulsa</span>
+              </div>
+              <img
+                id="logo-provider"
+                class="h-full w-fit shrink-0 object-contain hidden"
+                src="/assets/images/Logo-XL.svg"
+                alt="Logo XL"
+              />
             </div>
+
             <div class="flex justify-between text-sm mt-3">
               <span class="text-sm text-[#6c6c6c]">Layanan</span>
-              <span class="font-medium">E-Wallet - DANA</span>
+              <span id="service-nama" class="font-medium"></span>
+            </div>
+
+            <div
+              id="nama-provider"
+              class="flex justify-between text-sm mt-3 hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Provider</span>
+              <span class="font-medium">XL</span>
             </div>
 
             <div class="flex justify-between mt-3 text-sm">
@@ -473,7 +541,7 @@
             <div class="mt-auto">
               <div class="border border-black/10 my-4"></div>
               <a
-                href="step-3-metode-pembayaran.html"
+                href="metode-pembayaran.html"
                 id="btn-lanjut"
                 data-active="false"
                 aria-disabled="true"
@@ -494,30 +562,71 @@
           <!-- Dropup rincian lengkap -->
           <div
             id="mobile-summary-detail"
-            class="hidden px-6 pt-4 pb-3 border-b border-black/10"
+            class="hidden px-6 sm:px-20 md:px-32 pt-4 pb-3 border-b border-black/10"
           >
-            <div class="h-8 w-full shrink-0 mb-6 flex justify-start">
+            <div
+              class="flex h-10 w-full shrink-0 items-center justify-between mb-3"
+            >
+              <div class="flex items-center gap-2">
+                <!-- icon pulsa -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 16 16"
+                  class="h-10 w-10 shrink-0"
+                >
+                  <defs>
+                    <linearGradient
+                      id="phoneGradient-mobile"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="100%"
+                    >
+                      <stop offset="0%" stop-color="#5FB5B7" />
+                      <stop offset="100%" stop-color="#0088CE" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    fill="url(#phoneGradient-mobile)"
+                    d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"
+                  />
+                  <path
+                    fill="url(#phoneGradient-mobile)"
+                    d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
+                  />
+                </svg>
+                <span class="text-sm text-[#6c6c6c]">Pulsa</span>
+              </div>
               <img
-                class="h-full w-auto object-contain"
-                src="../../../assets/images/e-wallet/Dana.svg"
-                alt="Logo Dana"
+                id="logo-provider-mobile"
+                class="h-full w-fit shrink-0 object-contain hidden"
+                src="/assets/images/Logo-XL.svg"
+                alt="Logo XL"
               />
             </div>
-            <div class="flex justify-between text-sm">
-              <span class="text-[#6c6c6c]">Tanggal</span>
-              <span class="font-medium">09/07/2026</span>
+
+            <div class="flex justify-between text-sm mt-3">
+              <span class="text-sm text-[#6c6c6c]">Layanan</span>
+              <span id="service-nama-mobile" class="font-medium"></span>
             </div>
-            <div class="flex justify-between text-sm mt-2">
-              <span class="text-[#6c6c6c]">Layanan</span>
-              <span class="font-medium">E-Wallet - DANA</span>
+
+            <div
+              id="nama-provider-mobile"
+              class="flex justify-between text-sm mt-3 hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Provider</span>
+              <span class="font-medium">XL</span>
             </div>
-            <div class="flex justify-between text-sm mt-2">
-              <span class="text-[#6c6c6c]">Nomor Tujuan</span>
+
+            <div class="flex justify-between mt-3 text-sm">
+              <span class="text-sm text-[#6c6c6c]">Nomor Tujuan</span>
               <span id="detail-nomor-mobile" class="font-medium">-</span>
             </div>
           </div>
 
-          <div class="px-6 py-3 flex items-center gap-3">
+          <div
+            class="px-6 sm:px-20 md:px-32 xl:px-40 2xl:px-60 py-3 flex items-center gap-3"
+          >
             <button
               id="btn-toggle-detail"
               type="button"
@@ -545,7 +654,7 @@
             </button>
 
             <a
-              href="step-3-metode-pembayaran.html"
+              href="metode-pembayaran.html"
               id="btn-lanjut-mobile"
               data-active="false"
               aria-disabled="true"
@@ -559,7 +668,7 @@
       </section>
 
       <!-- SECTION TUTORIAL TOP UP -->
-      <section class="px-6 lg:px-40 py-10">
+      <section class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 py-10">
         <div>
           <h2 class="text-2xl font-semibold mb-1">Cara Top Up DANA</h2>
           <span class="text-[#6c6c6c]"
@@ -567,7 +676,7 @@
           >
         </div>
 
-        <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-3">
+        <div class="mt-6 grid lg:grid-cols-2 gap-3">
           <div
             class="border border-black/20 rounded-2xl flex items-center gap-3 p-4 w-full bg-gray-100"
           >
@@ -682,7 +791,7 @@
       </section>
 
       <!-- SECTION TIPS -->
-      <section class="px-6 lg:px-40 py-10">
+      <section class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 py-10">
         <div>
           <h2 class="text-2xl font-semibold mb-1">
             Tips Isi Saldo dengan Aman
@@ -693,7 +802,7 @@
           >
         </div>
 
-        <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-3">
+        <div class="mt-6 grid md:grid-cols-2 gap-3">
           <div
             class="border border-black/20 rounded-2xl flex items-center gap-3 p-4 w-full bg-gray-100"
           >
@@ -769,7 +878,7 @@
       </section>
 
       <!-- SECTION TOP UP LAINNYA -->
-      <section class="px-6 lg:px-40 py-10">
+      <section class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 py-10">
         <div>
           <h2 class="text-2xl font-semibold mb-1">
             Top Up & Bayar Layanan Lainnya
@@ -782,7 +891,7 @@
         <div class="border border-black/20 mt-6 rounded-2xl">
           <div>
             <div
-              class="px-6 py-3 rounded-t-2xl bg-gray-100 flex items-center justify-between"
+              class="px-6 py-3 rounded-t-2xl bg-gray-100 flex flex-col md:flex-row items-start md:items-center justify-between"
             >
               <span class="font-semibold">E-Wallet</span
               ><span class="text-[#6c6c6c] text-sm"
@@ -790,19 +899,19 @@
               >
             </div>
             <div
-              class="p-6 grid grid-cols-2 lg:grid-cols-4 gap-3 border-b border-black/20"
+              class="p-4 lg:p-6 grid grid-cols-2 lg:grid-cols-4 gap-3 border-b border-black/20"
             >
               <!-- GOPAY -->
               <a
-                href="#"
-                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+                href="input-data-e-wallet.html?service=gopay"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="../../../assets/images/e-wallet/Gopay.svg"
+                    src="assets/images/e-wallet/Gopay.svg"
                     alt=""
                   />
                 </div>
@@ -810,17 +919,35 @@
                 <span class="font-medium text-[#6c6c6c]">Gopay</span>
               </a>
 
-              <!-- OVO -->
+              <!-- DANA -->
               <a
-                href="#"
-                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+                href="input-data-e-wallet.html?service=dana"
+                class="wallet-card flex-col gap-3 relative w-full h-[120px] px-3 py-6 flex justify-center items-center rounded-2xl cursor-pointer hover:-translate-y-0.5 hover:shadow-md duration-200"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="../../../assets/images/e-wallet/OVO.svg"
+                    src="assets/images/e-wallet/Dana.svg"
+                    alt=""
+                  />
+                </div>
+
+                <span class="font-medium text-[#6c6c6c]">DANA</span>
+              </a>
+
+              <!-- OVO -->
+              <a
+                href="input-data-e-wallet.html?service=ovo"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+              >
+                <div
+                  class="h-10 w-full flex items-center justify-center shrink-0"
+                >
+                  <img
+                    class="w-full h-full object-contain"
+                    src="assets/images/e-wallet/OVO.svg"
                     alt=""
                   />
                 </div>
@@ -830,15 +957,15 @@
 
               <!-- SHOPEEPAY -->
               <a
-                href="#"
-                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+                href="input-data-e-wallet.html?service=shopeepay"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="../../../assets/images/e-wallet/ShopeePay.svg"
+                    src="assets/images/e-wallet/ShopeePay.svg"
                     alt=""
                   />
                 </div>
@@ -848,7 +975,7 @@
             </div>
 
             <div
-              class="px-6 py-3 bg-gray-100 flex items-center justify-between"
+              class="px-6 py-3 bg-gray-100 flex flex-col md:flex-row items-start md:items-center justify-between"
             >
               <span class="font-semibold">Lainnya</span
               ><span class="text-[#6c6c6c] text-sm"
@@ -856,19 +983,19 @@
               >
             </div>
             <div
-              class="p-6 grid grid-cols-2 lg:grid-cols-4 items-stretch gap-3"
+              class="p-4 lg:p-6 grid grid-cols-2 lg:grid-cols-4 items-stretch gap-3"
             >
               <!-- TOKEN LISTRIK -->
               <a
-                href="../../pln/step-2-pilih-nominal-pln.html"
-                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+                href="input-data-pln.html?service=pln"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="../../../assets/images/PLN.svg"
+                    src="assets/images/PLN.svg"
                     alt=""
                   />
                 </div>
@@ -880,15 +1007,15 @@
 
               <!-- BPJS -->
               <a
-                href="../../bpjs/step-2-pilih-nominal-bpjs.html"
-                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+                href="input-data-bpjs.html?service=bpjs"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
                 >
                   <img
                     class="w-full h-full object-contain"
-                    src="../../../assets/images/BPJS.svg"
+                    src="assets/images/BPJS.svg"
                     alt=""
                   />
                 </div>
@@ -899,8 +1026,9 @@
               </a>
 
               <!-- PAKET DATA -->
-              <div
-                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+              <a
+                href="input-data-paket-data.html?service=paket_data"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -933,13 +1061,16 @@
                   </svg>
                 </div>
 
-                <span class="font-medium text-[#6c6c6c]">Paket Data</span>
-              </div>
+                <span class="font-medium text-[#6c6c6c] text-center"
+                  >Paket Data</span
+                >
+              </a>
 
               <!-- PULSA -->
 
-              <div
-                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+              <a
+                href="input-data-pulsa.html?service=pulsa"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -973,14 +1104,14 @@
                 </div>
 
                 <span class="font-medium text-[#6c6c6c]">Pulsa</span>
-              </div>
+              </a>
             </div>
           </div>
         </div>
       </section>
 
       <!-- SECTION FAQS -->
-      <section class="px-6 lg:px-40 py-10">
+      <section class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 py-10">
         <div>
           <h2 class="text-2xl font-semibold mb-1">Pertanyaan Seputar Dana</h2>
           <span class="text-[#6c6c6c]"
@@ -1114,14 +1245,16 @@
         </div>
       </section>
     </main>
-    <footer class="px-6 pb-20 lg:pb-0 lg:px-40 pt-10 bg-hitam text-white">
+    <footer
+      class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 pt-10 bg-hitam text-white"
+    >
       <div
-        class="flex flex-col lg:flex-row items-start gap-10 lg:items-center justify-between"
+        class="flex flex-col md:flex-row items-start gap-10 md:items-center justify-between"
       >
         <div>
           <img
             class="w-44 h-auto"
-            src="../../../assets/images/logo_suara.com putih.png"
+            src="assets/images/logo_suara.com putih.png"
             alt="Logo Suara"
           />
           <span class=""
@@ -1131,11 +1264,7 @@
         </div>
         <div class="flex flex-col gap-2">
           <span class="font-medium text-base">Powered By</span
-          ><img
-            class="w-24 h-auto"
-            src="../../../assets/images/Xendit.svg"
-            alt=""
-          />
+          ><img class="w-24 h-auto" src="assets/images/Xendit.svg" alt="" />
         </div>
       </div>
       <div class="border border-white/30 my-8"></div>
@@ -1296,6 +1425,18 @@
         >
       </div>
     </footer>
+
+    <script src="/data/layanan-config.js"></script>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const service = params.get("service");
+      const layanan = LAYANAN_CONFIG[service]; // ambil dari file layanan-config.js yang udah di-load
+      if (layanan) {
+        document.getElementById("service-nama").textContent = layanan.nama;
+        document.getElementById("service-nama-mobile").textContent =
+          layanan.nama;
+      }
+    </script>
     <script>
       const walletCards = document.querySelectorAll(".wallet-card");
 
@@ -1324,8 +1465,20 @@
       const detailNomor = document.getElementById("detail-nomor");
       const detailNominal = document.getElementById("detail-nominal");
       const btnLanjut = document.getElementById("btn-lanjut");
+      const nominalWarning = document.getElementById("nominal-warning");
+      const nominalGrid = document.getElementById("nominal-grid");
+      const logoProvider = document.getElementById("logo-provider");
+      const namaProvider = document.getElementById("nama-provider");
 
-      // Elemen bar mobile
+      const detailChevron = document.getElementById("detail-chevron");
+
+      const namaProviderMobile = document.getElementById(
+        "nama-provider-mobile",
+      );
+      const logoProviderMobile = document.getElementById(
+        "logo-provider-mobile",
+      );
+
       const detailNomorMobile = document.getElementById("detail-nomor-mobile");
       const detailNominalMobile = document.getElementById(
         "detail-nominal-mobile",
@@ -1335,33 +1488,63 @@
       const mobileSummaryDetail = document.getElementById(
         "mobile-summary-detail",
       );
-      const detailChevron = document.getElementById("detail-chevron");
-
       let selectedAmount = null;
-
+      const SERVICE_KEY = "pulsa";
       function formatRupiah(angka) {
         return "Rp " + Number(angka).toLocaleString("id-ID");
       }
 
+      function updateLanjutHref(btn) {
+        if (selectedAmount === null) return;
+
+        const nomor = inputNomor.value.trim();
+        const namaProvider = "XL"; // dummy, sesuaikan kalau nanti ada API cek nama
+
+        const query = new URLSearchParams({
+          service: SERVICE_KEY,
+          nomor: nomor,
+          amount: selectedAmount,
+          namaProvider: namaProvider,
+        });
+
+        btn.href = `metode-pembayaran.html?${query.toString()}`;
+      }
+
+      function toggleNominalSection() {
+        const isValidNomor = inputNomor.value.trim().length > 0;
+
+        nominalWarning.classList.toggle("hidden", isValidNomor);
+        nominalGrid.classList.toggle("hidden", !isValidNomor);
+        logoProvider.classList.toggle("hidden", !isValidNomor);
+        namaProvider.classList.toggle("hidden", !isValidNomor);
+
+        logoProviderMobile.classList.toggle("hidden", !isValidNomor);
+        namaProviderMobile.classList.toggle("hidden", !isValidNomor);
+
+        if (!isValidNomor && selectedAmount !== null) {
+          walletCards2.forEach((item) => item.classList.remove("selected"));
+          selectedAmount = null;
+          detailNominal.textContent = "-";
+          detailNominalMobile.textContent = "Pilih Nominal";
+        }
+      }
       function updateButtonState() {
         const nomorValid = inputNomor.value.trim().length > 0;
         const nominalValid = selectedAmount !== null;
         const isValid = nomorValid && nominalValid;
 
-        btnLanjut.dataset.active = isValid;
-        btnLanjutMobile.dataset.active = isValid;
-
         [btnLanjut, btnLanjutMobile].forEach((btn) => {
+          btn.dataset.active = isValid;
           if (isValid) {
             btn.removeAttribute("aria-disabled");
             btn.removeAttribute("tabindex");
+            updateLanjutHref(btn);
           } else {
             btn.setAttribute("aria-disabled", "true");
             btn.setAttribute("tabindex", "-1");
           }
         });
       }
-
       walletCards2.forEach((card) => {
         card.addEventListener("click", () => {
           walletCards2.forEach((item) => item.classList.remove("selected"));
@@ -1379,17 +1562,31 @@
         const nomor = inputNomor.value.trim() || "-";
         detailNomor.textContent = nomor;
         detailNomorMobile.textContent = nomor;
+        toggleNominalSection();
         updateButtonState();
       });
 
-      // Dropup rincian di mobile
       btnToggleDetail.addEventListener("click", () => {
         const isOpen = !mobileSummaryDetail.classList.contains("hidden");
-
         mobileSummaryDetail.classList.toggle("hidden");
         btnToggleDetail.setAttribute("aria-expanded", String(!isOpen));
         detailChevron.classList.toggle("rotate-180", !isOpen);
       });
+
+      function toggleAccordion(header) {
+        header.closest(".wrapper").classList.toggle("is-open");
+      }
+
+      [btnLanjut, btnLanjutMobile].forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          if (btn.dataset.active !== "true") {
+            e.preventDefault();
+          }
+        });
+      });
+      // jalankan sekali saat halaman dimuat
+      toggleNominalSection();
+      updateButtonState();
     </script>
   </body>
 </html>

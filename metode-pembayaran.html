@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="../../../assets/css/output.css" />
   </head>
   <body>
-    <header class="">
+    <header>
       <nav
-        class="flex items-center py-4 justify-between border-black/20 border-b px-6 lg:px-40"
+        class="flex items-center py-4 justify-between border-black/20 border-b px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60"
       >
-        <a
-          href="step-2-pilih-nominal-dana.html"
-          class="flex items-center gap-3 font-medium"
+        <button
+          onclick="window.history.back()"
+          type="button"
+          class="flex items-center gap-3 font-medium cursor-pointer duration-200"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -29,13 +30,33 @@
             />
           </svg>
           <span>Kembali</span>
-        </a>
+        </button>
+        <div class="flex font-medium items-center gap-3 cursor-pointer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-question-circle"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
+            />
+            <path
+              d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94"
+            />
+          </svg>
+          Bantuan
+        </div>
       </nav>
     </header>
     <main>
-      <section class="px-6 lg:px-40 py-10 flex items-start gap-10">
+      <section
+        class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 py-10 w-full flex items-start gap-6 xl:gap-10"
+      >
         <!-- BAGIAN KIRI -->
-        <div class="flex flex-col gap-1 max-w-2xl w-full">
+        <div class="flex flex-col gap-1 w-full">
           <h2 class="text-lg font-semibold">Pilih Metode Pembayaran</h2>
           <span class="text-[#6c6c6c]"
             >Gunakan metode pembayaran yang sesuai dengan kebutuhan Anda.</span
@@ -55,7 +76,8 @@
               class="p-6 grid grid-cols-2 lg:grid-cols-4 gap-3 border-b border-black/20"
             >
               <div
-                class="wallet-card flex-col gap-3 relative w-full p-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-metode="qris"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -67,7 +89,9 @@
                   />
                 </div>
 
-                <span class="font-medium text-sm text-[#6c6c6c]">QRIS</span>
+                <span class="font-medium text-sm text-[#6c6c6c] text-center"
+                  >QRIS</span
+                >
                 <span class="gradient-badge">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +124,8 @@
             >
               <!-- GOPAY -->
               <div
-                class="wallet-card flex-col gap-1 relative w-full px-4 py-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-metode="gopay"
+                class="wallet-card flex-col gap-1 relative w-full px-3 py-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -112,7 +137,9 @@
                   />
                 </div>
 
-                <span class="font-medium text-sm text-[#6c6c6c]">Gopay</span>
+                <span class="font-medium text-sm text-[#6c6c6c] text-center"
+                  >Gopay</span
+                >
                 <span class="gradient-badge">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -131,7 +158,8 @@
 
               <!-- DANA -->
               <div
-                class="wallet-card flex-col gap-1 relative w-full px-4 py-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-metode="dana"
+                class="wallet-card flex-col gap-1 relative w-full px-3 py-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -143,7 +171,9 @@
                   />
                 </div>
 
-                <span class="font-medium text-sm text-[#6c6c6c]">DANA</span>
+                <span class="font-medium text-sm text-[#6c6c6c] text-center"
+                  >DANA (QR)</span
+                >
                 <span class="gradient-badge">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -162,7 +192,8 @@
 
               <!-- OVO -->
               <div
-                class="wallet-card flex-col gap-1 relative w-full px-4 py-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-metode="ovo"
+                class="wallet-card flex-col gap-1 relative w-full px-3 py-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -174,7 +205,9 @@
                   />
                 </div>
 
-                <span class="font-medium text-sm text-[#6c6c6c]">OVO</span>
+                <span class="font-medium text-sm text-[#6c6c6c] text-center"
+                  >OVO</span
+                >
                 <span class="gradient-badge">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -193,7 +226,8 @@
 
               <!-- SHOPEEPAY -->
               <div
-                class="wallet-card flex-col gap-1 relative w-full px-4 py-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-metode="shopeepay"
+                class="wallet-card flex-col gap-1 relative w-full px-3 py-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -239,7 +273,8 @@
             >
               <!-- BCA -->
               <div
-                class="wallet-card flex-col gap-1 relative w-full px-4 py-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-metode="bca"
+                class="wallet-card flex-col gap-1 relative w-full px-3 py-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -251,7 +286,9 @@
                   />
                 </div>
 
-                <span class="font-medium text-sm text-[#6c6c6c]">BCA</span>
+                <span class="font-medium text-sm text-[#6c6c6c] text-center"
+                  >BCA (QR)</span
+                >
                 <span class="gradient-badge">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -270,7 +307,8 @@
 
               <!-- BNI -->
               <div
-                class="wallet-card flex-col gap-1 relative w-full px-4 py-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-metode="bni"
+                class="wallet-card flex-col gap-1 relative w-full px-3 py-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -282,7 +320,9 @@
                   />
                 </div>
 
-                <span class="font-medium text-sm text-[#6c6c6c]">BNI</span>
+                <span class="font-medium text-sm text-[#6c6c6c] text-center"
+                  >BNI (QR)</span
+                >
                 <span class="gradient-badge">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -301,7 +341,8 @@
 
               <!-- BRI -->
               <div
-                class="wallet-card flex-col gap-1 relative w-full px-4 py-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-metode="bri"
+                class="wallet-card flex-col gap-1 relative w-full px-3 py-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -313,7 +354,9 @@
                   />
                 </div>
 
-                <span class="font-medium text-sm text-[#6c6c6c]">BRI</span>
+                <span class="font-medium text-sm text-[#6c6c6c] text-center"
+                  >BRI (QR)</span
+                >
                 <span class="gradient-badge">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -332,7 +375,8 @@
 
               <!-- MANDIRI -->
               <div
-                class="wallet-card flex-col gap-1 relative w-full px-4 py-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-metode="mandiri"
+                class="wallet-card flex-col gap-1 relative w-full px-3 py-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -344,7 +388,9 @@
                   />
                 </div>
 
-                <span class="font-medium text-sm text-[#6c6c6c]">Mandiri</span>
+                <span class="font-medium text-sm text-[#6c6c6c] text-center"
+                  >Mandiri (QR)</span
+                >
                 <span class="gradient-badge">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -363,7 +409,8 @@
 
               <!-- BANK LAINNYA -->
               <div
-                class="wallet-card flex-col gap-1 relative w-full px-4 py-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
+                data-metode="bank-lainnya"
+                class="wallet-card flex-col gap-1 relative w-full px-3 py-6 h-[100px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -392,9 +439,8 @@
                   </svg>
                 </div>
 
-                <span
-                  class="font-medium text-sm text-[#6c6c6c] whitespace-nowrap"
-                  >Bank Lainnya</span
+                <span class="font-medium text-sm text-[#6c6c6c] text-center"
+                  >Bank Lainnya (QR)</span
                 >
               </div>
             </div>
@@ -403,7 +449,7 @@
 
         <!-- BAGIAN KANAN -->
         <div
-          class="hidden sticky top-10 self-start lg:flex flex-col gap-2 max-w-[350px] w-full"
+          class="hidden sticky top-10 self-start lg:flex flex-col gap-2 lg:max-w-[350px] w-full"
         >
           <div
             class="border border-black/20 p-6 rounded-2xl h-full flex flex-col"
@@ -411,24 +457,73 @@
             <h2 class="text-lg font-semibold">Ringkasan Transaksi</h2>
             <div class="border border-black/10 mt-4 mb-6"></div>
 
-            <div class="h-10 w-full shrink-0 mb-3">
+            <div id="service-logo-wrapper" class="h-10 w-full shrink-0 mb-3">
               <img
+                id="service-logo"
                 class="h-full w-fit shrink-0 object-contain"
-                src="../../../assets/images/e-wallet/Dana.svg"
-                alt="Logo Dana"
+                src=""
+                alt=""
               />
             </div>
-            <div class="flex justify-between mt-3 text-sm">
-              <span class="text-sm text-[#6c6c6c]">Tanggal</span>
-              <span class="font-medium">09/07/2026</span>
-            </div>
+
             <div class="flex justify-between text-sm mt-3">
               <span class="text-sm text-[#6c6c6c]">Layanan</span>
-              <span class="font-medium">E-Wallet - DANA</span>
+              <span id="service-nama" class="font-medium"></span>
+            </div>
+
+            <!-- khusus PAKET DATA: Nama Provider -->
+            <div
+              id="nama-provider-row"
+              class="flex justify-between mt-3 text-sm hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Nama Provider</span>
+              <span id="detail-nama-provider" class="font-medium"></span>
+            </div>
+            <!-- khusus PAKET DATA: Jumlah Kuota -->
+            <div
+              id="jumlah-kuota-row"
+              class="flex justify-between mt-3 text-sm hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Jumlah Kuota</span>
+              <span id="detail-jumlah-kuota" class="font-medium"></span>
+            </div>
+            <!-- khusus BPJS: Nama Peserta -->
+            <div
+              id="nama-peserta-row"
+              class="flex justify-between mt-3 text-sm hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Nama Peserta</span>
+              <span id="detail-nama-peserta" class="font-medium"></span>
+            </div>
+            <!-- khusus BPJS: Jumlah Bulan -->
+            <div
+              id="jumlah-bulan-row"
+              class="flex justify-between mt-3 text-sm hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Jumlah Bulan</span>
+              <span id="detail-jumlah-bulan" class="font-medium"></span>
+            </div>
+            <!-- khusus PLN: Jenis Listrik -->
+            <div
+              id="jenis-listrik-row"
+              class="flex justify-between text-sm mt-3 hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Jenis Listrik</span>
+              <span id="detail-jenis-listrik" class="font-medium"></span>
+            </div>
+            <!-- khusus PLN: Nama Pemilik -->
+            <div
+              id="nama-pemilik-row"
+              class="flex justify-between mt-3 text-sm hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Nama Pemilik</span>
+              <span id="detail-nama-pemilik" class="font-medium"></span>
             </div>
 
             <div class="flex justify-between mt-3 text-sm">
-              <span class="text-sm text-[#6c6c6c]">Nomor Tujuan</span>
+              <span id="label-nomor" class="text-sm text-[#6c6c6c]"
+                >Nomor Tujuan</span
+              >
               <span id="detail-nomor" class="font-medium">01234567890</span>
             </div>
             <div class="flex justify-between mt-3 text-sm">
@@ -438,21 +533,18 @@
 
             <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">Biaya Pemrosesan</span>
-              <span class="font-medium">-</span>
+              <span id="detail-biaya-pemrosesan" class="font-medium">-</span>
             </div>
             <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">Biaya Admin</span>
               <span id="detail-biaya-admin" class="font-medium">-</span>
             </div>
-
             <div class="mt-auto">
               <div class="border border-black/10 my-4"></div>
 
               <div class="flex justify-between my-3">
                 <span class="font-medium">Total Pembayaran</span>
-                <span id="detail-total" class="font-semibold text-lg"
-                  >Rp. 100.000</span
-                >
+                <span id="detail-total" class="font-semibold text-lg"></span>
               </div>
               <a
                 href="step-4-pembayaran-qris.html"
@@ -476,51 +568,98 @@
           <!-- Dropup rincian lengkap -->
           <div
             id="mobile-summary-detail"
-            class="hidden px-6 pt-4 pb-3 border-b border-black/10"
+            class="hidden px-6 sm:px-20 md:px-32 pt-4 pb-3 border-b border-black/10"
           >
-            <div class="h-8 w-full shrink-0 mb-6 flex justify-start">
+            <div
+              id="service-logo-wrapper-mobile"
+              class="h-8 w-full shrink-0 mb-6"
+            >
               <img
-                class="h-full w-auto object-contain"
-                src="../../../assets/images/e-wallet/Dana.svg"
-                alt="Logo Dana"
+                id="service-logo-mobile"
+                class="h-full w-fit shrink-0 object-contain"
+                src=""
+                alt=""
               />
             </div>
-            <div class="flex justify-between mt-3 text-sm">
-              <span class="text-sm text-[#6c6c6c]">Tanggal</span>
-              <span class="font-medium">09/07/2026</span>
-            </div>
+
             <div class="flex justify-between text-sm mt-3">
               <span class="text-sm text-[#6c6c6c]">Layanan</span>
-              <span class="font-medium">E-Wallet - DANA</span>
+              <span id="service-nama-mobile" class="font-medium"></span>
+            </div>
+
+            <!-- khusus PAKET DATA: Nama Provider -->
+            <div
+              id="nama-provider-row-mobile"
+              class="flex justify-between mt-3 text-sm hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Nama Provider</span>
+              <span id="detail-nama-provider-mobile" class="font-medium"></span>
+            </div>
+            <!-- khusus PAKET DATA: Jumlah Kuota -->
+            <div
+              id="jumlah-kuota-row-mobile"
+              class="flex justify-between mt-3 text-sm hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Jumlah Kuota</span>
+              <span id="detail-jumlah-kuota-mobile" class="font-medium"></span>
+            </div>
+            <!-- khusus BPJS: Nama Peserta -->
+            <div
+              id="nama-peserta-row-mobile"
+              class="flex justify-between mt-3 text-sm hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Nama Peserta</span>
+              <span id="detail-nama-peserta-mobile" class="font-medium"></span>
+            </div>
+            <!-- khusus BPJS: Jumlah Bulan -->
+            <div
+              id="jumlah-bulan-row-mobile"
+              class="flex justify-between mt-3 text-sm hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Jumlah Bulan</span>
+              <span id="detail-jumlah-bulan-mobile" class="font-medium"></span>
+            </div>
+            <!-- khusus PLN: Jenis Listrik -->
+            <div
+              id="jenis-listrik-row-mobile"
+              class="flex justify-between text-sm mt-3 hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Jenis Listrik</span>
+              <span id="detail-jenis-listrik-mobile" class="font-medium"></span>
+            </div>
+            <!-- khusus PLN: Nama Pemilik -->
+            <div
+              id="nama-pemilik-row-mobile"
+              class="flex justify-between mt-3 text-sm hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Nama Pemilik</span>
+              <span id="detail-nama-pemilik-mobile" class="font-medium"></span>
             </div>
 
             <div class="flex justify-between mt-3 text-sm">
-              <span class="text-sm text-[#6c6c6c]">Nomor Tujuan</span>
-              <span id="detail-nomor" class="font-medium">01234567890</span>
+              <span id="label-nomor-mobile" class="text-sm text-[#6c6c6c]"
+                >Nomor Tujuan</span
+              >
+              <span id="detail-nomor-mobile" class="font-medium"></span>
             </div>
             <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">Nominal</span>
-              <span id="detail-nominal" class="font-medium">Rp. 100.000</span>
+              <span id="detail-nominal-mobile" class="font-medium"></span>
             </div>
 
             <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">Biaya Pemrosesan</span>
-              <span class="font-medium">-</span>
+              <span id="detail-biaya-pemrosesan-mobile" class="font-medium"
+                >Rp. 0</span
+              >
             </div>
             <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">Biaya Admin</span>
               <span id="detail-biaya-admin-mobile" class="font-medium">-</span>
             </div>
-
-            <div class="flex justify-between my-3">
-              <span class="font-medium">Total Pembayaran</span>
-              <span id="detail-total" class="font-semibold text-lg"
-                >Rp. 100.000</span
-              >
-            </div>
           </div>
 
-          <div class="px-6 py-3 flex items-center gap-3">
+          <div class="px-6 sm:px-20 md:px-32 py-3 flex items-center gap-3">
             <button
               id="btn-toggle-detail"
               type="button"
@@ -542,7 +681,7 @@
                   <path d="M8 5l5 5H3z" />
                 </svg>
               </span>
-              <span id="detail-nominal-mobile" class="text-base font-semibold">
+              <span id="detail-total-mobile" class="text-base font-semibold">
                 Pilih Metode
               </span>
             </button>
@@ -561,14 +700,16 @@
         </div>
       </section>
     </main>
-    <footer class="px-6 pb-20 lg:pb-0 lg:px-40 pt-10 bg-hitam text-white">
+    <footer
+      class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 pt-10 bg-hitam text-white"
+    >
       <div
-        class="flex flex-col lg:flex-row items-start gap-10 lg:items-center justify-between"
+        class="flex flex-col md:flex-row items-start gap-10 md:items-center justify-between"
       >
         <div>
           <img
             class="w-44 h-auto"
-            src="../../../assets/images/logo_suara.com putih.png"
+            src="assets/images/logo_suara.com putih.png"
             alt="Logo Suara"
           />
           <span class=""
@@ -578,11 +719,7 @@
         </div>
         <div class="flex flex-col gap-2">
           <span class="font-medium text-base">Powered By</span
-          ><img
-            class="w-24 h-auto"
-            src="../../../assets/images/Xendit.svg"
-            alt=""
-          />
+          ><img class="w-24 h-auto" src="assets/images/Xendit.svg" alt="" />
         </div>
       </div>
       <div class="border border-white/30 my-8"></div>
@@ -744,9 +881,25 @@
       </div>
     </footer>
 
+    <script src="/data/layanan-config.js"></script>
     <script>
+      const params = new URLSearchParams(window.location.search);
+      const service = params.get("service");
+      const amount = params.get("amount");
+      const nomor = params.get("nomor");
+      const method = params.get("method"); // ada mulai step 4
+      const jenis = params.get("jenis"); // khusus PLN: "token" / "tagihan"
+      const nama = params.get("nama"); // khusus PLN: nama pemilik
+      const jumlahBulan = params.get("jumlah_bulan"); // khusus BPJS: jumlah-bulan
+      const namaProvider = params.get("namaProvider"); // khusus PAKET DATA: jumlah-bulan
+
+      const jumlahKuota = params.get("jumlahKuota"); // khusus PAKET DATA: jumlah-bulan
+
       const walletCards = document.querySelectorAll(".wallet-card");
       const btnLanjut = document.getElementById("btn-lanjut");
+      const detailBiayaPemrosesan = document.getElementById(
+        "detail-biaya-pemrosesan",
+      );
       const detailBiayaAdmin = document.getElementById("detail-biaya-admin");
       const detailTotal = document.getElementById("detail-total");
       // Elemen bar mobile
@@ -754,9 +907,13 @@
       const detailNominalMobile = document.getElementById(
         "detail-nominal-mobile",
       );
+      const detailBiayaPemrosesanMobile = document.getElementById(
+        "detail-biaya-pemrosesan-mobile",
+      );
       const detailBiayaAdminMobile = document.getElementById(
         "detail-biaya-admin-mobile",
       );
+      const detailTotalMobile = document.getElementById("detail-total-mobile");
       const btnLanjutMobile = document.getElementById("btn-lanjut-mobile");
       const btnToggleDetail = document.getElementById("btn-toggle-detail");
       const mobileSummaryDetail = document.getElementById(
@@ -764,7 +921,7 @@
       );
       const detailChevron = document.getElementById("detail-chevron");
 
-      const NOMINAL = 100000;
+      const BIAYA_PEMROSESAN = 0;
       const BIAYA_ADMIN = 1000;
       let selectedMetode = null;
 
@@ -772,6 +929,45 @@
         return "Rp " + Number(angka).toLocaleString("id-ID");
       }
 
+      const PAYMENT_PAGE_BY_METODE = {
+        qris: "pembayaran/qris.html",
+
+        // Bank Transfer
+        bca: "pembayaran/bank/bca.html",
+        bni: "pembayaran/bank/bni.html",
+        bri: "pembayaran/bank/bri.html",
+        mandiri: "pembayaran/bank/mandiri.html",
+
+        // E-Wallet
+        dana: "pembayaran/e-wallet/dana.html",
+        gopay: "pembayaran/e-wallet/gopay.html",
+        ovo: "pembayaran/e-wallet/ovo.html",
+        shopeepay: "pembayaran/e-wallet/shopeepay.html",
+      };
+
+      function getPaymentUrl(metode) {
+        const page = PAYMENT_PAGE_BY_METODE[metode];
+        const total = Number(amount) + BIAYA_ADMIN;
+
+        const query = new URLSearchParams({
+          service: service,
+          nomor: nomor,
+          amount: amount,
+          admin: BIAYA_ADMIN,
+          total: total,
+          method: metode,
+        });
+
+        // ikut sertakan info tambahan khusus PLN kalau ada
+        if (jenis) query.set("jenis", jenis);
+        if (nama) query.set("nama", nama);
+        if (jumlahBulan) query.set("jumlah_bulan", jumlahBulan);
+
+        if (namaProvider) query.set("namaProvider", namaProvider);
+        if (jumlahKuota) query.set("jumlahKuota", jumlahKuota);
+
+        return `${page}?${query.toString()}`;
+      }
       function updateButtonState() {
         const metodeValid = selectedMetode !== null;
         btnLanjut.dataset.active = metodeValid;
@@ -785,31 +981,301 @@
             btn.setAttribute("tabindex", "-1");
           }
         });
-        // if (metodeValid) {
-        //   btnLanjut.removeAttribute("aria-disabled");
-        //   btnLanjut.removeAttribute("tabindex");
-        // } else {
-        //   btnLanjut.setAttribute("aria-disabled", "true");
-        //   btnLanjut.setAttribute("tabindex", "-1");
-        // }
       }
+
+      detailTotal.textContent = formatRupiah(amount);
+      if (detailBiayaAdmin) detailBiayaAdmin.textContent = formatRupiah(0);
+      if (detailBiayaPemrosesan)
+        detailBiayaPemrosesan.textContent = formatRupiah(0);
+
+      if (detailBiayaAdminMobile)
+        detailBiayaAdminMobile.textContent = formatRupiah(0);
+      if (detailBiayaPemrosesanMobile)
+        detailBiayaPemrosesanMobile.textContent = formatRupiah(0);
 
       walletCards.forEach((card) => {
         card.addEventListener("click", () => {
+          if (!card.dataset.metode) return; // kartu belum tersedia
+
           walletCards.forEach((item) => item.classList.remove("selected"));
           card.classList.add("selected");
 
-          selectedMetode = card
-            .querySelector(".wallet-text, span")
-            ?.textContent.trim();
+          selectedMetode = card.dataset.metode;
+          const total = Number(amount) + BIAYA_ADMIN;
 
+          detailBiayaPemrosesan.textContent = formatRupiah(BIAYA_PEMROSESAN);
           detailBiayaAdmin.textContent = formatRupiah(BIAYA_ADMIN);
-          detailTotal.textContent = formatRupiah(NOMINAL + BIAYA_ADMIN);
-          detailNominalMobile.textContent = formatRupiah(NOMINAL + BIAYA_ADMIN);
+          detailTotal.textContent = formatRupiah(total);
+
+          detailBiayaPemrosesanMobile.textContent =
+            formatRupiah(BIAYA_PEMROSESAN);
           detailBiayaAdminMobile.textContent = formatRupiah(BIAYA_ADMIN);
+          detailTotalMobile.textContent = formatRupiah(total);
+
+          const targetUrl = getPaymentUrl(selectedMetode);
+          btnLanjut.href = targetUrl;
+          btnLanjutMobile.href = targetUrl;
+
           updateButtonState();
         });
       });
+
+      const layanan = LAYANAN_CONFIG[service];
+      const logoWrapper = document.getElementById("service-logo-wrapper"); // pindah ke sini
+      const logoWrapperMobile = document.getElementById(
+        "service-logo-wrapper-mobile",
+      ); // pindah ke sini
+
+      if (layanan) {
+        document.getElementById("service-nama").textContent = layanan.nama;
+      }
+      if (layanan) {
+        document.getElementById("service-nama-mobile").textContent =
+          layanan.nama;
+      }
+
+      document.getElementById("detail-nomor").textContent = nomor;
+      document.getElementById("detail-nominal").textContent =
+        "Rp " + Number(amount).toLocaleString("id-ID");
+
+      document.getElementById("detail-nomor-mobile").textContent = nomor;
+      document.getElementById("detail-nominal-mobile").textContent =
+        "Rp " + Number(amount).toLocaleString("id-ID");
+
+      if (service === "pln") {
+        document.getElementById("label-nomor").textContent = "ID Pelanggan";
+
+        const jenisRow = document.getElementById("jenis-listrik-row");
+        const detailJenis = document.getElementById("detail-jenis-listrik");
+        jenisRow.classList.remove("hidden");
+        detailJenis.textContent =
+          jenis === "tagihan" ? "Tagihan Listrik" : "Token Listrik";
+
+        const namaRow = document.getElementById("nama-pemilik-row");
+        const detailNama = document.getElementById("detail-nama-pemilik");
+        namaRow.classList.remove("hidden");
+        detailNama.textContent = nama || "-";
+
+        document.getElementById("label-nomor-mobile").textContent =
+          "ID Pelanggan";
+
+        const jenisRowMobile = document.getElementById(
+          "jenis-listrik-row-mobile",
+        );
+        const detailJenisMobile = document.getElementById(
+          "detail-jenis-listrik-mobile",
+        );
+        jenisRowMobile.classList.remove("hidden");
+        detailJenisMobile.textContent =
+          jenis === "tagihan" ? "Tagihan Listrik" : "Token Listrik";
+
+        const namaRowMobile = document.getElementById(
+          "nama-pemilik-row-mobile",
+        );
+        const detailNamaMobile = document.getElementById(
+          "detail-nama-pemilik-mobile",
+        );
+        namaRowMobile.classList.remove("hidden");
+        detailNamaMobile.textContent = nama || "-";
+      }
+
+      if (service === "bpjs") {
+        document.getElementById("label-nomor").textContent = "Nomor VA";
+
+        const namaRow = document.getElementById("nama-peserta-row");
+        const detailNama = document.getElementById("detail-nama-peserta");
+        namaRow.classList.remove("hidden");
+        detailNama.textContent = nama || "-";
+
+        const bulanRow = document.getElementById("jumlah-bulan-row");
+        const detailJumlahBulan = document.getElementById(
+          "detail-jumlah-bulan",
+        );
+        bulanRow.classList.remove("hidden");
+        detailJumlahBulan.textContent = jumlahBulan || "-";
+
+        document.getElementById("label-nomor-mobile").textContent = "Nomor VA";
+
+        const namaRowMobile = document.getElementById(
+          "nama-peserta-row-mobile",
+        );
+        const detailNamaMobile = document.getElementById(
+          "detail-nama-peserta-mobile",
+        );
+        namaRowMobile.classList.remove("hidden");
+        detailNamaMobile.textContent = nama || "-";
+
+        const bulanRowMobile = document.getElementById(
+          "jumlah-bulan-row-mobile",
+        );
+        const detailJumlahBulanMobile = document.getElementById(
+          "detail-jumlah-bulan-mobile",
+        );
+        bulanRowMobile.classList.remove("hidden");
+        detailJumlahBulanMobile.textContent = jumlahBulan || "-";
+      }
+
+      function paketDataIcon(suffix) {
+        return `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="w-10 h-10 shrink-0">
+          <defs>
+            <linearGradient id="phoneGradient-${suffix}" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#5FB5B7" />
+              <stop offset="100%" stop-color="#0088CE" />
+            </linearGradient>
+          </defs>
+          <path fill="url(#phoneGradient-${suffix})" d="M15.384 6.115a.485.485 0 0 0-.047-.736A12.44 12.44 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.52.52 0 0 0 .668.05A11.45 11.45 0 0 1 8 4c2.507 0 4.827.802 6.716 2.164.205.148.49.13.668-.049" />
+          <path fill="url(#phoneGradient-${suffix})" d="M13.229 8.271a.482.482 0 0 0-.063-.745A9.46 9.46 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.576 1.336c.206.132.48.108.653-.065m-2.183 2.183c.226-.226.185-.605-.1-.75A6.5 6.5 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.407.19.611.09A5.5 5.5 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.61-.091zM9.06 12.44c.196-.196.198-.52-.04-.66A2 2 0 0 0 8 11.5a2 2 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .707 0l.707-.707z" />
+        </svg>
+      `;
+      }
+
+      function pulsaIcon(suffix) {
+        return `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="h-10 w-10 shrink-0">
+          <defs>
+            <linearGradient id="phoneGradient-${suffix}" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#5FB5B7" />
+              <stop offset="100%" stop-color="#0088CE" />
+            </linearGradient>
+          </defs>
+          <path fill="url(#phoneGradient-${suffix})" d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+          <path fill="url(#phoneGradient-${suffix})" d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
+        </svg>
+      `;
+      }
+
+      // UBAH: digabung jadi satu rantai if/else if — cuma satu blok yang jalan,
+      // jadi logoWrapper/logoWrapperMobile tidak bisa ketiban blok lain lagi
+      if (service === "paket_data") {
+        logoWrapper.innerHTML = `
+          <div class="flex h-10 w-full shrink-0 items-center justify-between">
+            <div class="flex items-center gap-2">
+              ${paketDataIcon("desktop")}
+              <span class="text-sm text-[#6c6c6c]">Paket Data</span>
+            </div>
+            <img
+              class="h-full w-fit shrink-0 object-contain"
+              src="/assets/images/Logo-XL.svg"
+              alt="Logo XL"
+            />
+          </div>
+        `;
+
+        logoWrapperMobile.innerHTML = `
+          <div class="flex h-10 w-full shrink-0 items-center justify-between">
+            <div class="flex items-center gap-2">
+              ${paketDataIcon("mobile")}
+              <span class="text-sm text-[#6c6c6c]">Paket Data</span>
+            </div>
+            <img
+              class="h-full w-fit shrink-0 object-contain"
+              src="/assets/images/Logo-XL.svg"
+              alt="Logo XL"
+            />
+          </div>
+        `;
+
+        document.getElementById("label-nomor").textContent = "Nomor Tujuan";
+
+        const namaProviderRow = document.getElementById("nama-provider-row");
+        const detailNama = document.getElementById("detail-nama-provider");
+        namaProviderRow.classList.remove("hidden");
+        detailNama.textContent = namaProvider || "-";
+
+        const kuotaRow = document.getElementById("jumlah-kuota-row");
+        const detailJumlahKuota = document.getElementById(
+          "detail-jumlah-kuota",
+        );
+        kuotaRow.classList.remove("hidden");
+        detailJumlahKuota.textContent = jumlahKuota || "-";
+
+        document.getElementById("label-nomor-mobile").textContent =
+          "Nomor Tujuan";
+
+        const namaProviderRowMobile = document.getElementById(
+          "nama-provider-row-mobile",
+        );
+        const detailNamaMobile = document.getElementById(
+          "detail-nama-provider-mobile",
+        );
+        namaProviderRowMobile.classList.remove("hidden");
+        detailNamaMobile.textContent = namaProvider || "-";
+
+        const kuotaRowMobile = document.getElementById(
+          "jumlah-kuota-row-mobile",
+        );
+        const detailJumlahKuotaMobile = document.getElementById(
+          "detail-jumlah-kuota-mobile",
+        );
+        kuotaRowMobile.classList.remove("hidden");
+        detailJumlahKuotaMobile.textContent = jumlahKuota || "-";
+      } else if (service === "pulsa") {
+        logoWrapper.innerHTML = `
+          <div class="flex h-10 w-full shrink-0 items-center justify-between">
+            <div class="flex items-center gap-2">
+              ${pulsaIcon("desktop")}
+              <span class="text-sm text-[#6c6c6c]">Pulsa</span>
+            </div>
+            <img
+              class="h-full w-fit shrink-0 object-contain"
+              src="/assets/images/Logo-XL.svg"
+              alt="Logo XL"
+            />
+          </div>
+        `;
+
+        logoWrapperMobile.innerHTML = `
+          <div class="flex h-10 w-full shrink-0 items-center justify-between">
+            <div class="flex items-center gap-2">
+              ${pulsaIcon("mobile")}
+              <span class="text-sm text-[#6c6c6c]">Pulsa</span>
+            </div>
+            <img
+              class="h-full w-fit shrink-0 object-contain"
+              src="/assets/images/Logo-XL.svg"
+              alt="Logo XL"
+            />
+          </div>
+        `;
+
+        document.getElementById("label-nomor").textContent = "Nomor Tujuan";
+
+        const namaProviderRow = document.getElementById("nama-provider-row");
+        const detailNama = document.getElementById("detail-nama-provider");
+        namaProviderRow.classList.remove("hidden");
+        detailNama.textContent = namaProvider || "-";
+
+        document.getElementById("label-nomor-mobile").textContent =
+          "Nomor Tujuan";
+
+        const namaProviderRowMobile = document.getElementById(
+          "nama-provider-row-mobile",
+        );
+        const detailNamaMobile = document.getElementById(
+          "detail-nama-provider-mobile",
+        );
+        namaProviderRowMobile.classList.remove("hidden");
+        detailNamaMobile.textContent = namaProvider || "-";
+      } else if (layanan) {
+        logoWrapper.innerHTML = `
+          <img
+            id="service-logo"
+            class="h-full w-fit shrink-0 object-contain"
+            src="${layanan.logo}"
+            alt="${layanan.nama}"
+          />
+        `;
+
+        logoWrapperMobile.innerHTML = `
+          <img
+            id="service-logo-mobile"
+            class="h-full w-fit shrink-0 object-contain"
+            src="${layanan.logo}"
+            alt="${layanan.nama}"
+          />
+        `;
+      }
 
       btnLanjut.addEventListener("click", (e) => {
         if (btnLanjut.dataset.active !== "true") {

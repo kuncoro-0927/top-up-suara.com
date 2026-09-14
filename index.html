@@ -8,7 +8,7 @@
   </head>
   <body>
     <header
-      class="bg-linear-to-r from-[#0088CE] to-[#5FB5B7] px-6 lg:px-40 text-white"
+      class="bg-linear-to-r from-[#0088CE] to-[#5FB5B7] px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 text-white"
     >
       <nav class="flex items-center py-4 justify-between">
         <img
@@ -16,7 +16,28 @@
           src="assets/images/logo_suara.com putih.png"
           alt="Logo Suara"
         />
-        <ul class="hidden lg:flex items-center font-medium gap-3">
+
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          class="md:hidden cursor-pointer"
+          aria-label="Open menu"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            fill="currentColor"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+            />
+          </svg>
+        </button>
+
+        <ul class="hidden md:flex items-center font-medium gap-3">
           <li class="hover:text-hitam duration-300">
             <a href="">Beranda</a>
           </li>
@@ -28,6 +49,69 @@
           </li>
         </ul>
       </nav>
+
+      <!-- MOBILE MENU -->
+      <div id="mobile-menu" class="fixed inset-0 z-[999] invisible">
+        <!-- Overlay -->
+        <div
+          id="mobile-overlay"
+          class="absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300"
+        ></div>
+
+        <!-- Side Menu -->
+        <div
+          id="mobile-menu-panel"
+          class="absolute right-4 rounded-2xl top-4 h-auto w-[72%] max-w-sm bg-white text-hitam shadow-2xl translate-x-full transition-transform duration-300 ease-out"
+        >
+          <!-- Header Menu -->
+          <div class="flex items-center justify-between px-6 py-5">
+            <span class="text-xl font-bold"> Menu </span>
+
+            <button
+              id="mobile-menu-close"
+              type="button"
+              class="flex items-center justify-center rounded-full bg-linear-to-r from-biru to-hijau text-white px-5 py-2 text-sm font-medium cursor-pointer transition"
+            >
+              Tutup
+            </button>
+          </div>
+
+          <div class="border border-black/10 mx-5"></div>
+
+          <!-- Divider -->
+          <div class="mx-6 border-b border-white/20"></div>
+
+          <!-- Menu Items -->
+          <ul class="px-6 py-3 space-y-2">
+            <li>
+              <a
+                href=""
+                class="block py-3 text-base font-medium hover:text-[#5FB5B7] transition"
+              >
+                Beranda
+              </a>
+            </li>
+
+            <li>
+              <a
+                href=""
+                class="block py-3 text-base font-medium hover:text-[#5FB5B7] transition"
+              >
+                Cek Status
+              </a>
+            </li>
+
+            <li>
+              <a
+                href=""
+                class="block py-3 text-base font-medium hover:text-[#5FB5B7] transition"
+              >
+                FAQ
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
 
       <div
         class="flex flex-col mt-6 lg:mt-0 lg:flex-row justify-between gap-10 items-center"
@@ -52,7 +136,7 @@
 
     <main class="text-hitam">
       <!-- SECTION TOP UP -->
-      <section class="px-6 lg:px-40 py-10">
+      <section class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 py-10">
         <div>
           <h2 class="text-2xl font-semibold mb-1">Pilih Layanan</h2>
           <span class="text-[#6c6c6c]"
@@ -63,7 +147,7 @@
         <div class="border border-black/20 mt-6 rounded-2xl">
           <div>
             <div
-              class="px-6 py-3 rounded-t-2xl bg-gray-100 flex items-center justify-between"
+              class="px-6 py-3 rounded-t-2xl bg-gray-100 flex flex-col md:flex-row items-start md:items-center justify-between"
             >
               <span class="font-semibold">E-Wallet</span
               ><span class="text-[#6c6c6c] text-sm"
@@ -71,11 +155,12 @@
               >
             </div>
             <div
-              class="p-6 grid grid-cols-2 lg:grid-cols-4 gap-3 border-b border-black/20"
+              class="p-4 lg:p-6 grid grid-cols-2 lg:grid-cols-4 gap-3 border-b border-black/20"
             >
               <!-- GOPAY -->
-              <div
-                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+              <a
+                href="input-data-e-wallet.html?service=gopay"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -88,12 +173,12 @@
                 </div>
 
                 <span class="font-medium text-[#6c6c6c]">Gopay</span>
-              </div>
+              </a>
 
               <!-- DANA -->
               <a
-                href="./pages/e-wallet/dana/step-2-pilih-nominal-dana.html"
-                class="wallet-card flex-col gap-3 relative w-full h-[120px] p-8 flex justify-center items-center rounded-2xl cursor-pointer"
+                href="input-data-e-wallet.html?service=dana"
+                class="wallet-card flex-col gap-3 relative w-full h-[120px] px-3 py-6 flex justify-center items-center rounded-2xl cursor-pointer hover:-translate-y-0.5 hover:shadow-md duration-200"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -109,8 +194,9 @@
               </a>
 
               <!-- OVO -->
-              <div
-                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+              <a
+                href="input-data-e-wallet.html?service=ovo"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -123,11 +209,12 @@
                 </div>
 
                 <span class="font-medium text-[#6c6c6c]">OVO</span>
-              </div>
+              </a>
 
               <!-- SHOPEEPAY -->
-              <div
-                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+              <a
+                href="input-data-e-wallet.html?service=shopeepay"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -140,11 +227,11 @@
                 </div>
 
                 <span class="font-medium text-[#6c6c6c]">Shopeepay</span>
-              </div>
+              </a>
             </div>
 
             <div
-              class="px-6 py-3 bg-gray-100 flex items-center justify-between"
+              class="px-6 py-3 bg-gray-100 flex flex-col md:flex-row items-start md:items-center justify-between"
             >
               <span class="font-semibold">Lainnya</span
               ><span class="text-[#6c6c6c] text-sm"
@@ -152,12 +239,12 @@
               >
             </div>
             <div
-              class="p-6 grid grid-cols-2 lg:grid-cols-4 items-stretch gap-3"
+              class="p-4 lg:p-6 grid grid-cols-2 lg:grid-cols-4 items-stretch gap-3"
             >
               <!-- TOKEN LISTRIK -->
               <a
-                href="/pages/pln/step-2-pilih-nominal-pln.html"
-                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+                href="input-data-pln.html?service=pln"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -176,8 +263,8 @@
 
               <!-- BPJS -->
               <a
-                href="/pages/bpjs/step-2-pilih-nominal-bpjs.html"
-                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+                href="input-data-bpjs.html?service=bpjs"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -196,8 +283,8 @@
 
               <!-- PAKET DATA -->
               <a
-                href="/pages/paket-data/step-2-pilih-nominal-paketdata.html"
-                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+                href="input-data-paket-data.html?service=paket_data"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -230,14 +317,16 @@
                   </svg>
                 </div>
 
-                <span class="font-medium text-[#6c6c6c]">Paket Data</span>
+                <span class="font-medium text-[#6c6c6c] text-center"
+                  >Paket Data</span
+                >
               </a>
 
               <!-- PULSA -->
 
               <a
-                href="pages/pulsa/step-2-pilih-nominal-pulsa.html"
-                class="wallet-card flex-col gap-3 relative w-full p-8 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+                href="input-data-pulsa.html?service=pulsa"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -278,7 +367,7 @@
       </section>
 
       <!-- SECTION WHY USE US -->
-      <section class="px-6 lg:px-40 py-10">
+      <section class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 py-10">
         <div>
           <h2 class="text-2xl font-semibold mb-1">
             Kenapa Harus Top Up & Bayar disini?
@@ -393,7 +482,7 @@
       </section>
 
       <!-- SECTION STEP TOP UP -->
-      <section class="px-6 lg:px-40 py-10">
+      <section class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 py-10">
         <div>
           <h2 class="text-2xl font-semibold mb-1">Cara Top Up & Bayar</h2>
           <span class="text-[#6c6c6c]"
@@ -480,7 +569,7 @@
       </section>
 
       <!-- SECTION FAQS -->
-      <section class="px-6 lg:px-40 py-10">
+      <section class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 py-10">
         <div>
           <h2 class="text-2xl font-semibold mb-1">Ada Pertanyaan?</h2>
           <span class="text-[#6c6c6c]"
@@ -565,9 +654,11 @@
       </section>
     </main>
 
-    <footer class="px-6 lg:px-40 pt-10 bg-hitam text-white">
+    <footer
+      class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 pt-10 bg-hitam text-white"
+    >
       <div
-        class="flex flex-col lg:flex-row items-start gap-10 lg:items-center justify-between"
+        class="flex flex-col md:flex-row items-start gap-10 md:items-center justify-between"
       >
         <div>
           <img
@@ -743,6 +834,44 @@
         >
       </div>
     </footer>
+
+    <script>
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const mobileMenuPanel = document.getElementById("mobile-menu-panel");
+      const mobileOverlay = document.getElementById("mobile-overlay");
+      const mobileMenuClose = document.getElementById("mobile-menu-close");
+
+      function openMobileMenu() {
+        mobileMenu.classList.remove("invisible");
+
+        setTimeout(() => {
+          mobileMenuPanel.classList.remove("translate-x-full");
+          mobileOverlay.classList.remove("opacity-0");
+        }, 10);
+
+        document.body.classList.add("overflow-hidden");
+      }
+
+      function closeMobileMenu() {
+        mobileMenuPanel.classList.add("translate-x-full");
+        mobileOverlay.classList.add("opacity-0");
+
+        setTimeout(() => {
+          mobileMenu.classList.add("invisible");
+        }, 300);
+
+        document.body.classList.remove("overflow-hidden");
+      }
+
+      mobileMenuBtn.addEventListener("click", openMobileMenu);
+
+      mobileMenuClose.addEventListener("click", closeMobileMenu);
+
+      mobileOverlay.addEventListener("click", closeMobileMenu);
+    </script>
+
+    <!-- SCRIPT ACCORDION FAQS -->
     <script>
       function toggleAccordion(header) {
         header.closest(".wrapper").classList.toggle("is-open");
