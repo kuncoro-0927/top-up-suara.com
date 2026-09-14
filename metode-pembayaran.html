@@ -1150,7 +1150,7 @@
       if (service === "paket_data") {
         logoWrapper.innerHTML = `
           <div class="flex h-10 w-full shrink-0 items-center justify-between">
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 shrink-0">
               ${paketDataIcon("desktop")}
               <span class="text-sm text-[#6c6c6c]">Paket Data</span>
             </div>
@@ -1164,9 +1164,9 @@
 
         logoWrapperMobile.innerHTML = `
           <div class="flex h-10 w-full shrink-0 items-center justify-between">
-            <div class="flex items-center gap-2">
+          <div class="flex items-center gap-2 shrink-0">
               ${paketDataIcon("mobile")}
-              <span class="text-sm text-[#6c6c6c]">Paket Data</span>
+              <span class="text-sm text-[#6c6c6c] whitespace-nowrap">Paket Data</span>
             </div>
             <img
               class="h-full w-fit shrink-0 object-contain"
@@ -1213,7 +1213,7 @@
       } else if (service === "pulsa") {
         logoWrapper.innerHTML = `
           <div class="flex h-10 w-full shrink-0 items-center justify-between">
-            <div class="flex items-center gap-2">
+           <div class="flex items-center gap-2 shrink-0">
               ${pulsaIcon("desktop")}
               <span class="text-sm text-[#6c6c6c]">Pulsa</span>
             </div>
@@ -1227,12 +1227,12 @@
 
         logoWrapperMobile.innerHTML = `
           <div class="flex h-10 w-full shrink-0 items-center justify-between">
-            <div class="flex items-center gap-2">
+          <div class="flex items-center gap-2 shrink-0">
               ${pulsaIcon("mobile")}
-              <span class="text-sm text-[#6c6c6c]">Pulsa</span>
+              <span class="text-sm text-[#6c6c6c] whitespace-nowrap">Pulsa</span>
             </div>
             <img
-              class="h-full w-fit shrink-0 object-contain"
+         class="h-full w-fit shrink-0 object-contain"
               src="/assets/images/Logo-XL.svg"
               alt="Logo XL"
             />

@@ -76,7 +76,7 @@
           </div>
           <div class="border border-black/20 rounded-2xl flex-1 flex flex-col">
             <div
-              class="px-6 py-3 rounded-t-2xl bg-gray-100 flex items-center justify-between"
+              class="px-6 py-3 rounded-t-2xl bg-gray-100 flex flex-col md:flex-row items-start md:items-center justify-between"
             >
               <span class="font-semibold">Nominal Top Up</span
               ><span class="text-[#6c6c6c] text-sm"
@@ -90,7 +90,10 @@
             >
               Silahkan masukkan nomor terlebih dahulu
             </div>
-            <div id="nominal-grid" class="p-6 grid grid-cols-4 gap-3 hidden">
+            <div
+              id="nominal-grid"
+              class="p-4 md:p-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 hidden text-center"
+            >
               <div
                 class="wallet-card flex-col relative w-full px-3 py-6 h-[60px] flex justify-center items-center rounded-2xl cursor-pointer"
                 data-amount="10000"
@@ -640,7 +643,8 @@
             <div
               class="flex h-10 w-full shrink-0 items-center justify-between mb-3"
             >
-              <div class="flex items-center gap-2">
+              <!-- Kiri -->
+              <div class="flex items-center gap-2 shrink-0">
                 <!-- icon paket data -->
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -668,11 +672,16 @@
                     d="M13.229 8.271a.482.482 0 0 0-.063-.745A9.46 9.46 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.576 1.336c.206.132.48.108.653-.065m-2.183 2.183c.226-.226.185-.605-.1-.75A6.5 6.5 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.407.19.611.09A5.5 5.5 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.61-.091zM9.06 12.44c.196-.196.198-.52-.04-.66A2 2 0 0 0 8 11.5a2 2 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .707 0l.707-.707z"
                   />
                 </svg>
-                <span class="text-sm text-[#6c6c6c]">Paket Data</span>
+
+                <span class="text-sm text-[#6c6c6c] whitespace-nowrap">
+                  Paket Data
+                </span>
               </div>
+
+              <!-- Kanan -->
               <img
                 id="logo-provider-mobile"
-                class="h-full w-fit shrink-0 object-contain hidden"
+                class="h-10 w-auto shrink-0 object-contain hidden"
                 src="/assets/images/Logo-XL.svg"
                 alt="Logo XL"
               />
@@ -985,7 +994,7 @@
               <!-- GOPAY -->
               <a
                 href="input-data-e-wallet.html?service=gopay"
-                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer hover:-translate-y-0.5 hover:shadow-md duration-200"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -1021,7 +1030,7 @@
               <!-- OVO -->
               <a
                 href="input-data-e-wallet.html?service=ovo"
-                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer hover:-translate-y-0.5 hover:shadow-md duration-200"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -1039,7 +1048,7 @@
               <!-- SHOPEEPAY -->
               <a
                 href="input-data-e-wallet.html?service=shopeepay"
-                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer hover:-translate-y-0.5 hover:shadow-md duration-200"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -1069,7 +1078,7 @@
               <!-- TOKEN LISTRIK -->
               <a
                 href="input-data-pln.html?service=pln"
-                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer hover:-translate-y-0.5 hover:shadow-md duration-200"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -1089,7 +1098,7 @@
               <!-- BPJS -->
               <a
                 href="input-data-bpjs.html?service=bpjs"
-                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer hover:-translate-y-0.5 hover:shadow-md duration-200"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -1109,7 +1118,7 @@
               <!-- PAKET DATA -->
               <a
                 href="input-data-paket-data.html?service=paket_data"
-                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer hover:-translate-y-0.5 hover:shadow-md duration-200"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
@@ -1151,7 +1160,7 @@
 
               <a
                 href="input-data-pulsa.html?service=pulsa"
-                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer"
+                class="wallet-card flex-col gap-3 relative w-full px-3 py-6 h-[120px] flex justify-center items-center rounded-2xl cursor-pointer hover:-translate-y-0.5 hover:shadow-md duration-200"
               >
                 <div
                   class="h-10 w-full flex items-center justify-center shrink-0"
