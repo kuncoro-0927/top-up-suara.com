@@ -475,152 +475,152 @@
 
     <script src="/data/layanan-config.js"></script>
     <script>
-            const params = new URLSearchParams(window.location.search);
-            const service = params.get("service");
-            const nomor = params.get("nomor");
-            const amount = params.get("amount"); // nominal
-            const admin = params.get("admin"); // biaya admin
-            const total = params.get("total"); // nominal + admin
-            const method = params.get("method");
-            const jenis = params.get("jenis"); // khusus PLN: "token" / "tagihan"
-            const nama = params.get("nama"); // khusus PLN: nama pemilik
-            const jumlahBulan = params.get("jumlah_bulan"); // khusus PLN: nama pemilik
-            const namaProvider = params.get("namaProvider"); // khusus PAKET DATA: jumlah-bulan
-            const jumlahKuota = params.get("jumlahKuota"); // khusus PAKET DATA: jumlah-bulan
-            const detailToken = params.get("detailToken");
-            // generate dummy ID transaksi & tanggal, HANYA SEKALI saat halaman ini pertama kali dimuat
-            function generateTrxId() {
-              const random = Math.random().toString(36).substring(2, 8).toUpperCase();
-              return `SUA-${Date.now()}-${random}`;
-            }
+      const params = new URLSearchParams(window.location.search);
+      const service = params.get("service");
+      const nomor = params.get("nomor");
+      const amount = params.get("amount"); // nominal
+      const admin = params.get("admin"); // biaya admin
+      const total = params.get("total"); // nominal + admin
+      const method = params.get("method");
+      const jenis = params.get("jenis"); // khusus PLN: "token" / "tagihan"
+      const nama = params.get("nama"); // khusus PLN: nama pemilik
+      const jumlahBulan = params.get("jumlah_bulan"); // khusus PLN: nama pemilik
+      const namaProvider = params.get("namaProvider"); // khusus PAKET DATA: jumlah-bulan
+      const jumlahKuota = params.get("jumlahKuota"); // khusus PAKET DATA: jumlah-bulan
+      const detailToken = params.get("detailToken");
+      // generate dummy ID transaksi & tanggal, HANYA SEKALI saat halaman ini pertama kali dimuat
+      function generateTrxId() {
+        const random = Math.random().toString(36).substring(2, 8).toUpperCase();
+        return `SUA-${Date.now()}-${random}`;
+      }
 
-            function generateTanggal() {
-              const now = new Date();
-              return now.toLocaleString("id-ID", {
-                day: "2-digit",
-                month: "2-digit",
-                year: "numeric",
-                hour: "2-digit",
-                minute: "2-digit",
-              });
-            }
+      function generateTanggal() {
+        const now = new Date();
+        return now.toLocaleString("id-ID", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+      }
 
-            const id = generateTrxId();
-            const tanggal = generateTanggal();
+      const id = generateTrxId();
+      const tanggal = generateTanggal();
 
-            document.getElementById("detail-trx-id").textContent = id;
-            document.getElementById("detail-tanggal").textContent = tanggal;
+      document.getElementById("detail-trx-id").textContent = id;
+      document.getElementById("detail-tanggal").textContent = tanggal;
 
-            const METHOD_CONFIG = {
-              qris: { logo: "/assets/images/QRIS.svg", label: "Pembayaran via QRIS" },
-              bca: {
-                logo: "/assets/images/bank-transfer/BCA.svg",
-                label: "Pembayaran via BCA",
-              },
-              bni: {
-                logo: "/assets/images/bank-transfer/BNI.svg",
-                label: "Pembayaran via BNI",
-              },
-              bri: {
-                logo: "/assets/images/bank-transfer/BRI.svg",
-                label: "Pembayaran via BRI",
-              },
-              mandiri: {
-                logo: "/assets/images/bank-transfer/Mandiri.svg",
-                label: "Pembayaran via Mandiri",
-              },
-              dana: {
-                logo: "/assets/images/e-wallet/Dana.svg",
-                label: "Pembayaran via DANA",
-              },
-              gopay: {
-                logo: "/assets/images/e-wallet/Gopay.svg",
-                label: "Pembayaran via Gopay",
-              },
-              ovo: {
-                logo: "/assets/images/e-wallet/OVO.svg",
-                label: "Pembayaran via OVO",
-              },
-              shopeepay: {
-                logo: "/assets/images/e-wallet/ShopeePay.svg",
-                label: "Pembayaran via ShopeePay",
-              },
-            };
+      const METHOD_CONFIG = {
+        qris: { logo: "/assets/images/QRIS.svg", label: "Pembayaran via QRIS" },
+        bca: {
+          logo: "/assets/images/bank-transfer/BCA.svg",
+          label: "Pembayaran via BCA",
+        },
+        bni: {
+          logo: "/assets/images/bank-transfer/BNI.svg",
+          label: "Pembayaran via BNI",
+        },
+        bri: {
+          logo: "/assets/images/bank-transfer/BRI.svg",
+          label: "Pembayaran via BRI",
+        },
+        mandiri: {
+          logo: "/assets/images/bank-transfer/Mandiri.svg",
+          label: "Pembayaran via Mandiri",
+        },
+        dana: {
+          logo: "/assets/images/e-wallet/Dana.svg",
+          label: "Pembayaran via DANA",
+        },
+        gopay: {
+          logo: "/assets/images/e-wallet/Gopay.svg",
+          label: "Pembayaran via Gopay",
+        },
+        ovo: {
+          logo: "/assets/images/e-wallet/OVO.svg",
+          label: "Pembayaran via OVO",
+        },
+        shopeepay: {
+          logo: "/assets/images/e-wallet/ShopeePay.svg",
+          label: "Pembayaran via ShopeePay",
+        },
+      };
 
-            const methodLogo = document.getElementById("method-logo");
-            const methodLabel = document.getElementById("method-label");
-            const methodConfig = METHOD_CONFIG[method]; // 'method' dari params.get("method")
+      const methodLogo = document.getElementById("method-logo");
+      const methodLabel = document.getElementById("method-label");
+      const methodConfig = METHOD_CONFIG[method]; // 'method' dari params.get("method")
 
-            if (methodConfig) {
-              methodLogo.src = methodConfig.logo;
-              methodLogo.alt = methodConfig.label;
-              methodLabel.textContent = methodConfig.label;
-            } else {
-              // fallback kalau method tidak dikenali / query kosong
-              methodLogo.src = "/assets/images/QRIS.svg";
-              methodLabel.textContent = "Pembayaran";
-            }
-            const layanan = LAYANAN_CONFIG[service];
-            const logoWrapper = document.getElementById("service-logo-wrapper"); // pindah ke sini
+      if (methodConfig) {
+        methodLogo.src = methodConfig.logo;
+        methodLogo.alt = methodConfig.label;
+        methodLabel.textContent = methodConfig.label;
+      } else {
+        // fallback kalau method tidak dikenali / query kosong
+        methodLogo.src = "/assets/images/QRIS.svg";
+        methodLabel.textContent = "Pembayaran";
+      }
+      const layanan = LAYANAN_CONFIG[service];
+      const logoWrapper = document.getElementById("service-logo-wrapper"); // pindah ke sini
 
-            if (layanan) {
-              document.getElementById("service-logo").src = layanan.logo;
-              document.getElementById("service-logo").alt = layanan.nama;
-              document.getElementById("service-nama").textContent = layanan.nama;
-            }
+      if (layanan) {
+        document.getElementById("service-logo").src = layanan.logo;
+        document.getElementById("service-logo").alt = layanan.nama;
+        document.getElementById("service-nama").textContent = layanan.nama;
+      }
 
-            document.getElementById("detail-nomor").textContent = nomor;
-            document.getElementById("detail-nominal").textContent =
-              "Rp " + Number(amount).toLocaleString("id-ID");
-            document.getElementById("detail-biaya-admin").textContent =
-              "Rp " + Number(admin).toLocaleString("id-ID");
-            document.getElementById("detail-total").textContent =
-              "Rp " + Number(total).toLocaleString("id-ID");
+      document.getElementById("detail-nomor").textContent = nomor;
+      document.getElementById("detail-nominal").textContent =
+        "Rp " + Number(amount).toLocaleString("id-ID");
+      document.getElementById("detail-biaya-admin").textContent =
+        "Rp " + Number(admin).toLocaleString("id-ID");
+      document.getElementById("detail-total").textContent =
+        "Rp " + Number(total).toLocaleString("id-ID");
 
-            if (service === "pln") {
-              document.getElementById("label-nomor").textContent = "ID Pelanggan";
+      if (service === "pln") {
+        document.getElementById("label-nomor").textContent = "ID Pelanggan";
 
-              const jenisRow = document.getElementById("jenis-listrik-row");
-              const detailJenis = document.getElementById("detail-jenis-listrik");
-              jenisRow.classList.remove("hidden");
-              detailJenis.textContent =
-                jenis === "tagihan" ? "Tagihan Listrik" : "Token Listrik";
+        const jenisRow = document.getElementById("jenis-listrik-row");
+        const detailJenis = document.getElementById("detail-jenis-listrik");
+        jenisRow.classList.remove("hidden");
+        detailJenis.textContent =
+          jenis === "tagihan" ? "Tagihan Listrik" : "Token Listrik";
 
-              const namaRow = document.getElementById("nama-pemilik-row");
-              const detailNama = document.getElementById("detail-nama-pemilik");
-              namaRow.classList.remove("hidden");
-              detailNama.textContent = nama || "-";
+        const namaRow = document.getElementById("nama-pemilik-row");
+        const detailNama = document.getElementById("detail-nama-pemilik");
+        namaRow.classList.remove("hidden");
+        detailNama.textContent = nama || "-";
 
-              const tokenRow = document.getElementById("token-listrik-row");
-              const detailToken = document.getElementById("detail-token-listrik");
-              tokenRow.classList.remove("hidden");
-              detailToken.textContent = "0823 4546 4646 2333 0900";
+        const tokenRow = document.getElementById("token-listrik-row");
+        const detailToken = document.getElementById("detail-token-listrik");
+        tokenRow.classList.remove("hidden");
+        detailToken.textContent = "0823 4546 4646 2333 0900";
 
-              // TAMBAHAN: tampilkan box PLN Token khusus kalau jenisnya "token"
-              if (jenis === "token") {
-                const plnTokenSection = document.getElementById("pln-token-section");
-                const plnTokenNumber = document.getElementById("pln-token-number");
-                plnTokenSection.classList.remove("hidden");
-                plnTokenNumber.textContent = detailToken.textContent;
-              }
-            }
-            if (service === "bpjs") {
-              document.getElementById("label-nomor").textContent = "Nomor VA";
+        // TAMBAHAN: tampilkan box PLN Token khusus kalau jenisnya "token"
+        if (jenis === "token") {
+          const plnTokenSection = document.getElementById("pln-token-section");
+          const plnTokenNumber = document.getElementById("pln-token-number");
+          plnTokenSection.classList.remove("hidden");
+          plnTokenNumber.textContent = detailToken.textContent;
+        }
+      }
+      if (service === "bpjs") {
+        document.getElementById("label-nomor").textContent = "Nomor VA";
 
-              const namaRow = document.getElementById("nama-peserta-row");
-              const detailNama = document.getElementById("detail-nama-peserta");
-              namaRow.classList.remove("hidden");
-              detailNama.textContent = nama || "-";
+        const namaRow = document.getElementById("nama-peserta-row");
+        const detailNama = document.getElementById("detail-nama-peserta");
+        namaRow.classList.remove("hidden");
+        detailNama.textContent = nama || "-";
 
-              const bulanRow = document.getElementById("jumlah-bulan-row");
-              const detailJumlahBulan = document.getElementById(
-                "detail-jumlah-bulan",
-              );
-              bulanRow.classList.remove("hidden");
-              detailJumlahBulan.textContent = jumlahBulan || "-";
-            }
+        const bulanRow = document.getElementById("jumlah-bulan-row");
+        const detailJumlahBulan = document.getElementById(
+          "detail-jumlah-bulan",
+        );
+        bulanRow.classList.remove("hidden");
+        detailJumlahBulan.textContent = jumlahBulan || "-";
+      }
 
-            const PAKET_DATA_ICON = `
+      const PAKET_DATA_ICON = `
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="w-10 h-10 shrink-0">
           <defs>
             <linearGradient id="phoneGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -633,7 +633,7 @@
         </svg>
       `;
 
-            const PAKET_PULSA_ICON = `
+      const PAKET_PULSA_ICON = `
           <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 16 16"
@@ -662,8 +662,8 @@
                       </svg>
       `;
 
-            if (service === "paket_data") {
-              logoWrapper.innerHTML = `
+      if (service === "paket_data") {
+        logoWrapper.innerHTML = `
           <div class="flex h-10 w-full  shrink-0 items-center justify-between">
             <div class="flex items-center gap-2">
               ${PAKET_DATA_ICON}
@@ -672,15 +672,15 @@
             <img class="h-full w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
           </div>
         `;
-              document.getElementById("label-nomor").textContent = "Nomor Tujuan";
-              document.getElementById("nama-provider-row").classList.remove("hidden");
-              document.getElementById("detail-nama-provider").textContent =
-                namaProvider || "-";
-              document.getElementById("jumlah-kuota-row").classList.remove("hidden");
-              document.getElementById("detail-jumlah-kuota").textContent =
-                jumlahKuota || "-";
-            } else if (service === "pulsa") {
-              logoWrapper.innerHTML = `
+        document.getElementById("label-nomor").textContent = "Nomor Tujuan";
+        document.getElementById("nama-provider-row").classList.remove("hidden");
+        document.getElementById("detail-nama-provider").textContent =
+          namaProvider || "-";
+        document.getElementById("jumlah-kuota-row").classList.remove("hidden");
+        document.getElementById("detail-jumlah-kuota").textContent =
+          jumlahKuota || "-";
+      } else if (service === "pulsa") {
+        logoWrapper.innerHTML = `
           <div class="flex h-10 w-full shrink-0 items-center justify-between">
             <div class="flex items-center gap-2">
               ${PAKET_PULSA_ICON}
@@ -689,39 +689,40 @@
             <img class="h-full w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
           </div>
         `;
-              document.getElementById("label-nomor").textContent = "Nomor Tujuan";
-              document.getElementById("nama-provider-row").classList.remove("hidden");
-              document.getElementById("detail-nama-provider").textContent =
-                namaProvider || "-";
-            } else if (layanan) {
-            <img id="service-logo" class="h-full w-fit shrink-0 object-contain mr-auto" src="${layanan.logo}" alt="${layanan.nama}" />
+        document.getElementById("label-nomor").textContent = "Nomor Tujuan";
+        document.getElementById("nama-provider-row").classList.remove("hidden");
+        document.getElementById("detail-nama-provider").textContent =
+          namaProvider || "-";
+      } else if (layanan) {
+        logoWrapper.innerHTML = `
+            <img id="service-logo" class="h-full w-fit shrink-0 object-contain self-start" src="${layanan.logo}" alt="${layanan.nama}" />
         `;
-            }
-            const btnDetailaTransaksi = document.getElementById(
-              "btn-detail-transaksi",
-            );
+      }
+      const btnDetailaTransaksi = document.getElementById(
+        "btn-detail-transaksi",
+      );
 
-            if (btnDetailaTransaksi) {
-              const query = new URLSearchParams({
-                id: id,
-                tanggal: tanggal,
-                service: service,
-                nomor: nomor,
-                amount: amount,
-                admin: admin,
-                total: total,
-                method: method,
-              });
+      if (btnDetailaTransaksi) {
+        const query = new URLSearchParams({
+          id: id,
+          tanggal: tanggal,
+          service: service,
+          nomor: nomor,
+          amount: amount,
+          admin: admin,
+          total: total,
+          method: method,
+        });
 
-              if (detailToken) query.set("detailToken", detailToken);
-              if (jenis) query.set("jenis", jenis);
-              if (nama) query.set("nama", nama);
-              if (jumlahBulan) query.set("jumlah_bulan", jumlahBulan);
-              if (namaProvider) query.set("namaProvider", namaProvider);
-              if (jumlahKuota) query.set("jumlahKuota", jumlahKuota);
+        if (detailToken) query.set("detailToken", detailToken);
+        if (jenis) query.set("jenis", jenis);
+        if (nama) query.set("nama", nama);
+        if (jumlahBulan) query.set("jumlah_bulan", jumlahBulan);
+        if (namaProvider) query.set("namaProvider", namaProvider);
+        if (jumlahKuota) query.set("jumlahKuota", jumlahKuota);
 
-              btnDetailaTransaksi.href = `/detail-transaksi.html?${query.toString()}`;
-            }
+        btnDetailaTransaksi.href = `/detail-transaksi.html?${query.toString()}`;
+      }
     </script>
   </body>
 </html>
