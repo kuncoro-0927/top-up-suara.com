@@ -98,13 +98,22 @@
             </div>
             <span
               class="font-medium text-sm text-[#6c6c6c] max-w-xs text-center mt-6"
-              >Pembayaran berhasil diproses.
-              <span class="font-semibold text-hitam"
-                >Saldo sudah ditambahkan ke akunmu.</span
-              >
-              Terima kasih telah bertransaksi.</span
+              >Pembayaran berhasil diproses. Terima kasih telah
+              bertransaksi.</span
             >
 
+            <div
+              id="pln-token-section"
+              class="mt-3 flex flex-col items-center gap-3 hidden"
+            >
+              <span class="text-sm font-medium text-[#6c6c6c]">PLN Token</span>
+              <div
+                class="btn-gradient-border shadow-sm flex flex-col items-center gap-1 bg-linear-to-r from-biru to-hijau bg-clip-text text-transparent hover:shadow-md hover:-translate-y-0.5 duration-200 px-6 py-3 rounded-2xl"
+              >
+                <span id="pln-token-number" class="font-medium"> </span>
+                <span class="text-sm"> Klik untuk salin nomor </span>
+              </div>
+            </div>
             <a
               href="/index.html"
               class="px-6 py-3 rounded-xl font-medium bg-linear-to-r from-biru to-hijau w-fit text-white mt-3 cursor-pointer hover:-translate-y-0.5 duration-200 hover:shadow-md"
@@ -115,7 +124,9 @@
         </div>
 
         <!-- BAGIAN KANAN -->
-        <div class="flex flex-col gap-2 lg:max-w-[350px] w-full">
+        <div
+          class="flex flex-col gap-2 lg:max-w-[350px] xl:max-w-[400px] 2xl:max-w-[500px] w-full"
+        >
           <div
             class="border border-black/20 p-6 rounded-2xl h-full flex flex-col"
           >
@@ -213,6 +224,15 @@
 
             <!-- khusus PLN: Jenis Listrik -->
             <div
+              id="token-listrik-row"
+              class="flex justify-between text-sm mt-3 hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">PLN Token</span>
+              <span id="detail-token-listrik" class="font-medium"></span>
+            </div>
+
+            <!-- khusus PLN: Jenis Listrik -->
+            <div
               id="jenis-listrik-row"
               class="flex justify-between text-sm mt-3 hidden"
             >
@@ -258,7 +278,7 @@
               </div>
               <a
                 id="btn-detail-transaksi"
-                href="step-6-detail-transaksi-paketdata.html"
+                href="/detail-transaksi.html"
                 class="btn-gradient-border flex justify-center items-center w-full px-6 py-3 rounded-xl font-medium cursor-pointer hover:-translate-y-0.5 hover:shadow-md duration-200"
               >
                 <span
@@ -467,7 +487,7 @@
       const jumlahBulan = params.get("jumlah_bulan"); // khusus PLN: nama pemilik
       const namaProvider = params.get("namaProvider"); // khusus PAKET DATA: jumlah-bulan
       const jumlahKuota = params.get("jumlahKuota"); // khusus PAKET DATA: jumlah-bulan
-
+      const detailToken = params.get("detailToken");
       // generate dummy ID transaksi & tanggal, HANYA SEKALI saat halaman ini pertama kali dimuat
       function generateTrxId() {
         const random = Math.random().toString(36).substring(2, 8).toUpperCase();
@@ -570,8 +590,20 @@
         const detailNama = document.getElementById("detail-nama-pemilik");
         namaRow.classList.remove("hidden");
         detailNama.textContent = nama || "-";
-      }
 
+        const tokenRow = document.getElementById("token-listrik-row");
+        const detailToken = document.getElementById("detail-token-listrik");
+        tokenRow.classList.remove("hidden");
+        detailToken.textContent = "0823 4546 4646 2333 0900";
+
+        // TAMBAHAN: tampilkan box PLN Token khusus kalau jenisnya "token"
+        if (jenis === "token") {
+          const plnTokenSection = document.getElementById("pln-token-section");
+          const plnTokenNumber = document.getElementById("pln-token-number");
+          plnTokenSection.classList.remove("hidden");
+          plnTokenNumber.textContent = detailToken.textContent;
+        }
+      }
       if (service === "bpjs") {
         document.getElementById("label-nomor").textContent = "Nomor VA";
 
@@ -682,6 +714,7 @@
           method: method,
         });
 
+        if (detailToken) query.set("detailToken", detailToken);
         if (jenis) query.set("jenis", jenis);
         if (nama) query.set("nama", nama);
         if (jumlahBulan) query.set("jumlah_bulan", jumlahBulan);

@@ -56,9 +56,7 @@
         class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 py-10 flex flex-col lg:flex-row items-stretch gap-6"
       >
         <!-- BAGIAN KIRI -->
-        <div
-          class="border max-w-2xl w-full border-black/20 rounded-2xl flex flex-col"
-        >
+        <div class="border w-full border-black/20 rounded-2xl flex flex-col">
           <!-- BRI -->
           <div
             class="px-6 py-3 h-12 shrink-0 rounded-t-2xl bg-gray-100 flex items-center justify-between"
@@ -75,7 +73,7 @@
           <div
             class="border m-6 border-black/20 flex-col p-4 gap-3 flex items-center justify-center rounded-2xl flex-1"
           >
-            <span class="font-medium text-sm text-center"
+            <span class="font-medium text-sm xl:text-base max-w-md text-center"
               >Scan atau download QR Code untuk pembayaran Anda melalui Mobile
               Banking BRI.</span
             >
@@ -106,7 +104,9 @@
         </div>
 
         <!-- BAGIAN KANAN -->
-        <div class="flex flex-col gap-2 lg:max-w-[350px] w-full">
+        <div
+          class="flex flex-col gap-2 lg:max-w-[350px] xl:max-w-[400px] 2xl:max-w-[500px] w-full"
+        >
           <div
             class="border border-black/20 p-6 rounded-2xl h-full flex flex-col"
           >
@@ -116,7 +116,7 @@
 
             <div
               id="service-logo-wrapper"
-              class="h-10 w-fit items-start shrink-0 mb-3 self-start"
+              class="h-10 w-full items-start shrink-0 mb-3 self-start"
             >
               <img
                 id="service-logo"
@@ -479,45 +479,6 @@
   </svg>
 `;
 
-      if (service === "paket_data") {
-        logoWrapper.innerHTML = `
-    <div class="flex h-10 w-full shrink-0 items-center justify-between">
-      <div class="flex items-center gap-2">
-        ${PAKET_DATA_ICON}
-        <span class="text-sm text-[#6c6c6c]">Paket Data</span>
-      </div>
-      <img
-        class="h-full w-fit shrink-0 object-contain"
-        src="/assets/images/Logo-XL.svg"
-        alt="Logo XL"
-      />
-    </div>
-  `;
-
-        document.getElementById("label-nomor").textContent = "Nomor Tujuan";
-
-        const namaProviderRow = document.getElementById("nama-provider-row");
-        const detailNama = document.getElementById("detail-nama-provider");
-        namaProviderRow.classList.remove("hidden");
-        detailNama.textContent = namaProvider || "-";
-
-        const kuotaRow = document.getElementById("jumlah-kuota-row");
-        const detailJumlahKuota = document.getElementById(
-          "detail-jumlah-kuota",
-        );
-        kuotaRow.classList.remove("hidden");
-        detailJumlahKuota.textContent = jumlahKuota || "-";
-      } else if (layanan) {
-        logoWrapper.innerHTML = `
-    <img
-      id="service-logo"
-      class="h-full w-fit shrink-0 object-contain"
-      src="${layanan.logo}"
-      alt="${layanan.nama}"
-    />
-  `;
-      }
-
       const PAKET_PULSA_ICON = `
     <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -547,38 +508,42 @@
                 </svg>
 `;
 
-      if (service === "pulsa") {
+      if (service === "paket_data") {
+        logoWrapper.innerHTML = `
+    <div class="flex h-10 w-full  shrink-0 items-center justify-between">
+      <div class="flex items-center gap-2">
+        ${PAKET_DATA_ICON}
+        <span class="text-sm text-[#6c6c6c]">Paket Data</span>
+      </div>
+      <img class="h-full w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
+    </div>
+  `;
+        document.getElementById("label-nomor").textContent = "Nomor Tujuan";
+        document.getElementById("nama-provider-row").classList.remove("hidden");
+        document.getElementById("detail-nama-provider").textContent =
+          namaProvider || "-";
+        document.getElementById("jumlah-kuota-row").classList.remove("hidden");
+        document.getElementById("detail-jumlah-kuota").textContent =
+          jumlahKuota || "-";
+      } else if (service === "pulsa") {
         logoWrapper.innerHTML = `
     <div class="flex h-10 w-full shrink-0 items-center justify-between">
       <div class="flex items-center gap-2">
         ${PAKET_PULSA_ICON}
-        <span class="text-sm text-[#6c6c6c]">Paket Data</span>
+        <span class="text-sm text-[#6c6c6c]">Pulsa</span>
       </div>
-      <img
-        class="h-full w-fit shrink-0 object-contain"
-        src="/assets/images/Logo-XL.svg"
-        alt="Logo XL"
-      />
+      <img class="h-full w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
     </div>
   `;
-
         document.getElementById("label-nomor").textContent = "Nomor Tujuan";
-
-        const namaProviderRow = document.getElementById("nama-provider-row");
-        const detailNama = document.getElementById("detail-nama-provider");
-        namaProviderRow.classList.remove("hidden");
-        detailNama.textContent = namaProvider || "-";
+        document.getElementById("nama-provider-row").classList.remove("hidden");
+        document.getElementById("detail-nama-provider").textContent =
+          namaProvider || "-";
       } else if (layanan) {
         logoWrapper.innerHTML = `
-    <img
-      id="service-logo"
-      class="h-full w-fit shrink-0 object-contain"
-      src="${layanan.logo}"
-      alt="${layanan.nama}"
-    />
+    <img id="service-logo" class="h-full w-fit shrink-0 object-contain" src="${layanan.logo}" alt="${layanan.nama}" />
   `;
       }
-
       const btnRefreshStatus = document.getElementById("btn-refresh-status");
 
       if (btnRefreshStatus) {

@@ -199,6 +199,15 @@
               <span class="text-sm text-[#6c6c6c]">Jumlah Bulan</span>
               <span id="detail-jumlah-bulan" class="font-medium"></span>
             </div>
+
+            <!-- khusus PLN: Jenis Listrik -->
+            <div
+              id="token-listrik-row"
+              class="flex justify-between text-sm mt-3 hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">PLN Token</span>
+              <span id="detail-token-listrik" class="font-medium"></span>
+            </div>
             <!-- khusus PLN: Jenis Listrik -->
             <div
               id="jenis-listrik-row"
@@ -466,12 +475,13 @@
       const jumlahBulan = params.get("jumlah_bulan"); // khusus PLN: nama pemilik
       const namaProvider = params.get("namaProvider"); // khusus PAKET DATA: jumlah-bulan
       const jumlahKuota = params.get("jumlahKuota"); // khusus PAKET DATA: jumlah-bulan
+      const detailToken = params.get("detailToken"); // khusus PLN
 
       // label yang ditampilkan ke user, sesuaikan dengan key data-metode di step 3
       const METODE_LABEL = {
         qris: "QRIS",
         gopay: "Gopay",
-        dana: "DANA (QR)",
+        dana: "DANA",
         ovo: "OVO",
         shopeepay: "Shopeepay",
         bca: "BCA (QR)",
@@ -516,6 +526,11 @@
         const detailNama = document.getElementById("detail-nama-pemilik");
         namaRow.classList.remove("hidden");
         detailNama.textContent = nama || "-";
+
+        const tokenRow = document.getElementById("token-listrik-row");
+        const detailToken = document.getElementById("detail-token-listrik");
+        tokenRow.classList.remove("hidden");
+        detailToken.textContent = "0823 4546 4646 2333 0900";
       }
 
       if (service === "bpjs") {
