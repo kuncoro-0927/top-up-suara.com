@@ -172,7 +172,7 @@
                 </div>
 
                 <span class="font-medium text-sm text-[#6c6c6c] text-center"
-                  >DANA</span
+                  >DANA (QR)</span
                 >
                 <span class="gradient-badge">
                   <svg
@@ -449,7 +449,7 @@
 
         <!-- BAGIAN KANAN -->
         <div
-          class="hidden sticky top-10 self-start lg:flex flex-col gap-2 lg:max-w-[350px] xl:max-w-[400px] 2xl:max-w-[500px] w-full"
+          class="hidden sticky top-10 self-start lg:flex flex-col gap-2 lg:max-w-[350px] w-full"
         >
           <div
             class="border border-black/20 p-6 rounded-2xl h-full flex flex-col"
@@ -1148,13 +1148,6 @@
       // UBAH: digabung jadi satu rantai if/else if — cuma satu blok yang jalan,
       // jadi logoWrapper/logoWrapperMobile tidak bisa ketiban blok lain lagi
       if (service === "paket_data") {
-        logoWrapperMobile.classList.add(
-          "flex",
-          "items-center",
-          "justify-between",
-        );
-        logoWrapperMobile.classList.remove("justify-start");
-
         logoWrapper.innerHTML = `
           <div class="flex h-10 w-full shrink-0 items-center justify-between">
             <div class="flex items-center gap-2 shrink-0">
@@ -1218,13 +1211,6 @@
         kuotaRowMobile.classList.remove("hidden");
         detailJumlahKuotaMobile.textContent = jumlahKuota || "-";
       } else if (service === "pulsa") {
-        logoWrapperMobile.classList.add(
-          "flex",
-          "items-center",
-          "justify-between",
-        );
-        logoWrapperMobile.classList.remove("justify-start");
-
         logoWrapper.innerHTML = `
           <div class="flex h-10 w-full shrink-0 items-center justify-between">
            <div class="flex items-center gap-2 shrink-0">
@@ -1272,9 +1258,6 @@
         namaProviderRowMobile.classList.remove("hidden");
         detailNamaMobile.textContent = namaProvider || "-";
       } else if (layanan) {
-        logoWrapper.classList.remove("justify-between");
-        logoWrapper.classList.add("justify-start");
-
         logoWrapper.innerHTML = `
           <img
             id="service-logo"
@@ -1285,15 +1268,13 @@
         `;
 
         logoWrapperMobile.innerHTML = `
-    <div class="flex h-8 w-full shrink-0 items-center justify-start">
-      <img
-        id="service-logo-mobile"
-        class="h-full w-fit shrink-0 object-contain"
-        src="${layanan.logo}"
-        alt="${layanan.nama}"
-      />
-    </div>
-  `;
+          <img
+            id="service-logo-mobile"
+            class="h-full w-fit shrink-0 object-contain"
+            src="${layanan.logo}"
+            alt="${layanan.nama}"
+          />
+        `;
       }
 
       btnLanjut.addEventListener("click", (e) => {
