@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pembayaran via DANA</title>
-    <link rel="stylesheet" href="/assets/css/output.css" />
+    <link rel="stylesheet" href="../../assets/css/output.css" />
   </head>
   <body>
     <header>
@@ -52,7 +52,9 @@
       </nav>
     </header>
     <main>
-      <section class="px-40 py-10 flex items-stretch gap-6">
+      <section
+        class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 py-10 flex flex-col lg:flex-row items-stretch gap-6"
+      >
         <!-- BAGIAN KIRI -->
         <div
           class="border max-w-2xl w-full border-black/20 rounded-2xl flex flex-col"
@@ -114,7 +116,10 @@
             <h2 class="text-lg font-semibold">Ringkasan Transaksi</h2>
             <div class="border border-black/10 mt-4 mb-6"></div>
 
-            <div id="service-logo-wrapper" class="h-10 w-full shrink-0 mb-3">
+            <div
+              id="service-logo-wrapper"
+              class="h-10 w-fit items-start shrink-0 mb-3"
+            >
               <img
                 id="service-logo"
                 class="h-full w-fit shrink-0 object-contain"
@@ -234,7 +239,11 @@
         </div>
         <div class="flex flex-col gap-2">
           <span class="font-medium text-base">Powered By</span
-          ><img class="w-24 h-auto" src="../../assets/images/Xendit.svg" alt="" />
+          ><img
+            class="w-24 h-auto"
+            src="../../assets/images/Xendit.svg"
+            alt=""
+          />
         </div>
       </div>
       <div class="border border-white/30 my-8"></div>
