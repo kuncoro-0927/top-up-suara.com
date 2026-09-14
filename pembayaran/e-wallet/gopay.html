@@ -116,10 +116,7 @@
             <h2 class="text-lg font-semibold">Ringkasan Transaksi</h2>
             <div class="border border-black/10 mt-4 mb-6"></div>
 
-            <div
-              id="service-logo-wrapper"
-              class="h-10 w-full items-start shrink-0 mb-3 self-start"
-            >
+            <div id="service-logo-wrapper" class="h-10 w-full shrink-0 mb-3">
               <img
                 id="service-logo"
                 class="h-full w-fit shrink-0 object-contain"
@@ -512,14 +509,14 @@
 
       if (service === "paket_data") {
         logoWrapper.innerHTML = `
-                <div class="flex h-10 w-full  shrink-0 items-center justify-between">
-                  <div class="flex items-center gap-2">
-                    ${PAKET_DATA_ICON}
-                    <span class="text-sm text-[#6c6c6c] whitespace-nowrap">Paket Data</span>
-                  </div>
-                  <img class="h-full w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
-                </div>
-              `;
+    <div class="flex h-10 w-full shrink-0 items-center justify-between">
+      <div class="flex items-center gap-2">
+        ${PAKET_DATA_ICON}
+        <span class="text-sm text-[#6c6c6c] whitespace-nowrap">Paket Data</span>
+      </div>
+      <img class="h-8 w-auto max-w-[100px] shrink object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
+    </div>
+  `;
         document.getElementById("label-nomor").textContent = "Nomor Tujuan";
         document.getElementById("nama-provider-row").classList.remove("hidden");
         document.getElementById("detail-nama-provider").textContent =
@@ -529,14 +526,14 @@
           jumlahKuota || "-";
       } else if (service === "pulsa") {
         logoWrapper.innerHTML = `
-                <div class="flex h-10 w-full shrink-0 items-center justify-between">
-                  <div class="flex items-center gap-2">
-                    ${PAKET_PULSA_ICON}
-                    <span class="text-sm text-[#6c6c6c] whitespace-nowrap">Pulsa</span>
-                  </div>
-                  <img class="h-full w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
-                </div>
-              `;
+    <div class="flex h-10 w-full shrink-0 items-center justify-between">
+      <div class="flex items-center gap-2">
+        ${PAKET_PULSA_ICON}
+        <span class="text-sm text-[#6c6c6c] whitespace-nowrap">Pulsa</span>
+      </div>
+      <img class="h-8 w-auto max-w-[100px] shrink object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
+    </div>
+  `;
         document.getElementById("label-nomor").textContent = "Nomor Tujuan";
         document.getElementById("nama-provider-row").classList.remove("hidden");
         document.getElementById("detail-nama-provider").textContent =
