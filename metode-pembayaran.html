@@ -1148,6 +1148,8 @@
       // UBAH: digabung jadi satu rantai if/else if — cuma satu blok yang jalan,
       // jadi logoWrapper/logoWrapperMobile tidak bisa ketiban blok lain lagi
       if (service === "paket_data") {
+        logoWrapper.classList.remove("justify-start");
+        logoWrapper.classList.add("justify-between");
         logoWrapper.innerHTML = `
           <div class="flex h-10 w-full shrink-0 items-center justify-between">
             <div class="flex items-center gap-2 shrink-0">
@@ -1211,6 +1213,8 @@
         kuotaRowMobile.classList.remove("hidden");
         detailJumlahKuotaMobile.textContent = jumlahKuota || "-";
       } else if (service === "pulsa") {
+        logoWrapper.classList.remove("justify-start");
+        logoWrapper.classList.add("justify-between");
         logoWrapper.innerHTML = `
           <div class="flex h-10 w-full shrink-0 items-center justify-between">
            <div class="flex items-center gap-2 shrink-0">
@@ -1258,6 +1262,9 @@
         namaProviderRowMobile.classList.remove("hidden");
         detailNamaMobile.textContent = namaProvider || "-";
       } else if (layanan) {
+        logoWrapper.classList.remove("justify-between");
+        logoWrapper.classList.add("justify-start");
+
         logoWrapper.innerHTML = `
           <img
             id="service-logo"
