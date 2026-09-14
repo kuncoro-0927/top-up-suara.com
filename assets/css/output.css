@@ -831,6 +831,9 @@
   .object-contain {
     object-fit: contain;
   }
+  .object-left {
+    object-position: left;
+  }
   .p-1 {
     padding: var(--spacing);
   }
