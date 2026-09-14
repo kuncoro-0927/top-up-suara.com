@@ -58,11 +58,11 @@
             <h2 class="text-xl font-semibold">Detail Transaksi</h2>
             <div class="border border-black/10 my-4"></div>
             <div
-              class="flex flex-col-reverse md:flex-row items-start gap-6 md:items-center justify-between mb-6"
+              class="flex items-start gap-6 md:items-center justify-between mb-6"
             >
               <div
                 id="service-logo-wrapper"
-                class="flex h-8 shrink-0 items-center justify-between mb-3"
+                class="flex h-8 items-center justify-between mb-3"
               >
                 <img
                   id="service-logo"
@@ -73,7 +73,7 @@
               </div>
               <!-- TRANSAKSI BERHASIL -->
               <div
-                class="bg-green-200 px-4 py-3 gap-3 rounded-xl flex items-center"
+                class="bg-green-200 shrink-0 px-3 py-2 md:px-4 md:py-3 gap-3 rounded-lg md:rounded-xl flex items-center"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -536,66 +536,32 @@
 
       if (service === "paket_data") {
         logoWrapper.innerHTML = `
-    <div class="flex h-10 shrink-0 items-center justify-between">
-     
-      <img
-        class="h-full w-fit shrink-0 object-contain"
-        src="/assets/images/Logo-XL.svg"
-        alt="Logo XL"
-      />
+    <div class="flex h-10 w-full  shrink-0 items-center justify-between">
+      
+      <img class="h-full w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
     </div>
   `;
-
         document.getElementById("label-nomor").textContent = "Nomor Tujuan";
-
-        const namaProviderRow = document.getElementById("nama-provider-row");
-        const detailNama = document.getElementById("detail-nama-provider");
-        namaProviderRow.classList.remove("hidden");
-        detailNama.textContent = namaProvider || "-";
-
-        const kuotaRow = document.getElementById("jumlah-kuota-row");
-        const detailJumlahKuota = document.getElementById(
-          "detail-jumlah-kuota",
-        );
-        kuotaRow.classList.remove("hidden");
-        detailJumlahKuota.textContent = jumlahKuota || "-";
-      } else if (layanan) {
-        logoWrapper.innerHTML = `
-    <img
-      id="service-logo"
-      class="h-full w-fit shrink-0 object-contain"
-      src="${layanan.logo}"
-      alt="${layanan.nama}"
-    />
-  `;
-      }
-
-      if (service === "pulsa") {
+        document.getElementById("nama-provider-row").classList.remove("hidden");
+        document.getElementById("detail-nama-provider").textContent =
+          namaProvider || "-";
+        document.getElementById("jumlah-kuota-row").classList.remove("hidden");
+        document.getElementById("detail-jumlah-kuota").textContent =
+          jumlahKuota || "-";
+      } else if (service === "pulsa") {
         logoWrapper.innerHTML = `
     <div class="flex h-10 w-full shrink-0 items-center justify-between">
       
-      <img
-        class="h-full w-fit shrink-0 object-contain"
-        src="/assets/images/Logo-XL.svg"
-        alt="Logo XL"
-      />
+      <img class="h-full w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
     </div>
   `;
-
         document.getElementById("label-nomor").textContent = "Nomor Tujuan";
-
-        const namaProviderRow = document.getElementById("nama-provider-row");
-        const detailNama = document.getElementById("detail-nama-provider");
-        namaProviderRow.classList.remove("hidden");
-        detailNama.textContent = namaProvider || "-";
+        document.getElementById("nama-provider-row").classList.remove("hidden");
+        document.getElementById("detail-nama-provider").textContent =
+          namaProvider || "-";
       } else if (layanan) {
         logoWrapper.innerHTML = `
-    <img
-      id="service-logo"
-      class="h-full w-fit shrink-0 object-contain"
-      src="${layanan.logo}"
-      alt="${layanan.nama}"
-    />
+    <img id="service-logo" class="h-full w-fit shrink-0 object-contain" src="${layanan.logo}" alt="${layanan.nama}" />
   `;
       }
     </script>

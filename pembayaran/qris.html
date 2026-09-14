@@ -111,7 +111,7 @@
             <div class="border border-black/10 mt-4 mb-6"></div>
             <div
               id="service-logo-wrapper"
-              class="h-10 w-fit items-start shrink-0 mb-3 self-start"
+              class="h-10 w-full items-start shrink-0 mb-3 self-start"
             >
               <img
                 id="service-logo"
@@ -470,45 +470,6 @@
   </svg>
 `;
 
-      if (service === "paket_data") {
-        logoWrapper.innerHTML = `
-    <div class="flex h-10 w-full shrink-0 items-center justify-between">
-      <div class="flex items-center gap-2">
-        ${PAKET_DATA_ICON}
-        <span class="text-sm text-[#6c6c6c]">Paket Data</span>
-      </div>
-      <img
-        class="h-full w-fit shrink-0 object-contain"
-        src="/assets/images/Logo-XL.svg"
-        alt="Logo XL"
-      />
-    </div>
-  `;
-
-        document.getElementById("label-nomor").textContent = "Nomor Tujuan";
-
-        const namaProviderRow = document.getElementById("nama-provider-row");
-        const detailNama = document.getElementById("detail-nama-provider");
-        namaProviderRow.classList.remove("hidden");
-        detailNama.textContent = namaProvider || "-";
-
-        const kuotaRow = document.getElementById("jumlah-kuota-row");
-        const detailJumlahKuota = document.getElementById(
-          "detail-jumlah-kuota",
-        );
-        kuotaRow.classList.remove("hidden");
-        detailJumlahKuota.textContent = jumlahKuota || "-";
-      } else if (layanan) {
-        logoWrapper.innerHTML = `
-    <img
-      id="service-logo"
-      class="h-full w-fit shrink-0 object-contain"
-      src="${layanan.logo}"
-      alt="${layanan.nama}"
-    />
-  `;
-      }
-
       const PAKET_PULSA_ICON = `
     <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -538,35 +499,40 @@
                 </svg>
 `;
 
-      if (service === "pulsa") {
+      if (service === "paket_data") {
+        logoWrapper.innerHTML = `
+    <div class="flex h-10 w-full  shrink-0 items-center justify-between">
+      <div class="flex items-center gap-2">
+        ${PAKET_DATA_ICON}
+        <span class="text-sm text-[#6c6c6c]">Paket Data</span>
+      </div>
+      <img class="h-full w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
+    </div>
+  `;
+        document.getElementById("label-nomor").textContent = "Nomor Tujuan";
+        document.getElementById("nama-provider-row").classList.remove("hidden");
+        document.getElementById("detail-nama-provider").textContent =
+          namaProvider || "-";
+        document.getElementById("jumlah-kuota-row").classList.remove("hidden");
+        document.getElementById("detail-jumlah-kuota").textContent =
+          jumlahKuota || "-";
+      } else if (service === "pulsa") {
         logoWrapper.innerHTML = `
     <div class="flex h-10 w-full shrink-0 items-center justify-between">
       <div class="flex items-center gap-2">
         ${PAKET_PULSA_ICON}
-        <span class="text-sm text-[#6c6c6c]">Paket Data</span>
+        <span class="text-sm text-[#6c6c6c]">Pulsa</span>
       </div>
-      <img
-        class="h-full w-fit shrink-0 object-contain"
-        src="/assets/images/Logo-XL.svg"
-        alt="Logo XL"
-      />
+      <img class="h-full w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
     </div>
   `;
-
         document.getElementById("label-nomor").textContent = "Nomor Tujuan";
-
-        const namaProviderRow = document.getElementById("nama-provider-row");
-        const detailNama = document.getElementById("detail-nama-provider");
-        namaProviderRow.classList.remove("hidden");
-        detailNama.textContent = namaProvider || "-";
+        document.getElementById("nama-provider-row").classList.remove("hidden");
+        document.getElementById("detail-nama-provider").textContent =
+          namaProvider || "-";
       } else if (layanan) {
         logoWrapper.innerHTML = `
-    <img
-      id="service-logo"
-      class="h-full w-fit shrink-0 object-contain"
-      src="${layanan.logo}"
-      alt="${layanan.nama}"
-    />
+    <img id="service-logo" class="h-full w-fit shrink-0 object-contain" src="${layanan.logo}" alt="${layanan.nama}" />
   `;
       }
 

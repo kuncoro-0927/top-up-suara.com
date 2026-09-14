@@ -1211,6 +1211,7 @@
       // Kondisi awal
       tagihanPlaceholder.classList.remove("hidden");
       tagihanResult.classList.add("hidden");
+      btnCekTagihan.dataset.checked = "false";
       tagihanAmount.textContent = "-";
 
       let selectedAmount = null;
@@ -1306,6 +1307,7 @@
         tagihanAmount.textContent = formatRupiah(totalTagihan);
 
         updateButtonState();
+        btnCekTagihan.dataset.checked = "true";
       });
 
       btnToggleDetail.addEventListener("click", () => {
