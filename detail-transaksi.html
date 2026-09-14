@@ -551,11 +551,11 @@
 
       if (service === "paket_data") {
         logoWrapper.innerHTML = `
-        <div class="flex h-10 w-full  shrink-0 items-center justify-between">
+              <div class="flex h-10 w-full  shrink-0 items-center justify-between">
 
-          <img class="h-full w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
-        </div>
-      `;
+                <img class="h-full w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
+              </div>
+            `;
         document.getElementById("label-nomor").textContent = "Nomor Tujuan";
         document.getElementById("nama-provider-row").classList.remove("hidden");
         document.getElementById("detail-nama-provider").textContent =
@@ -565,19 +565,25 @@
           jumlahKuota || "-";
       } else if (service === "pulsa") {
         logoWrapper.innerHTML = `
-        <div class="flex h-10 w-full shrink-0 items-center justify-between">
+              <div class="flex h-10 w-full shrink-0 items-center justify-between">
 
-          <img class="h-full w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
-        </div>
-      `;
+                <img class="h-full w-fit shrink-0 object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
+              </div>
+            `;
         document.getElementById("label-nomor").textContent = "Nomor Tujuan";
         document.getElementById("nama-provider-row").classList.remove("hidden");
         document.getElementById("detail-nama-provider").textContent =
           namaProvider || "-";
       } else if (layanan) {
         logoWrapper.innerHTML = `
-          <img id="service-logo" class="h-full w-fit shrink-0 object-contain self-start" src="${layanan.logo}" alt="${layanan.nama}" />
-      `;
+                  <img
+        id="service-logo"
+        class="h-full w-full shrink-0 object-contain object-left"
+         src="${layanan.logo}"
+                  alt="${layanan.nama}"
+      />
+              
+            `;
       }
     </script>
   </body>
