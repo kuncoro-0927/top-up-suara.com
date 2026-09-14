@@ -512,15 +512,16 @@
 
             <div class="h-10 w-full shrink-0 mb-3">
               <img
+                id="service-logo"
                 class="h-full w-fit shrink-0 object-contain"
-                src="/assets/images/PLN.svg"
-                alt="Logo PLN"
+                src=""
+                alt=""
               />
             </div>
 
             <div class="flex justify-between text-sm mt-3">
               <span class="text-sm text-[#6c6c6c]">Layanan</span>
-              <span class="font-medium">PLN </span>
+              <span id="service-nama" class="font-medium"> </span>
             </div>
 
             <div
@@ -575,17 +576,18 @@
             id="mobile-summary-detail"
             class="hidden px-6 sm:px-20 md:px-32 pt-4 pb-3 border-b border-black/10"
           >
-            <div class="h-8 w-full shrink-0 mb-6 flex justify-start">
+            <div class="h-8 w-full shrink-0 mb-6 flex justify-start self-start">
               <img
-                class="h-full w-fit shrink-0 object-contain"
-                src="../../assets/images/PLN.svg"
-                alt="Logo PLN"
+                id="service-logo-mobile"
+                class="h-full w-auto object-contain"
+                src=""
+                alt=""
               />
             </div>
 
             <div class="flex justify-between text-sm mt-3">
               <span class="text-sm text-[#6c6c6c]">Layanan</span>
-              <span class="font-medium">PLN </span>
+              <span id="service-nama-mobile" class="font-medium"> </span>
             </div>
 
             <div
@@ -1432,6 +1434,16 @@
     <script>
       const params = new URLSearchParams(window.location.search);
       const service = params.get("service");
+      const layanan = LAYANAN_CONFIG[service]; // ambil dari file layanan-config.js yang udah di-load
+      if (layanan) {
+        document.getElementById("service-logo").src = layanan.logo;
+        document.getElementById("service-logo").alt = layanan.nama;
+        document.getElementById("service-nama").textContent = layanan.nama;
+        document.getElementById("service-logo-mobile").src = layanan.logo;
+        document.getElementById("service-logo-mobile").alt = layanan.nama;
+        document.getElementById("service-nama-mobile").textContent =
+          layanan.nama;
+      }
     </script>
 
     <script>
