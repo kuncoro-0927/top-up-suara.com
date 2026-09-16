@@ -54,7 +54,7 @@
     <main>
       <section class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 py-10">
         <div class="flex flex-col gap-2 w-full">
-          <div class="border border-black/20 p-6 rounded-2xl">
+          <div class="border border-black/20 p-4 lg:p-6 rounded-2xl">
             <h2 class="text-xl font-semibold">Detail Transaksi</h2>
             <div class="border border-black/10 my-4"></div>
             <div
@@ -557,10 +557,16 @@
         namaRow.classList.remove("hidden");
         detailNama.textContent = nama || "-";
 
+        // TAMBAHAN: token-listrik-row cuma muncul kalau jenis === "token"
         const tokenRow = document.getElementById("token-listrik-row");
-        const detailToken = document.getElementById("detail-token-listrik");
-        tokenRow.classList.remove("hidden");
-        detailToken.textContent = "0823 4546 4646 2333 0900";
+        const detailTokenEl = document.getElementById("detail-token-listrik");
+
+        if (jenis === "token") {
+          tokenRow.classList.remove("hidden");
+          detailTokenEl.textContent = detailToken; // pakai variable scope atas (string dari URL)
+        } else {
+          tokenRow.classList.add("hidden");
+        }
       }
 
       if (service === "bpjs") {

@@ -59,7 +59,7 @@
         <div class="border w-full border-black/20 rounded-2xl flex flex-col">
           <!-- Metode Pembayaran -->
           <div
-            class="px-6 py-3 h-12 shrink-0 rounded-t-2xl bg-gray-100 flex items-center justify-between"
+            class="px-4 lg:px-6 py-3 h-12 shrink-0 rounded-t-2xl bg-gray-100 flex items-center justify-between"
           >
             <img id="method-logo" class="w-20" src="" alt="" />
             <span id="method-label" class="text-[#6c6c6c] text-sm"></span>
@@ -107,12 +107,20 @@
               class="mt-3 flex flex-col items-center gap-3 hidden"
             >
               <span class="text-sm font-medium text-[#6c6c6c]">PLN Token</span>
-              <div
-                class="btn-gradient-border shadow-sm flex flex-col items-center gap-1 bg-linear-to-r from-biru to-hijau bg-clip-text text-transparent hover:shadow-md hover:-translate-y-0.5 duration-200 px-6 py-3 rounded-2xl"
+              <button
+                class="btn-gradient-border cursor-pointer shadow-sm flex flex-col items-center gap-1 hover:shadow-md hover:-translate-y-0.5 duration-200 px-6 py-3 rounded-2xl"
               >
-                <span id="pln-token-number" class="font-medium"> </span>
-                <span class="text-sm"> Klik untuk salin nomor </span>
-              </div>
+                <span
+                  id="pln-token-number"
+                  class="font-medium bg-linear-to-r from-biru to-hijau bg-clip-text text-transparent"
+                >
+                </span>
+                <span
+                  class="text-sm bg-linear-to-r from-biru to-hijau bg-clip-text text-transparent"
+                >
+                  Klik untuk salin nomor
+                </span>
+              </button>
             </div>
             <a
               href="/index.html"
@@ -517,7 +525,8 @@
       const jumlahBulan = params.get("jumlah_bulan"); // khusus PLN: nama pemilik
       const namaProvider = params.get("namaProvider"); // khusus PAKET DATA: jumlah-bulan
       const jumlahKuota = params.get("jumlahKuota"); // khusus PAKET DATA: jumlah-bulan
-      const detailToken = params.get("detailToken");
+
+      let tokenListrikValue = null;
       // generate dummy ID transaksi & tanggal, HANYA SEKALI saat halaman ini pertama kali dimuat
       function generateTrxId() {
         const random = Math.random().toString(36).substring(2, 8).toUpperCase();
@@ -622,18 +631,24 @@
         detailNama.textContent = nama || "-";
 
         const tokenRow = document.getElementById("token-listrik-row");
-        const detailToken = document.getElementById("detail-token-listrik");
-        tokenRow.classList.remove("hidden");
-        detailToken.textContent = "0823 4546 4646 2333 0900";
+        const detailTokenEl = document.getElementById("detail-token-listrik");
+        const plnTokenSection = document.getElementById("pln-token-section"); // PINDAH ke sini, luar if/else
+        const plnTokenNumber = document.getElementById("pln-token-number"); // PINDAH ke sini juga
 
-        // TAMBAHAN: tampilkan box PLN Token khusus kalau jenisnya "token"
         if (jenis === "token") {
-          const plnTokenSection = document.getElementById("pln-token-section");
-          const plnTokenNumber = document.getElementById("pln-token-number");
+          tokenListrikValue = "0823 4546 4646 2333 0900";
+
+          tokenRow.classList.remove("hidden");
+          detailTokenEl.textContent = tokenListrikValue;
+
           plnTokenSection.classList.remove("hidden");
-          plnTokenNumber.textContent = detailToken.textContent;
+          plnTokenNumber.textContent = tokenListrikValue;
+        } else {
+          tokenRow.classList.add("hidden");
+          plnTokenSection.classList.add("hidden"); // sekarang valid, plnTokenSection udah dikenal di scope ini
         }
       }
+      
       if (service === "bpjs") {
         document.getElementById("label-nomor").textContent = "Nomor VA";
 
@@ -651,57 +666,57 @@
       }
 
       const PAKET_DATA_ICON = `
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="w-10 h-10 shrink-0">
-                <defs>
-                  <linearGradient id="phoneGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#5FB5B7" />
-                    <stop offset="100%" stop-color="#0088CE" />
-                  </linearGradient>
-                </defs>
-                <path fill="url(#phoneGradient)" d="M15.384 6.115a.485.485 0 0 0-.047-.736A12.44 12.44 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.52.52 0 0 0 .668.05A11.45 11.45 0 0 1 8 4c2.507 0 4.827.802 6.716 2.164.205.148.49.13.668-.049" />
-                <path fill="url(#phoneGradient)" d="M13.229 8.271a.482.482 0 0 0-.063-.745A9.46 9.46 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.576 1.336c.206.132.48.108.653-.065m-2.183 2.183c.226-.226.185-.605-.1-.75A6.5 6.5 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.407.19.611.09A5.5 5.5 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.61-.091zM9.06 12.44c.196-.196.198-.52-.04-.66A2 2 0 0 0 8 11.5a2 2 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .707 0l.707-.707z" />
-              </svg>
-            `;
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="w-10 h-10 shrink-0">
+                    <defs>
+                      <linearGradient id="phoneGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#5FB5B7" />
+                        <stop offset="100%" stop-color="#0088CE" />
+                      </linearGradient>
+                    </defs>
+                    <path fill="url(#phoneGradient)" d="M15.384 6.115a.485.485 0 0 0-.047-.736A12.44 12.44 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.52.52 0 0 0 .668.05A11.45 11.45 0 0 1 8 4c2.507 0 4.827.802 6.716 2.164.205.148.49.13.668-.049" />
+                    <path fill="url(#phoneGradient)" d="M13.229 8.271a.482.482 0 0 0-.063-.745A9.46 9.46 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.576 1.336c.206.132.48.108.653-.065m-2.183 2.183c.226-.226.185-.605-.1-.75A6.5 6.5 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.407.19.611.09A5.5 5.5 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.61-.091zM9.06 12.44c.196-.196.198-.52-.04-.66A2 2 0 0 0 8 11.5a2 2 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .707 0l.707-.707z" />
+                  </svg>
+                `;
 
       const PAKET_PULSA_ICON = `
-                <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 16 16"
-                              class="h-10 w-10 shrink-0"
-                            >
-                              <defs>
-                                <linearGradient
-                                  id="phoneGradient"
-                                  x1="0%"
-                                  y1="0%"
-                                  x2="100%"
-                                  y2="100%"
+                    <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 16 16"
+                                  class="h-10 w-10 shrink-0"
                                 >
-                                  <stop offset="0%" stop-color="#5FB5B7" />
-                                  <stop offset="100%" stop-color="#0088CE" />
-                                </linearGradient>
-                              </defs>
-                              <path
-                                fill="url(#phoneGradient)"
-                                d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"
-                              />
-                              <path
-                                fill="url(#phoneGradient)"
-                                d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
-                              />
-                            </svg>
-            `;
+                                  <defs>
+                                    <linearGradient
+                                      id="phoneGradient"
+                                      x1="0%"
+                                      y1="0%"
+                                      x2="100%"
+                                      y2="100%"
+                                    >
+                                      <stop offset="0%" stop-color="#5FB5B7" />
+                                      <stop offset="100%" stop-color="#0088CE" />
+                                    </linearGradient>
+                                  </defs>
+                                  <path
+                                    fill="url(#phoneGradient)"
+                                    d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"
+                                  />
+                                  <path
+                                    fill="url(#phoneGradient)"
+                                    d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
+                                  />
+                                </svg>
+                `;
 
       if (service === "paket_data") {
         logoWrapper.innerHTML = `
-    <div class="flex h-10 w-full shrink-0 items-center justify-between">
-      <div class="flex items-center gap-2">
-        ${PAKET_DATA_ICON}
-        <span class="text-sm text-[#6c6c6c] whitespace-nowrap">Paket Data</span>
-      </div>
-      <img class="h-8 w-auto max-w-[100px] shrink object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
-    </div>
-  `;
+        <div class="flex h-10 w-full shrink-0 items-center justify-between">
+          <div class="flex items-center gap-2">
+            ${PAKET_DATA_ICON}
+            <span class="text-sm text-[#6c6c6c] whitespace-nowrap">Paket Data</span>
+          </div>
+          <img class="h-8 w-auto max-w-[100px] shrink object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
+        </div>
+      `;
         document.getElementById("label-nomor").textContent = "Nomor Tujuan";
         document.getElementById("nama-provider-row").classList.remove("hidden");
         document.getElementById("detail-nama-provider").textContent =
@@ -711,28 +726,28 @@
           jumlahKuota || "-";
       } else if (service === "pulsa") {
         logoWrapper.innerHTML = `
-    <div class="flex h-10 w-full shrink-0 items-center justify-between">
-      <div class="flex items-center gap-2">
-        ${PAKET_PULSA_ICON}
-        <span class="text-sm text-[#6c6c6c] whitespace-nowrap">Pulsa</span>
-      </div>
-      <img class="h-8 w-auto max-w-[100px] shrink object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
-    </div>
-  `;
+        <div class="flex h-10 w-full shrink-0 items-center justify-between">
+          <div class="flex items-center gap-2">
+            ${PAKET_PULSA_ICON}
+            <span class="text-sm text-[#6c6c6c] whitespace-nowrap">Pulsa</span>
+          </div>
+          <img class="h-8 w-auto max-w-[100px] shrink object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
+        </div>
+      `;
         document.getElementById("label-nomor").textContent = "Nomor Tujuan";
         document.getElementById("nama-provider-row").classList.remove("hidden");
         document.getElementById("detail-nama-provider").textContent =
           namaProvider || "-";
       } else if (layanan) {
         logoWrapper.innerHTML = `
-                    <img
-        id="service-logo"
-        class="h-full w-full shrink-0 object-contain object-left"
-         src="${layanan.logo}"
-                  alt="${layanan.nama}"
-      />
-              
-              `;
+                        <img
+            id="service-logo"
+            class="h-full w-full shrink-0 object-contain object-left"
+             src="${layanan.logo}"
+                      alt="${layanan.nama}"
+          />
+
+                  `;
       }
       const btnDetailaTransaksi = document.getElementById(
         "btn-detail-transaksi",
@@ -750,7 +765,7 @@
           method: method,
         });
 
-        if (detailToken) query.set("detailToken", detailToken);
+        if (tokenListrikValue) query.set("detailToken", tokenListrikValue);
         if (jenis) query.set("jenis", jenis);
         if (nama) query.set("nama", nama);
         if (jumlahBulan) query.set("jumlah_bulan", jumlahBulan);
