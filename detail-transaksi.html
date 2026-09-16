@@ -73,6 +73,7 @@
               </div>
               <!-- TRANSAKSI BERHASIL -->
               <div
+                id="status-berhasil"
                 class="bg-green-200 shrink-0 px-3 py-2 md:px-4 md:py-3 gap-3 rounded-lg md:rounded-xl flex items-center"
               >
                 <svg
@@ -92,7 +93,8 @@
               </div>
 
               <!-- TRANSAKSI PENDING -->
-              <!-- <div
+              <div
+                id="status-pending"
                 class="bg-blue-200 shrink-0 px-3 py-2 md:px-4 md:py-3 gap-3 rounded-lg md:rounded-xl flex items-center"
               >
                 <svg
@@ -109,9 +111,11 @@
                 </svg>
 
                 <span class="text-sm text-blue-600">Menunggu Pembayaran</span>
-              </div> -->
+              </div>
+
               <!-- TRANSAKSI GAGAL -->
-              <!-- <div
+              <div
+                id="status-gagal"
                 class="bg-red-200 shrink-0 px-3 py-2 md:px-4 md:py-3 gap-3 rounded-lg md:rounded-xl flex items-center"
               >
                 <svg
@@ -128,9 +132,11 @@
                 </svg>
 
                 <span class="text-sm text-red-600">Transaksi gagal</span>
-              </div> -->
+              </div>
+
               <!-- TRANSAKSI KADALUWARSA -->
-              <!-- <div
+              <div
+                id="status-kadaluwarsa"
                 class="bg-gray-200 shrink-0 px-3 py-2 md:px-4 md:py-3 gap-3 rounded-lg md:rounded-xl flex items-center"
               >
                 <svg
@@ -147,7 +153,7 @@
                 </svg>
 
                 <span class="text-sm text-gray-600">Transaksi kadaluwarsa</span>
-              </div> -->
+              </div>
             </div>
             <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">ID Transaksi</span>
@@ -498,6 +504,7 @@
       const id = params.get("id");
       const tanggal = params.get("tanggal");
       const service = params.get("service");
+      const status = params.get("status");
       const nomor = params.get("nomor");
       const amount = params.get("amount"); // nominal
       const admin = params.get("admin"); // biaya admin
@@ -509,6 +516,28 @@
       const namaProvider = params.get("namaProvider"); // khusus PAKET DATA: jumlah-bulan
       const jumlahKuota = params.get("jumlahKuota"); // khusus PAKET DATA: jumlah-bulan
       const detailToken = params.get("detailToken"); // khusus PLN
+
+      // STATUS_MAP: hubungkan value param "status" ke id elemen yang sesuai
+      const STATUS_MAP = {
+        berhasil: "status-berhasil",
+        pending: "status-pending",
+        gagal: "status-gagal",
+        kadaluwarsa: "status-kadaluwarsa",
+      };
+
+      // fallback ke "berhasil" kalau status kosong/gak dikenali
+      const statusAktif = STATUS_MAP[status] ? status : "berhasil";
+
+      // sembunyikan SEMUA badge dulu, baru munculin yang sesuai
+      Object.values(STATUS_MAP).forEach((elId) => {
+        const el = document.getElementById(elId);
+        el.classList.add("hidden");
+        el.classList.remove("flex"); // kalau default class-nya "flex items-center", pastikan ke-remove juga
+      });
+
+      const badgeAktif = document.getElementById(STATUS_MAP[statusAktif]);
+      badgeAktif.classList.remove("hidden");
+      badgeAktif.classList.add("flex");
 
       // label yang ditampilkan ke user, sesuaikan dengan key data-metode di step 3
       const METODE_LABEL = {

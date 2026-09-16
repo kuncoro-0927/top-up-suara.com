@@ -63,46 +63,176 @@
           >
         </div>
 
-        <div
-          onclick="bukaDetailTransaksi('trx001')"
-          class="border border-black/20 bg-gray-100 flex gap-3 items-center justify-between w-full p-6 rounded-2xl cursor-pointer hover:bg-gray-200/70 duration-200"
-        >
-          <!-- BAGIAN KIRI -->
+        <div class="flex flex-col gap-3 w-full">
+          <!-- RIWAYAT DANA SUKSES -->
           <div
-            class="flex flex-col lg:flex-row items-center gap-6 justify-center"
+            onclick="bukaDetailTransaksi('trx001')"
+            class="border border-black/20 bg-gray-100 flex flex-col gap-3 items-center justify-between w-full p-6 rounded-2xl cursor-pointer hover:bg-gray-200/70 duration-200"
           >
-            <div class="h-full w-[150px] shrink-0">
-              <img
-                class="h-10 w-auto"
-                src="./assets/images/e-wallet/Dana.svg"
-                alt=""
-              />
+            <div class="flex gap-3 items-center justify-between w-full">
+              <!-- BAGIAN KIRI -->
+              <div
+                class="flex flex-col lg:flex-row items-center gap-6 justify-center"
+              >
+                <div class="h-full w-[150px] shrink-0">
+                  <img
+                    class="h-10 w-auto"
+                    src="./assets/images/e-wallet/Dana.svg"
+                    alt=""
+                  />
+                </div>
+
+                <div class="flex flex-col gap-1">
+                  <span class="text-xl font-semibold mb-1">DANA</span>
+                  <span class="text-sm text-[#6c6c6c]"
+                    >SUA-213193019310391039</span
+                  >
+                  <span class="text-sm text-[#6c6c6c]">08129121092</span>
+                  <span class="text-sm text-[#6c6c6c]">13 Sepetember 2026</span>
+                </div>
+              </div>
+
+              <!-- BAGIAN KANAN -->
+              <div class="text-right mt-auto flex flex-col gap-1">
+                <span class="text-lg font-semibold">Rp. 10.000</span>
+
+                <span class="text-sm font-medium text-green-600"
+                  >Transaksi Berhasil</span
+                >
+
+                <button
+                  onclick="
+                    event.stopPropagation();
+                    beliLagi('trx001');
+                  "
+                  class="md:w-[200px] hidden md:block px-4 py-2 mt-2 rounded-xl font-medium bg-linear-to-r from-biru to-hijau text-white hover:-translate-y-0.5 hover:shadow-md duration-200 cursor-pointer"
+                >
+                  Beli lagi
+                </button>
+              </div>
             </div>
-
-            <div class="flex flex-col gap-1">
-              <span class="text-xl font-semibold mb-1">DANA</span>
-
-              <span class="text-sm text-[#6c6c6c]">08129121092</span>
-
-              <span class="text-sm text-[#6c6c6c]">SUA-213193019310391039</span>
-              <span class="text-sm text-[#6c6c6c]">13 Sepetember 2026</span>
-            </div>
-          </div>
-
-          <!-- BAGIAN KANAN -->
-          <div class="text-right mt-auto flex flex-col gap-1">
-            <span class="text-lg font-semibold">Rp. 10.000</span>
-
-            <span class="text-sm font-medium text-green-600"
-              >Transaksi Berhasil</span
-            >
-
             <button
               onclick="
                 event.stopPropagation();
                 beliLagi('trx001');
               "
-              class="md:w-[200px] px-4 py-2 mt-2 rounded-xl font-medium bg-linear-to-r from-biru to-hijau text-white hover:-translate-y-0.5 hover:shadow-md duration-200 cursor-pointer"
+              class="w-full md:hidden px-4 py-2 mt-2 rounded-xl font-medium bg-linear-to-r from-biru to-hijau text-white hover:-translate-y-0.5 hover:shadow-md duration-200 cursor-pointer"
+            >
+              Beli lagi
+            </button>
+          </div>
+
+          <!-- RIWAYAT GOPAY KADALUWARSA -->
+          <div
+            onclick="bukaDetailTransaksi('trx002')"
+            class="border border-black/20 bg-gray-100 flex flex-col gap-3 items-center justify-between w-full p-6 rounded-2xl cursor-pointer hover:bg-gray-200/70 duration-200"
+          >
+            <div class="flex gap-3 items-center justify-between w-full">
+              <!-- BAGIAN KIRI -->
+              <div
+                class="flex flex-col lg:flex-row items-center gap-6 justify-center"
+              >
+                <div class="h-full w-[150px] shrink-0">
+                  <img
+                    class="h-10 w-auto"
+                    src="./assets/images/e-wallet/Gopay.svg"
+                    alt=""
+                  />
+                </div>
+
+                <div class="flex flex-col gap-1">
+                  <span class="text-xl font-semibold mb-1">GOPAY</span>
+                  <span class="text-sm text-[#6c6c6c]"
+                    >SUA-213193019310391039</span
+                  >
+                  <span class="text-sm text-[#6c6c6c]">081346336466</span>
+                  <span class="text-sm text-[#6c6c6c]">15 Sepetember 2026</span>
+                </div>
+              </div>
+
+              <!-- BAGIAN KANAN -->
+              <div class="text-right mt-auto flex flex-col gap-1">
+                <span class="text-lg font-semibold">Rp. 100.000</span>
+
+                <span class="text-sm font-medium text-gray-600"
+                  >Transaksi kadaluwarsa</span
+                >
+
+                <button
+                  onclick="
+                    event.stopPropagation();
+                    beliLagi('trx002');
+                  "
+                  class="md:w-[200px] hidden md:block px-4 py-2 mt-2 rounded-xl font-medium bg-linear-to-r from-biru to-hijau text-white hover:-translate-y-0.5 hover:shadow-md duration-200 cursor-pointer"
+                >
+                  Beli lagi
+                </button>
+              </div>
+            </div>
+            <button
+              onclick="
+                event.stopPropagation();
+                beliLagi('trx002');
+              "
+              class="w-full md:hidden px-4 py-2 mt-2 rounded-xl font-medium bg-linear-to-r from-biru to-hijau text-white hover:-translate-y-0.5 hover:shadow-md duration-200 cursor-pointer"
+            >
+              Beli lagi
+            </button>
+          </div>
+
+          <!-- RIWAYAT PLN SUKSES -->
+          <div
+            onclick="bukaDetailTransaksi('trx003')"
+            class="border border-black/20 bg-gray-100 flex flex-col gap-3 items-center justify-between w-full p-6 rounded-2xl cursor-pointer hover:bg-gray-200/70 duration-200"
+          >
+            <div class="flex gap-3 items-center justify-between w-full">
+              <!-- BAGIAN KIRI -->
+              <div
+                class="flex flex-col lg:flex-row items-center gap-6 justify-center"
+              >
+                <div class="h-full w-[150px] shrink-0">
+                  <img
+                    class="h-10 w-auto"
+                    src="./assets/images/PLN.svg"
+                    alt=""
+                  />
+                </div>
+
+                <div class="flex flex-col gap-1">
+                  <span class="text-xl font-semibold mb-1">PLN</span>
+                  <span class="text-sm text-[#6c6c6c]"
+                    >SUA-213193019310391039</span
+                  >
+                  <span class="text-sm text-[#6c6c6c]">Token Listrik</span>
+                  <span class="text-sm text-[#6c6c6c]">13 Sepetember 2026</span>
+                </div>
+              </div>
+
+              <!-- BAGIAN KANAN -->
+              <div class="text-right mt-auto flex flex-col gap-1">
+                <span class="text-lg font-semibold">Rp. 100.000</span>
+
+                <span class="text-sm font-medium text-green-600"
+                  >Transaksi Berhasil</span
+                >
+
+                <button
+                  onclick="
+                    event.stopPropagation();
+                    beliLagi('trx003');
+                  "
+                  class="md:w-[200px] hidden md:block px-4 py-2 mt-2 rounded-xl font-medium bg-linear-to-r from-biru to-hijau text-white hover:-translate-y-0.5 hover:shadow-md duration-200 cursor-pointer"
+                >
+                  Beli lagi
+                </button>
+              </div>
+            </div>
+            <button
+              onclick="
+                event.stopPropagation();
+                beliLagi('trx003');
+              "
+              class="w-full md:hidden px-4 py-2 mt-2 rounded-xl font-medium bg-linear-to-r from-biru to-hijau text-white hover:-translate-y-0.5 hover:shadow-md duration-200 cursor-pointer"
             >
               Beli lagi
             </button>
@@ -328,12 +458,39 @@
           service: "dana",
           nomor: "08129121092",
           amount: 10000,
-          trxId: "SUA-213193019310391039",
+          id: "SUA-213193019310391039",
           tanggal: "13 September 2026",
-          metode: "qris", // contoh field tambahan
+          method: "qris", // contoh field tambahan
           admin: 1000, // contoh field tambahan lain
+          total: 11000,
         },
-        // trx002: { ... }, dst kalau ada banyak riwayat
+
+        trx002: {
+          service: "gopay",
+          status: "kadaluwarsa",
+          nomor: "081346336466",
+          amount: 100000,
+          id: "SUA-214393019310391039",
+          tanggal: "15 September 2026",
+          method: "qris", // contoh field tambahan
+          admin: 1000, // contoh field tambahan lain
+          total: 101000,
+        },
+
+        trx003: {
+          service: "pln",
+          nomor: "08 1346 336 466",
+          detailToken: "0000 3244 2499 2323 0012",
+          amount: 100000,
+          nama: "Lionel Maulana",
+          jenis: "token",
+          id: "SUA-2131930193103912239",
+          tanggal: "16 September 2026",
+          method: "qris", // contoh field tambahan
+          admin: 1000, // contoh field tambahan lain
+          total: 101000,
+        },
+        // trx004: { ... }, dst kalau ada banyak riwayat
       };
 
       function bukaDetailTransaksi(trxKey) {
