@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Detail Transaksi</title>
-    <link rel="stylesheet" href="../../../assets/css/output.css" />
+    <title>Pembayaran Kadaluwarsa</title>
+    <link rel="stylesheet" href="../assets/css/output.css" />
   </head>
   <body>
     <header>
@@ -52,119 +52,148 @@
       </nav>
     </header>
     <main>
-      <section class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 py-10">
-        <div class="flex flex-col gap-2 w-full">
-          <div class="border border-black/20 p-6 rounded-2xl">
-            <h2 class="text-xl font-semibold">Detail Transaksi</h2>
-            <div class="border border-black/10 my-4"></div>
+      <section
+        class="px-6 sm:px-20 md:px-32 lg:px-20 xl:px-40 2xl:px-60 py-10 flex flex-col lg:flex-row items-stretch gap-6"
+      >
+        <!-- BAGIAN KIRI -->
+        <div class="border w-full border-black/20 rounded-2xl flex flex-col">
+          <!-- Metode Pembayaran -->
+          <div
+            class="px-6 py-3 h-12 shrink-0 rounded-t-2xl bg-gray-100 flex items-center justify-between"
+          >
+            <img
+              id="method-logo"
+              class="w-20"
+              src="../assets/images/QRIS.svg"
+              alt=""
+            />
+            <span id="method-label" class="text-[#6c6c6c] text-sm"
+              >Pembayaran via QRIS</span
+            >
+          </div>
+
+          <!-- PEMBAYARAN -->
+          <div
+            class="border m-6 border-black/20 flex-col p-4 gap-3 flex items-center justify-center rounded-2xl cursor-pointer flex-1"
+          >
+            <span class="font-semibold text-xl text-gray-600"
+              >Pembayaran kadaluwarsa</span
+            >
+
             <div
-              class="flex items-start gap-6 md:items-center justify-between mb-6"
+              class="h-20 w-20 bg-gray-200 rounded-full flex items-center justify-center"
             >
               <div
-                id="service-logo-wrapper"
-                class="flex h-8 items-center justify-between mb-3"
+                class="h-16 w-16 bg-gray-500 rounded-full flex items-center justify-center"
               >
-                <img
-                  id="service-logo"
-                  class="h-full w-fit shrink-0 object-contain"
-                  src=""
-                  alt=""
-                />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28"
+                  height="28"
+                  fill="#fff"
+                  class="bi bi-clock"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"
+                  />
+                  <path
+                    d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"
+                  />
+                </svg>
               </div>
-              <!-- TRANSAKSI BERHASIL -->
+            </div>
+            <span
+              class="font-medium text-sm text-[#6c6c6c] max-w-xs text-center mt-6"
+              >Pembayaran telah kadaluwarsa. Silahkan melakukan transaksi ulang.</span
+            >
+
+            <div
+              id="pln-token-section"
+              class="mt-3 flex flex-col items-center gap-3 hidden"
+            >
+              <span class="text-sm font-medium text-[#6c6c6c]">PLN Token</span>
               <div
-                class="bg-green-200 shrink-0 px-3 py-2 md:px-4 md:py-3 gap-3 rounded-lg md:rounded-xl flex items-center"
+                class="btn-gradient-border shadow-sm flex flex-col items-center gap-1 bg-linear-to-r from-biru to-hijau bg-clip-text text-transparent hover:shadow-md hover:-translate-y-0.5 duration-200 px-6 py-3 rounded-2xl"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="oklch(72.3% 0.219 149.579)"
-                  class="bi bi-check-circle-fill"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
-                  />
-                </svg>
-
-                <span class="text-sm text-green-600">Transaksi berhasil</span>
+                <span id="pln-token-number" class="font-medium"> </span>
+                <span class="text-sm"> Klik untuk salin nomor </span>
               </div>
+            </div>
+            <a
+              href="/index.html"
+              class="px-6 py-3 rounded-xl font-medium bg-linear-to-r from-biru to-hijau w-fit text-white mt-3 cursor-pointer hover:-translate-y-0.5 duration-200 hover:shadow-md"
+            >
+              Kembali ke beranda
+            </a>
+          </div>
+        </div>
 
-              <!-- TRANSAKSI PENDING -->
-              <!-- <div
-                class="bg-blue-200 shrink-0 px-3 py-2 md:px-4 md:py-3 gap-3 rounded-lg md:rounded-xl flex items-center"
-              >
+        <!-- BAGIAN KANAN -->
+        <div
+          class="flex flex-col gap-2 lg:max-w-[350px] xl:max-w-[400px] 2xl:max-w-[500px] w-full"
+        >
+          <div
+            class="border border-black/20 p-6 rounded-2xl h-full flex flex-col"
+          >
+            <div class="flex items-center justify-between"></div>
+            <h2 class="text-lg font-semibold">Ringkasan Transaksi</h2>
+            <div class="border border-black/10 mt-4 mb-6"></div>
+
+            <div
+              id="service-logo-wrapper"
+              class="h-10 w-full items-start shrink-0 mb-3 self-start"
+            >
+              <!-- <div class="flex items-center gap-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="oklch(54.6% 0.245 262.881)"
-                  class="bi bi-exclamation-circle-fill"
                   viewBox="0 0 16 16"
+                  class="w-10 h-10 shrink-0"
                 >
+                  <defs>
+                    <linearGradient
+                      id="phoneGradient"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="100%"
+                    >
+                      <stop offset="0%" stop-color="#5FB5B7" />
+                      <stop offset="100%" stop-color="#0088CE" />
+                    </linearGradient>
+                  </defs>
                   <path
-                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4m.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2"
+                    fill="url(#phoneGradient)"
+                    d="M15.384 6.115a.485.485 0 0 0-.047-.736A12.44 12.44 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.52.52 0 0 0 .668.05A11.45 11.45 0 0 1 8 4c2.507 0 4.827.802 6.716 2.164.205.148.49.13.668-.049"
+                  />
+                  <path
+                    fill="url(#phoneGradient)"
+                    d="M13.229 8.271a.482.482 0 0 0-.063-.745A9.46 9.46 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.576 1.336c.206.132.48.108.653-.065m-2.183 2.183c.226-.226.185-.605-.1-.75A6.5 6.5 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.407.19.611.09A5.5 5.5 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.61-.091zM9.06 12.44c.196-.196.198-.52-.04-.66A2 2 0 0 0 8 11.5a2 2 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .707 0l.707-.707z"
                   />
                 </svg>
-
-                <span class="text-sm text-blue-600">Menunggu Pembayaran</span>
+                <span class="text-sm text-[#6c6c6c]">Paket Data</span>
               </div> -->
-              <!-- TRANSAKSI GAGAL -->
-              <!-- <div
-                class="bg-red-200 shrink-0 px-3 py-2 md:px-4 md:py-3 gap-3 rounded-lg md:rounded-xl flex items-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="oklch(57.7% 0.245 27.325)"
-                  class="bi bi-x-circle-fill"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"
-                  />
-                </svg>
-
-                <span class="text-sm text-red-600">Transaksi gagal</span>
-              </div> -->
-              <!-- TRANSAKSI KADALUWARSA -->
-              <!-- <div
-                class="bg-gray-200 shrink-0 px-3 py-2 md:px-4 md:py-3 gap-3 rounded-lg md:rounded-xl flex items-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="oklch(44.6% 0.03 256.802)"
-                  class="bi bi-clock-fill"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"
-                  />
-                </svg>
-
-                <span class="text-sm text-gray-600">Transaksi kadaluwarsa</span>
-              </div> -->
+              <img
+                id="service-logo"
+                class="h-full w-fit shrink-0 object-contain"
+                src="../assets/images/e-wallet/Dana.svg"
+                alt=""
+              />
             </div>
             <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">ID Transaksi</span>
-              <span
-                id="detail-id"
-                class="font-semibold text-sm md:text-base"
-              ></span>
+              <span id="detail-trx-id" class="font-medium"
+                >SUA-1092009091D232</span
+              >
             </div>
-
             <div class="flex justify-between mt-3 text-sm">
-              <span class="text-sm text-[#6c6c6c]">Tanggal Transaksi</span>
-              <span id="detail-tanggal" class="font-medium"></span>
+              <span class="text-sm text-[#6c6c6c]">Tanggal</span>
+              <span id="detail-tanggal" class="font-medium">09/09/2026</span>
             </div>
 
             <div class="flex justify-between text-sm mt-3">
               <span class="text-sm text-[#6c6c6c]">Layanan</span>
-              <span id="service-nama" class="font-medium"></span>
+              <span id="service-nama" class="font-medium">DANA</span>
             </div>
 
             <!-- khusus PAKET DATA: Nama Provider -->
@@ -183,6 +212,7 @@
               <span class="text-sm text-[#6c6c6c]">Jumlah Kuota</span>
               <span id="detail-jumlah-kuota" class="font-medium"></span>
             </div>
+
             <!-- khusus BPJS: Nama Peserta -->
             <div
               id="nama-peserta-row"
@@ -208,6 +238,7 @@
               <span class="text-sm text-[#6c6c6c]">PLN Token</span>
               <span id="detail-token-listrik" class="font-medium"></span>
             </div>
+
             <!-- khusus PLN: Jenis Listrik -->
             <div
               id="jenis-listrik-row"
@@ -231,10 +262,12 @@
               >
               <span id="detail-nomor" class="font-medium">01234567890</span>
             </div>
+
             <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">Nominal</span>
-              <span id="detail-nominal" class="font-medium"></span>
+              <span id="detail-nominal" class="font-medium">Rp. 20.000</span>
             </div>
+
             <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">Biaya Pemrosesan</span>
               <span class="font-medium">Rp. 0</span>
@@ -244,33 +277,25 @@
               <span id="detail-biaya-admin" class="font-medium">Rp. 1.000</span>
             </div>
 
-            <div class="flex justify-between mt-3 text-sm">
-              <span class="text-sm text-[#6c6c6c]">Metode Pembayaran</span>
+            <div class="mt-auto">
+              <div class="border border-black/10 my-4"></div>
 
-              <span id="detail-metode" class="font-medium"></span>
-            </div>
-            <div class="border border-black/10 my-4"></div>
-
-            <div class="flex justify-between my-3">
-              <span class="font-semibold text-lg">Total Pembayaran</span>
-              <span id="detail-total" class="font-semibold text-lg"></span>
-            </div>
-            <div class="flex flex-col gap-3 mt-6">
-              <button
-                class="btn-gradient-border w-full px-6 py-3 rounded-xl font-medium cursor-pointer hover:-translate-y-0.5 hover:shadow-md duration-200"
+              <div class="flex justify-between my-3">
+                <span class="font-medium">Total Pembayaran</span>
+                <span id="detail-total" class="font-semibold text-lg"
+                  >Rp. 21.000</span
+                >
+              </div>
+              <a
+                id="btn-detail-transaksi"
+                href="/detail-transaksi.html"
+                class="btn-gradient-border flex justify-center items-center w-full px-6 py-3 rounded-xl font-medium cursor-pointer hover:-translate-y-0.5 hover:shadow-md duration-200"
               >
                 <span
                   class="bg-linear-to-r from-biru to-hijau bg-clip-text text-transparent"
                 >
-                  Cetak Struk Transaksi
+                  Lihat detail transaksi
                 </span>
-              </button>
-
-              <a
-                href="../../../index.html"
-                class="w-full flex justify-center items-center px-6 py-3 rounded-xl font-medium cursor-pointer bg-linear-to-r from-biru to-hijau text-white hover:-translate-y-0.5 hover:shadow-md duration-200"
-              >
-                Kembali ke beranda
               </a>
             </div>
           </div>
@@ -286,7 +311,7 @@
         <div>
           <img
             class="w-44 h-auto"
-            src="assets/images/logo_suara.com putih.png"
+            src="../assets/images/logo_suara.com putih.png"
             alt="Logo Suara"
           />
           <span class=""
@@ -296,7 +321,7 @@
         </div>
         <div class="flex flex-col gap-2">
           <span class="font-medium text-base">Powered By</span
-          ><img class="w-24 h-auto" src="assets/images/Xendit.svg" alt="" />
+          ><img class="w-24 h-auto" src="../assets/images/Xendit.svg" alt="" />
         </div>
       </div>
       <div class="border border-white/30 my-8"></div>
@@ -349,18 +374,18 @@
         <ul class="flex flex-col ml-auto lg:ml-0 gap-3 text-gray-300 text-sm">
           <li class="font-medium text-white text-base">Bantuan</li>
           <li>
-            <a href="faqs.html" class="hover:text-white duration-200">FAQ</a>
+            <a href="/faqs.html" class="hover:text-white duration-200">FAQ</a>
           </li>
           <li>
             <a
-              href="syarat-dan-ketentuan.html"
+              href="/syarat-dan-ketentuan.html"
               class="hover:text-white duration-200"
               >Syarat & Ketentuan</a
             >
           </li>
           <li>
             <a
-              href="kebijakan-privasi.html"
+              href="/kebijakan-privasi.html"
               class="hover:text-white duration-200"
               >Kebijakan Privasi</a
             >
@@ -371,49 +396,49 @@
           <li class="font-medium text-white text-base">Layanan</li>
           <li>
             <a
-              href="input-data-e-wallet.html?service=gopay"
+              href="/input-data-e-wallet.html?service=gopay"
               class="hover:text-white duration-200"
               >Top Up Gopay</a
             >
           </li>
           <li>
             <a
-              href="input-data-e-wallet.html?service=dana"
+              href="/input-data-e-wallet.html?service=dana"
               class="hover:text-white duration-200"
               >Top Up Dana</a
             >
           </li>
           <li>
             <a
-              href="input-data-e-wallet.html?service=ovo"
+              href="/input-data-e-wallet.html?service=ovo"
               class="hover:text-white duration-200"
               >Top Up OVO</a
             >
           </li>
           <li>
             <a
-              href="input-data-e-wallet.html?service=shopeepay"
+              href="/input-data-e-wallet.html?service=shopeepay"
               class="hover:text-white duration-200"
               >Top Up Shopee Pay</a
             >
           </li>
           <li>
             <a
-              href="input-data-e-wallet.html?service=pln"
+              href="/input-data-e-wallet.html?service=pln"
               class="hover:text-white duration-200"
               >Token Listrik</a
             >
           </li>
           <li>
             <a
-              href="input-data-e-wallet.html?service=paket_data"
+              href="/input-data-e-wallet.html?service=paket_data"
               class="hover:text-white duration-200"
               >Paket Data</a
             >
           </li>
           <li>
             <a
-              href="input-data-e-wallet.html?service=pulsa"
+              href="/input-data-e-wallet.html?service=pulsa"
               class="hover:text-white duration-200"
               >Pulsa</a
             >
@@ -487,133 +512,5 @@
         >
       </div>
     </footer>
-
-    <script src="/data/layanan-config.js"></script>
-
-    <script>
-      const params = new URLSearchParams(window.location.search);
-      const id = params.get("id");
-      const tanggal = params.get("tanggal");
-      const service = params.get("service");
-      const nomor = params.get("nomor");
-      const amount = params.get("amount"); // nominal
-      const admin = params.get("admin"); // biaya admin
-      const total = params.get("total"); // nominal + admin
-      const method = params.get("method");
-      const jenis = params.get("jenis"); // khusus PLN: "token" / "tagihan"
-      const nama = params.get("nama"); // khusus PLN: nama pemilik
-      const jumlahBulan = params.get("jumlah_bulan"); // khusus PLN: nama pemilik
-      const namaProvider = params.get("namaProvider"); // khusus PAKET DATA: jumlah-bulan
-      const jumlahKuota = params.get("jumlahKuota"); // khusus PAKET DATA: jumlah-bulan
-      const detailToken = params.get("detailToken"); // khusus PLN
-
-      // label yang ditampilkan ke user, sesuaikan dengan key data-metode di step 3
-      const METODE_LABEL = {
-        qris: "QRIS",
-        gopay: "Gopay",
-        dana: "DANA",
-        ovo: "OVO",
-        shopeepay: "Shopeepay",
-        bca: "BCA (QR)",
-        bni: "BNI (QR)",
-        bri: "BRI (QR)",
-        mandiri: "Mandiri (QR)",
-      };
-
-      document.getElementById("detail-metode").textContent =
-        METODE_LABEL[method] || method; // fallback ke raw value kalau belum ada di mapping
-
-      const layanan = LAYANAN_CONFIG[service];
-      const logoWrapper = document.getElementById("service-logo-wrapper"); // pindah ke sini
-
-      if (layanan) {
-        document.getElementById("service-logo").src = layanan.logo;
-        document.getElementById("service-logo").alt = layanan.nama;
-        document.getElementById("service-nama").textContent = layanan.nama;
-      }
-
-      document.getElementById("detail-id").textContent = id;
-      document.getElementById("detail-tanggal").textContent = tanggal;
-
-      document.getElementById("detail-nomor").textContent = nomor;
-      document.getElementById("detail-nominal").textContent =
-        "Rp " + Number(amount).toLocaleString("id-ID");
-      document.getElementById("detail-biaya-admin").textContent =
-        "Rp " + Number(admin).toLocaleString("id-ID");
-      document.getElementById("detail-total").textContent =
-        "Rp " + Number(total).toLocaleString("id-ID");
-
-      if (service === "pln") {
-        document.getElementById("label-nomor").textContent = "ID Pelanggan";
-
-        const jenisRow = document.getElementById("jenis-listrik-row");
-        const detailJenis = document.getElementById("detail-jenis-listrik");
-        jenisRow.classList.remove("hidden");
-        detailJenis.textContent =
-          jenis === "tagihan" ? "Tagihan Listrik" : "Token Listrik";
-
-        const namaRow = document.getElementById("nama-pemilik-row");
-        const detailNama = document.getElementById("detail-nama-pemilik");
-        namaRow.classList.remove("hidden");
-        detailNama.textContent = nama || "-";
-
-        const tokenRow = document.getElementById("token-listrik-row");
-        const detailToken = document.getElementById("detail-token-listrik");
-        tokenRow.classList.remove("hidden");
-        detailToken.textContent = "0823 4546 4646 2333 0900";
-      }
-
-      if (service === "bpjs") {
-        document.getElementById("label-nomor").textContent = "Nomor VA";
-
-        const namaRow = document.getElementById("nama-peserta-row");
-        const detailNama = document.getElementById("detail-nama-peserta");
-        namaRow.classList.remove("hidden");
-        detailNama.textContent = nama || "-";
-
-        const bulanRow = document.getElementById("jumlah-bulan-row");
-        const detailJumlahBulan = document.getElementById(
-          "detail-jumlah-bulan",
-        );
-        bulanRow.classList.remove("hidden");
-        detailJumlahBulan.textContent = jumlahBulan || "-";
-      }
-
-      if (service === "paket_data") {
-        logoWrapper.innerHTML = `
-              <div class="flex h-10 w-full  shrink-0 items-center justify-between">
- <img class="h-8 w-auto max-w-[100px] shrink object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
-              </div>
-            `;
-        document.getElementById("label-nomor").textContent = "Nomor Tujuan";
-        document.getElementById("nama-provider-row").classList.remove("hidden");
-        document.getElementById("detail-nama-provider").textContent =
-          namaProvider || "-";
-        document.getElementById("jumlah-kuota-row").classList.remove("hidden");
-        document.getElementById("detail-jumlah-kuota").textContent =
-          jumlahKuota || "-";
-      } else if (service === "pulsa") {
-        logoWrapper.innerHTML = `
-              <div class="flex h-10 w-full shrink-0 items-center justify-between">
-
-                <img class="h-8 w-auto max-w-[100px] shrink object-contain" src="/assets/images/Logo-XL.svg" alt="Logo XL" />
-              </div>
-            `;
-        document.getElementById("label-nomor").textContent = "Nomor Tujuan";
-        document.getElementById("nama-provider-row").classList.remove("hidden");
-        document.getElementById("detail-nama-provider").textContent =
-          namaProvider || "-";
-      } else if (layanan) {
-        logoWrapper.innerHTML = `
-                  <img
-        id="service-logo"
-        class="h-full w-full shrink-0 object-contain object-left"
-         src="${layanan.logo}"
-                  alt="${layanan.nama}"
-      />
-              
-            `;
-      }
-    </script>
   </body>
 </html>
