@@ -157,6 +157,15 @@
               <span id="detail-jumlah-bulan" class="font-medium"></span>
             </div>
 
+            <!-- khusus BPJS: Kelas -->
+            <div
+              id="kelas-row"
+              class="flex justify-between text-sm mt-3 hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Kelas</span>
+              <span id="detail-kelas" class="font-medium">-</span>
+            </div>
+
             <!-- khusus PLN: Jenis Listrik -->
             <div
               id="jenis-listrik-row"
@@ -180,6 +189,15 @@
               >
               <span id="detail-nomor" class="font-medium">01234567890</span>
             </div>
+
+            <div
+              id="iuran-row"
+              class="flex justify-between text-sm mt-3 hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Tagihan per Bulan</span>
+              <span id="detail-iuran" class="font-medium">-</span>
+            </div>
+
             <div class="flex justify-between mt-3 text-sm">
               <span class="text-sm text-[#6c6c6c]">Nominal</span>
               <span id="detail-nominal" class="font-medium"></span>
@@ -359,6 +377,7 @@
           <li class="flex items-center gap-2">
             <a
               href="#"
+              aria-label="Instagram"
               class="flex items-center justify-center p-3 rounded-lg bg-gray-600/20 hover:text-white hover:bg-gray-500/30 duration-300"
             >
               <svg
@@ -377,6 +396,7 @@
 
             <a
               href="#"
+              aria-label="TikTok"
               class="flex items-center justify-center p-3 rounded-lg bg-gray-600/20 hover:text-white hover:bg-gray-500/30 duration-300"
             >
               <svg
@@ -395,6 +415,7 @@
 
             <a
               href="#"
+              aria-label="X-Twitter"
               class="flex items-center justify-center p-3 rounded-lg bg-gray-600/20 hover:text-white hover:bg-gray-500/30 duration-300"
             >
               <svg
@@ -434,6 +455,8 @@
       const jenis = params.get("jenis"); // khusus PLN: "token" / "tagihan"
       const nama = params.get("nama"); // khusus PLN: nama pemilik
       const jumlahBulan = params.get("jumlah_bulan"); // khusus PLN: nama pemilik
+      const kelas = params.get("kelas"); // khusus BPJS: tingkat kelas
+      const tarifPerBulan = params.get("tarifPerBulan"); // khusus BPJS: tarif-per-bulan
       const namaProvider = params.get("namaProvider"); // khusus PAKET DATA: jumlah-bulan
       const jumlahKuota = params.get("jumlahKuota"); // khusus PAKET DATA: jumlah-bulan
 
@@ -482,7 +505,22 @@
           "detail-jumlah-bulan",
         );
         bulanRow.classList.remove("hidden");
-        detailJumlahBulan.textContent = jumlahBulan || "-";
+        detailJumlahBulan.textContent = jumlahBulan + " Bulan";
+
+        // kelas
+
+        const kelasRow = document.getElementById("kelas-row");
+        const detailKelasRow = document.getElementById("detail-kelas");
+        kelasRow.classList.remove("hidden");
+        detailKelasRow.textContent = kelas || "-";
+
+        // tarif per bulan
+
+        const iuranRow = document.getElementById("iuran-row");
+        const detailIuranRow = document.getElementById("detail-iuran");
+        iuranRow.classList.remove("hidden");
+        detailIuranRow.textContent =
+          "Rp " + Number(tarifPerBulan).toLocaleString("id-ID");
       }
 
       const PAKET_DATA_ICON = `
@@ -585,6 +623,9 @@
         if (jenis) query.set("jenis", jenis);
         if (nama) query.set("nama", nama);
         if (jumlahBulan) query.set("jumlah_bulan", jumlahBulan);
+        if (tarifPerBulan) query.set("tarifPerBulan", tarifPerBulan);
+        if (kelas) query.set("kelas", kelas);
+
         if (namaProvider) query.set("namaProvider", namaProvider);
         if (jumlahKuota) query.set("jumlahKuota", jumlahKuota);
 

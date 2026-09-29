@@ -156,11 +156,13 @@
                 id="tagihan-placeholder"
                 class="text-base text-[#6c6c6c] max-w-xs"
               >
-                Klik tombol di bawah untuk memeriksa tagihan listrik kamu.
+                Klik tombol di bawah untuk memeriksa tagihan BPJS kamu.
               </span>
 
               <p id="tagihan-result">
-                <span id="tagihan-label" class="">Tagihan bulan ini:</span>
+                <span id="tagihan-label" class=""
+                  >Tagihan yang harus dibayar:</span
+                >
                 <span
                   id="tagihan-amount"
                   class="font-semibold bg-linear-to-r from-biru to-hijau bg-clip-text text-transparent"
@@ -219,9 +221,16 @@
             </div>
 
             <div class="flex justify-between text-sm mt-3">
-              <span class="text-sm text-[#6c6c6c]">Layanan</span>
+              <span class="text-sm text-[#6c6c6c]">Jumlah Bulan</span>
+              <span id="jenis-layanan-bpjs" class="font-medium">-</span>
+            </div>
 
-              <span id="jenis-layanan-bpjs" class="hidden"></span>
+            <div
+              id="kelas-row"
+              class="flex justify-between text-sm mt-3 hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Kelas</span>
+              <span id="detail-kelas" class="font-medium">-</span>
             </div>
 
             <div class="flex justify-between mt-3 text-sm">
@@ -233,7 +242,15 @@
               class="flex justify-between text-sm mt-3 hidden"
             >
               <span class="text-sm text-[#6c6c6c]">Nama Peserta</span>
-              <span class="font-medium">Lionel Maulana</span>
+              <span id="detail-nama-peserta" class="font-medium"></span>
+            </div>
+
+            <div
+              id="iuran-row"
+              class="flex justify-between text-sm mt-3 hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Tagihan per Bulan</span>
+              <span id="detail-iuran" class="font-medium">-</span>
             </div>
 
             <div class="flex justify-between mt-3 text-sm">
@@ -284,7 +301,15 @@
 
             <div class="flex justify-between text-sm mt-3">
               <span class="text-sm text-[#6c6c6c]">Jumlah Bulan</span>
-              <span id="jenis-layanan-bpjs-mobile" class="hidden"></span>
+              <span id="jenis-layanan-bpjs-mobile" class="font-medium"></span>
+            </div>
+
+            <div
+              id="kelas-row-mobile"
+              class="flex justify-between text-sm mt-3 hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Kelas</span>
+              <span id="detail-kelas-mobile" class="font-medium">-</span>
             </div>
 
             <div class="flex justify-between mt-3 text-sm">
@@ -296,7 +321,17 @@
               class="flex justify-between text-sm mt-3 hidden"
             >
               <span class="text-sm text-[#6c6c6c]">Nama Peserta</span>
-              <span class="font-medium">Lionel Maulana</span>
+              <span id="detail-nama-peserta-mobile" class="font-medium"
+                >Lionel Maulana</span
+              >
+            </div>
+
+            <div
+              id="iuran-row-mobile"
+              class="flex justify-between text-sm mt-3 hidden"
+            >
+              <span class="text-sm text-[#6c6c6c]">Tagihan per Bulan</span>
+              <span id="detail-iuran-mobile" class="font-medium">-</span>
             </div>
 
             <!-- <div class="flex justify-between mt-3 text-sm">
@@ -1094,6 +1129,7 @@
           <li class="flex items-center gap-2">
             <a
               href="#"
+              aria-label="Instagram"
               class="flex items-center justify-center p-3 rounded-lg bg-gray-600/20 hover:text-white hover:bg-gray-500/30 duration-300"
             >
               <svg
@@ -1112,6 +1148,7 @@
 
             <a
               href="#"
+              aria-label="TikTok"
               class="flex items-center justify-center p-3 rounded-lg bg-gray-600/20 hover:text-white hover:bg-gray-500/30 duration-300"
             >
               <svg
@@ -1130,6 +1167,7 @@
 
             <a
               href="#"
+              aria-label="X-Twitter"
               class="flex items-center justify-center p-3 rounded-lg bg-gray-600/20 hover:text-white hover:bg-gray-500/30 duration-300"
             >
               <svg
@@ -1158,6 +1196,7 @@
     </footer>
 
     <script src="/data/layanan-config.js"></script>
+
     <script>
       const params = new URLSearchParams(window.location.search);
       const service = params.get("service");
@@ -1249,10 +1288,25 @@
       const btnCekTagihan = document.getElementById("btn-cek-tagihan");
       const namaPemilik = document.getElementById("nama-pemilik");
       const namaPemilikMobile = document.getElementById("nama-pemilik-mobile");
+      const detailNamaPeserta = document.getElementById("detail-nama-peserta");
+      const detailNamaPesertaMobile = document.getElementById(
+        "detail-nama-peserta-mobile",
+      );
+
+      const kelasRow = document.getElementById("kelas-row");
+      const kelasRowMobile = document.getElementById("kelas-row-mobile");
+      const detailKelas = document.getElementById("detail-kelas");
+      const detailKelasMobile = document.getElementById("detail-kelas-mobile");
+
       const jenisLayanan = document.getElementById("jenis-layanan-bpjs");
       const jenisLayananMobile = document.getElementById(
         "jenis-layanan-bpjs-mobile",
       );
+
+      const iuranRow = document.getElementById("iuran-row");
+      const iuranRowMobile = document.getElementById("iuran-row-mobile");
+      const detailIuran = document.getElementById("detail-iuran");
+      const detailIuranMobile = document.getElementById("detail-iuran-mobile");
 
       const tagihanPlaceholder = document.getElementById("tagihan-placeholder");
       const tagihanResult = document.getElementById("tagihan-result");
@@ -1265,26 +1319,30 @@
       tagihanAmount.textContent = "-";
 
       let selectedAmount = null;
+      let tarifPerBulan = 0;
+      let dummyKelas = null;
+      let dummyNama = null;
 
-      const SERVICE_KEY = "bpjs"; // tambahan
+      const SERVICE_KEY = "bpjs";
+      const TARIF_PER_KELAS = { 1: 150000, 2: 100000, 3: 42000 };
 
       function formatRupiah(amount) {
         return "Rp. " + Number(amount).toLocaleString("id-ID");
       }
 
-      // tambahan: bangun URL tujuan ke step 3
       function updateLanjutHref(btn) {
         if (selectedAmount === null) return;
 
         const nomor = inputNomor.value.trim();
-        const namaDummy = "Lionel Maulana"; // dummy, sesuaikan kalau nanti ada API cek nama
 
         const query = new URLSearchParams({
           service: SERVICE_KEY,
           nomor: nomor,
           amount: selectedAmount,
-          jumlah_bulan: jumlahBulan, // ikut kirim jumlah bulan
-          nama: namaDummy,
+          jumlah_bulan: jumlahBulan,
+          nama: dummyNama || "",
+          tarifPerBulan: tarifPerBulan || "",
+          kelas: dummyKelas,
         });
 
         btn.href = `metode-pembayaran.html?${query.toString()}`;
@@ -1294,22 +1352,31 @@
         const isValidNomor = inputNomor.value.trim().length > 0;
 
         nominalWarning.classList.toggle("hidden", isValidNomor);
-        namaPemilik.classList.toggle("hidden", !isValidNomor);
-        jenisLayanan.classList.toggle("hidden", !isValidNomor);
-        namaPemilikMobile.classList.toggle("hidden", !isValidNomor);
-        jenisLayananMobile.classList.toggle("hidden", !isValidNomor);
         tagihanSection.classList.toggle("hidden", !isValidNomor);
 
+        // Jumlah Bulan tetap langsung tampil begitu nomor valid (gak nunggu Cek)
+        // jenisLayanan.classList.toggle("hidden", !isValidNomor);
+        // jenisLayananMobile.classList.toggle("hidden", !isValidNomor);
         jenisLayanan.textContent = jumlahBulan + " Bulan";
         jenisLayananMobile.textContent = jumlahBulan + " Bulan";
+
+        // Nama & Kelas baru muncul setelah klik "Cek Tagihan" — sembunyikan dulu di sini
+        namaPemilik.classList.add("hidden");
+        namaPemilikMobile.classList.add("hidden");
+        kelasRow.classList.add("hidden");
+        kelasRowMobile.classList.add("hidden");
+
+        iuranRow.classList.add("hidden");
+        iuranRowMobile.classList.add("hidden");
 
         selectedAmount = null;
         detailNominal.textContent = "-";
         detailNominalMobile.textContent = "Pilih Nominal";
-        // Reset tampilan tagihan
+
         tagihanPlaceholder.classList.remove("hidden");
         tagihanResult.classList.add("hidden");
         tagihanAmount.textContent = "-";
+        btnCekTagihan.dataset.checked = "false";
       }
 
       function updateButtonState() {
@@ -1333,28 +1400,41 @@
       inputNomor.addEventListener("input", () => {
         const nomor = inputNomor.value.trim() || "-";
         detailNomor.textContent = nomor;
-        detailNomorMobile.textContent = nomor; // TAMBAHAN
+        detailNomorMobile.textContent = nomor;
         toggleNominalSection();
         updateButtonState();
       });
 
       btnCekTagihan.addEventListener("click", () => {
-        const dummyTagihanPerBulan = 150000;
-        const totalTagihan = dummyTagihanPerBulan * Number(jumlahBulan);
+        dummyKelas = 1;
+        dummyNama = "Lionel Maulana";
+        tarifPerBulan = TARIF_PER_KELAS[dummyKelas];
 
-        selectedAmount = totalTagihan;
+        const total = tarifPerBulan * Number(jumlahBulan);
+        selectedAmount = total;
 
-        detailNominal.textContent = formatRupiah(totalTagihan);
-        detailNominalMobile.textContent = formatRupiah(totalTagihan); // TAMBAHAN
+        // tampilkan Nama & Kelas — BARU muncul di sini, setelah Cek Tagihan
+        detailNamaPeserta.textContent = dummyNama;
+        detailNamaPesertaMobile.textContent = dummyNama;
+        namaPemilik.classList.remove("hidden");
+        namaPemilikMobile.classList.remove("hidden");
 
-        // Sembunyikan placeholder
+        detailKelas.textContent = "Kelas " + dummyKelas;
+        detailKelasMobile.textContent = "Kelas " + dummyKelas;
+        kelasRow.classList.remove("hidden");
+        kelasRowMobile.classList.remove("hidden");
+
+        detailIuran.textContent = formatRupiah(tarifPerBulan);
+        detailIuranMobile.textContent = formatRupiah(tarifPerBulan);
+        iuranRow.classList.remove("hidden");
+        iuranRowMobile.classList.remove("hidden");
+
+        detailNominal.textContent = formatRupiah(total);
+        detailNominalMobile.textContent = formatRupiah(total);
+
         tagihanPlaceholder.classList.add("hidden");
-
-        // Tampilkan hasil tagihan
         tagihanResult.classList.remove("hidden");
-
-        // Tampilkan nominal
-        tagihanAmount.textContent = formatRupiah(totalTagihan);
+        tagihanAmount.textContent = formatRupiah(total);
 
         updateButtonState();
         btnCekTagihan.dataset.checked = "true";
@@ -1370,7 +1450,7 @@
       function toggleAccordion(header) {
         header.closest(".wrapper").classList.toggle("is-open");
       }
-      // UBAH: cegah klik saat nonaktif berlaku untuk tombol desktop & mobile
+
       [btnLanjut, btnLanjutMobile].forEach((btn) => {
         btn.addEventListener("click", (e) => {
           if (btn.dataset.active !== "true") {

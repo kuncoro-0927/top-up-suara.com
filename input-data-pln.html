@@ -198,7 +198,9 @@
               </span>
 
               <p id="tagihan-result">
-                <span id="tagihan-label" class="">Tagihan bulan ini:</span>
+                <span id="tagihan-label" class=""
+                  >Tagihan yang harus dibayar:</span
+                >
                 <span
                   id="tagihan-amount"
                   class="font-semibold bg-linear-to-r from-biru to-hijau bg-clip-text text-transparent"
@@ -1398,6 +1400,7 @@
           <li class="flex items-center gap-2">
             <a
               href="#"
+              aria-label="Instagram"
               class="flex items-center justify-center p-3 rounded-lg bg-gray-600/20 hover:text-white hover:bg-gray-500/30 duration-300"
             >
               <svg
@@ -1416,6 +1419,7 @@
 
             <a
               href="#"
+              aria-label="TikTok"
               class="flex items-center justify-center p-3 rounded-lg bg-gray-600/20 hover:text-white hover:bg-gray-500/30 duration-300"
             >
               <svg
@@ -1434,6 +1438,7 @@
 
             <a
               href="#"
+              aria-label="X-Twitter"
               class="flex items-center justify-center p-3 rounded-lg bg-gray-600/20 hover:text-white hover:bg-gray-500/30 duration-300"
             >
               <svg
@@ -1477,9 +1482,8 @@
     </script>
 
     <script>
-      // ============================================================
-      // 1. DROPDOWN "JENIS LISTRIK" (Token / Tagihan)
-      // ============================================================
+      // DROPDOWN "JENIS LISTRIK" (Token / Tagihan)
+
       const jenisBtn = document.getElementById("jenis-listrik-btn");
       const jenisMenu = document.getElementById("jenis-listrik-menu");
       const jenisLabel = document.getElementById("jenis-listrik-label");
@@ -1526,16 +1530,14 @@
         }
       });
 
-      // ============================================================
-      // 2. ACCORDION (FAQ / info tambahan)
-      // ============================================================
+      // ACCORDION (FAQ / info tambahan)
+
       function toggleAccordion(header) {
         header.closest(".wrapper").classList.toggle("is-open");
       }
 
-      // ============================================================
-      // 3. ELEMENT REFERENCES — form nominal & tagihan
-      // ============================================================
+      //  ELEMENT REFERENCES — form nominal & tagihan
+
       const walletCards = document.querySelectorAll(".wallet-card");
       const inputNomor = document.getElementById("nomor-tujuan");
 
@@ -1580,9 +1582,7 @@
 
       let selectedAmount = null;
 
-      // ============================================================
-      // 4. HELPERS
-      // ============================================================
+      // HELPERS
 
       /** Format angka jadi "Rp. 50.000" atau "Rp. 50.000 - 2GB" kalau ada kuota */
       function formatNominal(card) {
@@ -1648,9 +1648,8 @@
         });
       }
 
-      // ============================================================
-      // 5. PILIH NOMINAL (grid card)
-      // ============================================================
+      //  PILIH NOMINAL (grid card)
+
       walletCards.forEach((card) => {
         card.addEventListener("click", () => {
           walletCards.forEach((item) => item.classList.remove("selected"));
@@ -1667,9 +1666,8 @@
         });
       });
 
-      // ============================================================
-      // 6. INPUT NOMOR TUJUAN
-      // ============================================================
+      // INPUT NOMOR TUJUAN
+
       inputNomor.addEventListener("input", () => {
         const nomor = inputNomor.value.trim() || "-";
         detailNomor.textContent = nomor;
@@ -1680,9 +1678,8 @@
         updateLanjutHref();
       });
 
-      // ============================================================
-      // 7. CEK TAGIHAN (dummy, nanti diganti API)
-      // ============================================================
+      // CEK TAGIHAN
+
       btnCekTagihan.addEventListener("click", () => {
         // TODO: ganti dengan pemanggilan API cek tagihan yang sebenarnya
         const dummyTagihan = 150000;
@@ -1702,9 +1699,8 @@
         btnCekTagihan.dataset.checked = "true";
       });
 
-      // ============================================================
-      // 8. TOGGLE "LIHAT RINCIAN" DI MOBILE (dropup)
-      // ============================================================
+      // TOGGLE "LIHAT RINCIAN" DI MOBILE (dropup)
+
       btnToggleDetail.addEventListener("click", () => {
         const isOpen = !mobileSummaryDetail.classList.contains("hidden");
 
@@ -1713,9 +1709,8 @@
         detailChevron.classList.toggle("rotate-180", !isOpen);
       });
 
-      // ============================================================
-      // 9. TOMBOL LANJUT — cegah klik kalau belum valid
-      // ============================================================
+      // TOMBOL LANJUT — cegah klik kalau belum valid
+
       [btnLanjut, btnLanjutMobile].forEach((btn) => {
         btn.addEventListener("click", (e) => {
           if (btn.dataset.active !== "true") {
@@ -1724,15 +1719,13 @@
         });
       });
 
-      // ============================================================
-      // 10. INIT — jalankan sekali saat halaman dimuat
-      // ============================================================
+      // INIT — jalankan sekali saat halaman dimuat
+
       toggleNominalSection();
       updateButtonState();
 
-      // ============================================================
-      // 11. BANGUN URL TUJUAN KE METODE PEMBAYARAN (QRIS & lainnya)
-      // ============================================================
+      //  BANGUN URL TUJUAN KE METODE PEMBAYARAN (QRIS & lainnya)
+
       const SERVICE_KEY = "pln"; // sesuai key di LAYANAN_CONFIG
 
       function updateLanjutHref() {
