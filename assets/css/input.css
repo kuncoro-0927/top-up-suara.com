@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -6,6 +5,14 @@
   --color-hijau: #5fb5b7;
   --color-hitam: #2c2c2c;
   --font-sans: "Geist", sans-serif;
+}
+
+@font-face {
+  font-family: "Geist";
+  src: url("../fonts/geist-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 /* Button Gradient */
